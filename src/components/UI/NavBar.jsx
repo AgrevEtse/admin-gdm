@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { UserIcon, SignOutIcon } from '@phosphor-icons/react'
+import { UserIcon, SignOutIcon, ListIcon } from '@phosphor-icons/react'
 
 import { useAuth } from '@/context/AuthContext'
 
@@ -14,7 +14,7 @@ const NavBar = () => {
         <Link to='/dashboard'>
           <button
             className='btn btn-secondary text-secondary-content text-xl active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
-            title='Respira Sano'
+            title='GDM Admin'
           >
             GDM Admin
           </button>
@@ -27,13 +27,23 @@ const NavBar = () => {
           className='btn btn-accent active:scale-110 hover:scale-110 transition-transform duration-200 ease-in-out'
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          <UserIcon size={32} />
-          {auth.user.rol.toUpperCase()}
+          <ListIcon size={32} />
         </button>
       </div>
 
       {menuOpen && (
-        <div className='absolute top-full right-4 mt-2 bg-base-200 rounded-box shadow-lg z-50 w-52 justify-center items-center text-center mx-auto p-4'>
+        <div className='absolute top-full right-4 mt-2 bg-base-200 rounded-box shadow-lg z-50 w-52 justify-center items-center text-center mx-auto p-4 flex flex-col'>
+          <div className='flex flex-col items-center my-4'>
+            <UserIcon
+              size={80}
+              className='bg-cyan-600 rounded-full'
+            />
+            {auth.user && (
+              <p className='text-lg font-semibold mt-2'>
+                {auth.user.rol.toUpperCase()}
+              </p>
+            )}
+          </div>
           <ul className='menu menu-compact p-2 justify-center items-center text-center mx-auto'>
             <li>
               <button
