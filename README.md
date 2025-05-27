@@ -1,12 +1,13 @@
-# React + Vite
+# Admin GDM
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Admin GDM es un sistema de gestión de datos para la administración de un centro educativo. Permite gestionar a los alumnos y generar un reporte con los datos del alumno.
 
-Currently, two official plugins are available:
+## Uso
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Para utilizar Admin GDM, primero debes clonar el repositorio, crear el archivo `.env`, puedes basarte en el `.env.example` luego instalar las dependencias necesarias. Puedes hacerlo ejecutando los siguientes comandos en tu terminal:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+  $ npm install
+  $ cp .env.example .env
+  $ npm run dev
+```
