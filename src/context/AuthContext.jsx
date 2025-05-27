@@ -10,11 +10,11 @@ const initialUserState = {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(
-    localStorage.getItem('user') || initialUserState
+    JSON.parse(localStorage.getItem('user')) || initialUserState
   )
 
   const login = (user) => {
-    localStorage.setItem('user', user)
+    localStorage.setItem('user', JSON.stringify(user))
     setUser(user)
   }
 

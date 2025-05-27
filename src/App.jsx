@@ -1,17 +1,18 @@
 import { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
 
 import Login from '@/components/Pages/Login'
-import ProtectedRoute from '@/components/ProtectedRoute'
+import ProtectedRoute from '@/components/Layout/ProtectedRoute'
 import DashboardLayout from '@/components/Layout/DashboardLayout'
 
 import { AuthContext } from '@/context/AuthContext'
 
-function App() {
+const App = () => {
   const auth = useContext(AuthContext)
 
   return (
-    <main className='flex flex-row items-center justify-center w-[90vw] min-h-[80vh] my-[10vh] mx-auto'>
+    <>
       <Routes>
         <Route
           path='/'
@@ -29,7 +30,11 @@ function App() {
           </Route>
         </Route>
       </Routes>
-    </main>
+      <Toaster
+        position='top-center'
+        reverseOrder={true}
+      />
+    </>
   )
 }
 

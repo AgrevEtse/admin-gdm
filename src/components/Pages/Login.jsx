@@ -26,8 +26,6 @@ function Login() {
 
     const data = await res.json()
 
-    console.log(data)
-
     if (res.ok) {
       auth.login(data)
       navigate('/dashboard')
