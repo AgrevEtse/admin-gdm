@@ -1,15 +1,17 @@
-import { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
+
+import { useAuth } from '@/context/AuthContext'
 
 import Login from '@/components/Pages/Login'
 import ProtectedRoute from '@/components/Layout/ProtectedRoute'
 import DashboardLayout from '@/components/Layout/DashboardLayout'
-
-import { AuthContext } from '@/context/AuthContext'
+import Dashboard from '@/components/Pages/Dashboard'
+import ListStudentsAdmin from '@/components/Pages/ListStudentsAdmin'
+import ListStudentsMortal from '@/components/Pages/ListStudentsMortal'
 
 const App = () => {
-  const auth = useContext(AuthContext)
+  const auth = useAuth()
 
   return (
     <>
@@ -25,8 +27,20 @@ const App = () => {
           >
             <Route
               index
-              element={<h2>Dashboard Home {auth.user.rol}</h2>}
+              element={<Dashboard />}
             />
+
+            {auth.user.rol === 'admin' ? (
+              <Route
+                path='students'
+                element={<ListStudentsAdmin />}
+              />
+            ) : (
+              <Route
+                path='students'
+                element={<ListStudentsMortal />}
+              />
+            )}
           </Route>
         </Route>
       </Routes>
