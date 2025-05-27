@@ -1,13 +1,13 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { AuthContext } from '@/context/AuthContext'
+import { useAuth } from '@/context/AuthContext'
 import TextInput from '@/components/UI/TextInput'
 
 const API_URL = import.meta.env.VITE_API_URL
 
-function Home() {
-  const auth = useContext(AuthContext)
+function Login() {
+  const auth = useAuth()
   const navigate = useNavigate()
 
   const [user, setUser] = useState('')
@@ -26,8 +26,10 @@ function Home() {
 
     const data = await res.json()
 
+    console.log(data)
+
     if (res.ok) {
-      auth.login(data.token)
+      auth.login(data)
       navigate('/dashboard')
     }
   }
@@ -66,4 +68,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Login

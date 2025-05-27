@@ -1,16 +1,21 @@
+import { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import Home from '@/components/Pages/Home'
+import Login from '@/components/Pages/Login'
 import ProtectedRoute from '@/components/ProtectedRoute'
 import DashboardLayout from '@/components/Layout/DashboardLayout'
 
+import { AuthContext } from '@/context/AuthContext'
+
 function App() {
+  const auth = useContext(AuthContext)
+
   return (
     <main className='flex flex-row items-center justify-center w-[90vw] min-h-[80vh] my-[10vh] mx-auto'>
       <Routes>
         <Route
           path='/'
-          element={<Home />}
+          element={<Login />}
         />
         <Route element={<ProtectedRoute />}>
           <Route
@@ -19,15 +24,7 @@ function App() {
           >
             <Route
               index
-              element={<h2>Dashboard Home</h2>}
-            />
-            <Route
-              path='settings'
-              element={<h2>Dashboard Settings</h2>}
-            />
-            <Route
-              path='profile'
-              element={<h2>Dashboard Profile</h2>}
+              element={<h2>Dashboard Home {auth.user.rol}</h2>}
             />
           </Route>
         </Route>
