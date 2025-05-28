@@ -1,9 +1,14 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useAuth } from '@/context/AuthContext'
 
 const Dashboard = () => {
   const auth = useAuth()
+
+  useEffect(() => {
+    document.title = 'Dashboard - GDM Admin'
+  }, [])
 
   return (
     <div className='flex flex-col justify-center items-center h-full'>
@@ -12,8 +17,8 @@ const Dashboard = () => {
       </h2>
       <div className='mt-4'>
         <Link
-          to='/dashboard/students'
-          className='btn btn-primary'
+          to='/dashboard/alumnos'
+          className='btn btn-secondary'
         >
           Alumnos
         </Link>

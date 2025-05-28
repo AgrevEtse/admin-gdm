@@ -9,6 +9,7 @@ import DashboardLayout from '@/components/Layout/DashboardLayout'
 import Dashboard from '@/components/Pages/Dashboard'
 import ListStudentsAdmin from '@/components/Pages/ListStudentsAdmin'
 import ListStudentsMortal from '@/components/Pages/ListStudentsMortal'
+import StudentData from '@/components/Pages/StudentData'
 
 const App = () => {
   const auth = useAuth()
@@ -32,15 +33,20 @@ const App = () => {
 
             {auth.user.rol === 'admin' ? (
               <Route
-                path='students'
+                path='alumnos'
                 element={<ListStudentsAdmin />}
               />
             ) : (
               <Route
-                path='students'
+                path='alumnos'
                 element={<ListStudentsMortal />}
               />
             )}
+
+            <Route
+              path='alumnos/:curp'
+              element={<StudentData />}
+            />
           </Route>
         </Route>
       </Routes>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react'
+import { toast } from 'react-hot-toast'
 
 import { textNormalize } from '@/utils/textNormalize'
 import { useAuth } from '@/context/AuthContext'
@@ -14,12 +15,18 @@ const ListStudentsAdmin = () => {
 
   const [students, setStudents] = useState([])
   const [search, setSearch] = useState('')
+  const [grade, setGrade] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
 
   const fetchStudents = async () => {
+    if (grade === 0) {
+      toast.error('Por favor, selecciona un grado escolar.')
+      return
+    }
+
     setIsLoading(true)
     try {
-      const response = await fetch(`${API_URL}/alumno/todos/`, {
+      const res = await fetch(`${API_URL}/alumno/todos/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -28,17 +35,21 @@ const ListStudentsAdmin = () => {
         body: JSON.stringify({
           ciclo: '2025-2026',
           validado: 0,
-          rol: 'secundaria'
+          rol: grade
         })
       })
 
-      const data = await response.json()
+      if (res.status === 401) {
+        toast.error('Sesión expirada, por favor inicia sesión nuevamente.')
+        auth.logout()
+      }
+
+      const data = await res.json()
       setStudents(data)
     } catch (error) {
       console.error('Error fetching students:', error)
     } finally {
       setIsLoading(false)
-      console.log(students)
     }
   }
 
@@ -46,17 +57,33 @@ const ListStudentsAdmin = () => {
     document.title = 'Alumnos - GDM Admin'
   })
 
+  const filteredStudents = students.filter(
+    ({ nombre, apellido_paterno, apellido_materno, curp }) => {
+      const fullName = `${nombre} ${apellido_paterno} ${apellido_materno} ${curp}`
+      return textNormalize(fullName).includes(textNormalize(search))
+    }
+  )
+
   return (
     <div className='mx-auto w-full h-full py-[5vh]'>
       <h2 className='text-5xl font-bold text-center'>Lista de Alumnos</h2>
       <div className='flex flex-col items-center lg:items-end my-8 space-y-4'>
         <div className='flex flex-row justify-between items-center space-x-4 w-full max-w-2xl'>
-          <select className='select w-full max-w-xs'>
-            <option value=''>Todos los grados</option>
-            <option value=''>Preescolar</option>
-            <option value=''>Primaria</option>
-            <option value=''>Secundaria</option>
-            <option value=''>Bachillerato</option>
+          <select
+            className='select w-full max-w-xs'
+            value={grade}
+            onChange={(e) => setGrade(e.target.value)}
+          >
+            <option
+              value='0'
+              disabled
+            >
+              Selecciona un grado
+            </option>
+            <option value='preescolar'>Preescolar</option>
+            <option value='primaria'>Primaria</option>
+            <option value='secundaria'>Secundaria</option>
+            <option value='bachillerato'>Bachillerato</option>
           </select>
 
           <button
@@ -71,7 +98,7 @@ const ListStudentsAdmin = () => {
             <MagnifyingGlassIcon size={20} />
           </span>
           <input
-            placeholder='VAGD020326HDFRNS00'
+            placeholder='alejandro, ZEPEDA, VAIO020327...'
             type='text'
             onChange={(e) => {
               setSearch(e.target.value)
@@ -79,12 +106,24 @@ const ListStudentsAdmin = () => {
           />
         </label>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 justify-center items-center'>
-        {/* StudentCard*50 */}
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-4 justify-center items-center'>
         {isLoading &&
           Array.from({ length: 6 }).map((_, i) => (
             <StudentCardSkeleton key={i} />
           ))}
+
+        {filteredStudents.map((student) => (
+          <StudentCard
+            key={student.curp}
+            student={student}
+          />
+        ))}
+
+        {filteredStudents.length === 0 && !isLoading && (
+          <div className='col-span-full text-center text-gray-500'>
+            No se encontraron alumnos.
+          </div>
+        )}
       </div>
     </div>
   )
