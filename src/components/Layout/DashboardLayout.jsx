@@ -4,12 +4,12 @@ import NavBar from '@/components/UI/NavBar'
 
 const DashboardLayout = () => {
   return (
-    <>
+    <div>
       <NavBar />
       <div className='w-full h-full'>
         <Outlet />
       </div>
-    </>
+    </div>
   )
 }
 
