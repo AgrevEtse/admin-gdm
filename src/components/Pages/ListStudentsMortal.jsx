@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react'
-import { toast } from 'react-hot-toast'
 
 import { textNormalize } from '@/utils/textNormalize'
 import { useAuth } from '@/context/AuthContext'
+import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
 
 import StudentCard from '@/components/UI/StudentCard'
 import StudentCardSkeleton from '@/components/UI/StudentCardSkeleton'
@@ -12,6 +12,7 @@ const API_URL = import.meta.env.VITE_API_URL
 
 const ListStudentsAdmin = () => {
   const auth = useAuth()
+  const fetchWithAuth = useFetchWithAuth()
 
   const [students, setStudents] = useState([])
   const [search, setSearch] = useState('')
@@ -23,23 +24,14 @@ const ListStudentsAdmin = () => {
     const fetchStudents = async () => {
       setIsLoading(true)
       try {
-        const res = await fetch(`${API_URL}/alumno/todos/`, {
+        const res = await fetchWithAuth(`${API_URL}/alumno/todos/`, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${auth.user.token}`
-          },
           body: JSON.stringify({
             ciclo: '2025-2026',
             validado: 0,
             rol: auth.user.rol
           })
         })
-
-        if (res.status === 401) {
-          toast.error('Sesión expirada, por favor inicia sesión nuevamente.')
-          auth.logout()
-        }
 
         const data = await res.json()
         setStudents(data)
@@ -51,7 +43,8 @@ const ListStudentsAdmin = () => {
     }
 
     fetchStudents()
-  }, [auth])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const filteredStudents = students.filter(
     ({ nombre, apellido_paterno, apellido_materno, curp }) => {
