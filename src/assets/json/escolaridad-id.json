@@ -1,0 +1,74 @@
+{
+  "1": {
+    "escolaridad": "Preescolar",
+    "grado": 1
+  },
+  "2": {
+    "escolaridad": "Preescolar",
+    "grado": 2
+  },
+  "3": {
+    "escolaridad": "Preescolar",
+    "grado": 3
+  },
+  "4": {
+    "escolaridad": "Primaria",
+    "grado": 1
+  },
+  "5": {
+    "escolaridad": "Primaria",
+    "grado": 2
+  },
+  "6": {
+    "escolaridad": "Primaria",
+    "grado": 3
+  },
+  "7": {
+    "escolaridad": "Primaria",
+    "grado": 4
+  },
+  "8": {
+    "escolaridad": "Primaria",
+    "grado": 5
+  },
+  "9": {
+    "escolaridad": "Primaria",
+    "grado": 6
+  },
+  "10": {
+    "escolaridad": "Secundaria",
+    "grado": 1
+  },
+  "11": {
+    "escolaridad": "Secundaria",
+    "grado": 2
+  },
+  "12": {
+    "escolaridad": "Secundaria",
+    "grado": 3
+  },
+  "13": {
+    "escolaridad": "Bachillerato",
+    "grado": 1
+  },
+  "14": {
+    "escolaridad": "Bachillerato",
+    "grado": 2
+  },
+  "15": {
+    "escolaridad": "Bachillerato",
+    "grado": 3
+  },
+  "16": {
+    "escolaridad": "Bachillerato",
+    "grado": 4
+  },
+  "17": {
+    "escolaridad": "Bachillerato",
+    "grado": 5
+  },
+  "18": {
+    "escolaridad": "Bachillerato",
+    "grado": 6
+  }
+}

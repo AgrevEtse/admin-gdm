@@ -1,6 +1,6 @@
 const StudentCardSkeleton = () => {
   return (
-    <div className='w-2xs h-64'>
+    <div className='w-2xs h-64 mx-auto'>
       <div className='card bg-base-100 shadow-xl w-full h-full'>
         <div className='card-body'>
           <h2 className='card-title h-6 w-1/2 mb-4 skeleton'></h2>

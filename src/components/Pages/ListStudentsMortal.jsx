@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react'
 
-import { textNormalize } from '@/utils/textNormalize'
-import { useAuth } from '@/context/AuthContext'
 import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
+import { useAuth } from '@/context/AuthContext'
+import { textNormalize } from '@/utils/textNormalize'
 
 import StudentCard from '@/components/UI/StudentCard'
 import StudentCardSkeleton from '@/components/UI/StudentCardSkeleton'
-
-const API_URL = import.meta.env.VITE_API_URL
 
 const ListStudentsAdmin = () => {
   const auth = useAuth()
@@ -24,7 +22,7 @@ const ListStudentsAdmin = () => {
     const fetchStudents = async () => {
       setIsLoading(true)
       try {
-        const res = await fetchWithAuth(`${API_URL}/alumno/todos/`, {
+        const res = await fetchWithAuth('/alumno/todos/', {
           method: 'POST',
           body: JSON.stringify({
             ciclo: '2025-2026',
@@ -62,7 +60,7 @@ const ListStudentsAdmin = () => {
             <MagnifyingGlassIcon size={20} />
           </span>
           <input
-            placeholder='alejandro, ZEPEDA, VAIO020327...'
+            placeholder='jesus, ZEPEDA, VAIO020327...'
             type='text'
             onChange={(e) => {
               setSearch(e.target.value)
@@ -70,7 +68,7 @@ const ListStudentsAdmin = () => {
           />
         </label>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-4 justify-center items-center'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 justify-center items-center'>
         {isLoading &&
           Array.from({ length: 6 }).map((_, i) => (
             <StudentCardSkeleton key={i} />

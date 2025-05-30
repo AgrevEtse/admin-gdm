@@ -26,13 +26,8 @@ const StudentCard = ({ student }) => {
     )
   }
 
-  const seeDetails = () => {
-    console.log(`Ver detalles de ${fullName} con CURP: ${curp}`)
-    navigate(`/dashboard/alumnos/${curp}`)
-  }
-
   return (
-    <div className='card bg-primary text-primary-content shadow-xl w-2xs h-64'>
+    <div className='card bg-primary text-primary-content shadow-xl w-2xs h-64 mx-auto'>
       <div className='card-body'>
         <h2 className='card-title'>{curp}</h2>
         <p>{`${fullName}`}</p>
@@ -40,7 +35,9 @@ const StudentCard = ({ student }) => {
         <div className='card-actions justify-end'>
           <button
             className='btn btn-secondary'
-            onClick={seeDetails}
+            onClick={() => {
+              navigate(`/dashboard/alumnos/${curp}`)
+            }}
           >
             Ver Detalles
           </button>

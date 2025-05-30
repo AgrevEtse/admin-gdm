@@ -2,17 +2,19 @@ import { toast } from 'react-hot-toast'
 
 import { useAuth } from '@/context/AuthContext'
 
+const API_URL = import.meta.env.VITE_API_URL
+
 export const useFetchWithAuth = () => {
   const auth = useAuth()
 
-  const fetchWithAuth = async (url, options = {}) => {
+  const fetchWithAuth = async (endpoint, options = {}) => {
     const headers = {
       ...(options.headers || {}),
       Authorization: `Bearer ${auth.user.token}`,
       'Content-Type': 'application/json'
     }
 
-    const response = await fetch(url, {
+    const response = await fetch(`${API_URL}${endpoint}`, {
       ...options,
       headers
     })

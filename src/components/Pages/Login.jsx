@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useAuth } from '@/context/AuthContext'
@@ -12,6 +12,14 @@ function Login() {
 
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
+
+  useEffect(() => {
+    document.title = 'Iniciar Sesión - GDM Admin'
+
+    if (auth.isAuthenticated()) {
+      navigate('/dashboard')
+    }
+  }, [auth, navigate])
 
   const handleLogin = async (e) => {
     e.preventDefault()
