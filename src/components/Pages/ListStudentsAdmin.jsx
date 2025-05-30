@@ -24,10 +24,11 @@ const ListStudentsAdmin = () => {
 
     setIsLoading(true)
     try {
+      const ciclo = grade === 'bachillerato' ? '2025B' : '2025-2026'
       const res = await fetchWithAuth('/alumno/todos/', {
         method: 'POST',
         body: JSON.stringify({
-          ciclo: '2025-2026',
+          ciclo: ciclo,
           validado: 0,
           rol: grade
         })

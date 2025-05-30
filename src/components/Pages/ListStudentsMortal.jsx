@@ -20,12 +20,14 @@ const ListStudentsAdmin = () => {
     document.title = 'Alumnos - GDM Admin'
 
     const fetchStudents = async () => {
+      const ciclo = auth.user.rol === 'bachillerato' ? '2025B' : '2025-2026'
+
       setIsLoading(true)
       try {
         const res = await fetchWithAuth('/alumno/todos/', {
           method: 'POST',
           body: JSON.stringify({
-            ciclo: '2025-2026',
+            ciclo: ciclo,
             validado: 0,
             rol: auth.user.rol
           })
