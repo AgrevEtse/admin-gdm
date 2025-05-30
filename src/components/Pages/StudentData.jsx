@@ -11,6 +11,8 @@ const StudentData = () => {
   const fetchWithAuth = useFetchWithAuth()
 
   const [alumno, setAlumno] = useState({})
+  const [domicilio, setDomicilio] = useState([])
+  const [escuelaProcedencia, setEscuelaProcedencia] = useState({})
   const [tutor1, setTutor1] = useState([])
   const [tutor2, setTutor2] = useState([])
   const [hermanos, setHermanos] = useState([])
@@ -25,6 +27,18 @@ const StudentData = () => {
       const resAlumno = await fetchWithAuth(`/alumno/${curp}`)
       const dataAlumno = await resAlumno.json()
       setAlumno(dataAlumno)
+
+      const resEscuelaProcedencia = await fetchWithAuth(
+        `/escuelaprocedencia/${curp}`
+      )
+      const dataEscuelaProcedencia = await resEscuelaProcedencia.json()
+      setEscuelaProcedencia(dataEscuelaProcedencia)
+
+      console.log(escuelaProcedencia)
+
+      const resDomicilio = await fetchWithAuth(`/domicilio/${curp}`)
+      const dataDomicilio = await resDomicilio.json()
+      setDomicilio(dataDomicilio)
 
       const resTutor1 = await fetchWithAuth(`/tutor1/${curp}`)
       const dataTutor1 = await resTutor1.json()
@@ -59,83 +73,137 @@ const StudentData = () => {
   }, [])
 
   return (
-    <div className='my-16 mx-auto space-y-8'>
-      {/* Datos Alumno */}
+    <div className='my-16 mx-auto space-y-8 grid grid-cols-1 lg:grid-cols-3 gap-4'>
+      {/* Alumno */}
       {alumno.curp && (
-        <div className='card bg-base-100 w-96 shadow-sm'>
-          <div className='card-body'>
-            <h2 className='card-title'>Alumno</h2>
-            <p>
+        <div className='card  bg-info text-info-content w-96 shadow-sm'>
+          <div className='card-body text-sm'>
+            <h2 className='card-title text-3xl'>Alumno</h2>
+            <p className='text-sm'>
               <span className='font-bold'>CURP</span>: {alumno.curp}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Nombre</span>: {alumno.nombre}{' '}
               {alumno.apellido_paterno} {alumno.apellido_materno}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Género</span>:{' '}
               {alumno.genero === 'H' ? 'Hombre' : 'Mujer'}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Fecha de Nacimiento</span>:{' '}
               {alumno.fecha_nacimiento}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Tipo Sanguíneo</span>:{' '}
               {alumno.tipo_sanguineo}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Lateralidad</span>:{' '}
               {alumno.es_diestro === true ? 'Derecha' : 'Izquierda'}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Estatura</span>: {alumno.estatura_cm}{' '}
               cm
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Peso</span>: {alumno.peso_kg} kg
             </p>
 
-            {/* TODO: Renderizar los siguientes campos solo si no están vacíos */}
-            <p>
-              <span className='font-bold'>Nota Enfermedad</span>:{' '}
-              {alumno.nota_enfermedad}
+            {/* Se renderiza si contiene algo */}
+            {alumno.nota_enfermedad && (
+              <p className='text-sm'>
+                <span className='font-bold'>Nota Enfermedad</span>:{' '}
+                {alumno.nota_enfermedad}
+              </p>
+            )}
+
+            {/* Se renderiza si contiene algo */}
+            {alumno.nota_terapia && (
+              <p className='text-sm'>
+                <span className='font-bold'>Nota Terapia</span>:{' '}
+                {alumno.nota_terapia}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Domicilio */}
+      {domicilio.length > 0 && (
+        <div className='card text-sm bg-info text-info-content w-96 shadow-sm'>
+          <div className='card-body'>
+            <h2 className='card-title text-3xl'>Domicilio</h2>
+            <p className='text-sm'>
+              <span className='font-bold'>Domicilio</span>:{' '}
+              {domicilio[0].domicilio}
             </p>
-            <p>
-              <span className='font-bold'>Nota Terapia</span>:{' '}
-              {alumno.nota_terapia}
+
+            <p className='text-sm'>
+              <span className='font-bold'>Colonia</span>: {domicilio[0].colonia}
+            </p>
+
+            <p className='text-sm'>
+              <span className='font-bold'>C.P.</span>:{' '}
+              {domicilio[0].codigo_postal}
+            </p>
+
+            <p className='text-sm'>
+              <span className='font-bold'>Ciudad</span>: {domicilio[0].ciudad}
+            </p>
+
+            <p className='text-sm'>
+              <span className='font-bold'>Estado</span>: {domicilio[0].estado}
             </p>
           </div>
         </div>
       )}
 
-      {/* TODO: Escuela de Procedencia */}
-
-      {/* Inscripcion */}
-      {inscripcion.length > 0 && (
-        <div className='card bg-base-100 w-96 shadow-sm'>
+      {/* Escuela de Procedencia */}
+      {escuelaProcedencia.cct && (
+        <div className='card text-sm bg-info text-info-content w-96 shadow-sm'>
           <div className='card-body'>
-            <h2 className='card-title'>Inscripción</h2>
-            <p>
+            <h2 className='card-title text-3xl'>Escuela de Procedencia</h2>
+            <p className='text-sm'>
+              <span className='font-bold'>CCT</span>: {escuelaProcedencia.cct}
+            </p>
+            <p className='text-sm'>
+              <span className='font-bold'>Matricula</span>:{' '}
+              {escuelaProcedencia.matricula}
+            </p>
+            <p className='text-sm'>
+              <span className='font-bold'>Nombre Escuela</span>:{' '}
+              {escuelaProcedencia.nombre}
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Inscripción */}
+      {inscripcion.length > 0 && (
+        <div className='card text-sm bg-info text-info-content w-96 shadow-sm'>
+          <div className='card-body'>
+            <h2 className='card-title text-3xl'>Inscripción</h2>
+            <p className='text-sm'>
               <span className='font-bold'>Fecha Inscripción</span>:{' '}
               {inscripcion[0].fecha_inscripcion.split('T')[0]}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Escolaridad</span>:{' '}
               {escolaridad_id_json[inscripcion[0].id_escolaridad].escolaridad}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Grado</span>:{' '}
               {escolaridad_id_json[inscripcion[0].id_escolaridad].grado}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Ciclo</span>:{' '}
               {inscripcion[0].id_ciclo ===
               'd20edf04-26e5-423b-a84b-12ed7dde9ec5'
                 ? '2025-2026'
                 : '2025B'}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>¿Está activo?</span>:{' '}
               <span>{inscripcion[0].esta_activo === true ? 'Sí' : 'No'}</span>
             </p>
@@ -145,22 +213,22 @@ const StudentData = () => {
 
       {/* Tutor 1 */}
       {tutor1.length > 0 && (
-        <div className='card bg-base-100 w-96 shadow-sm'>
+        <div className='card text-sm bg-info text-info-content w-96 shadow-sm'>
           <div className='card-body'>
-            <h2 className='card-title'>Primer Tutor</h2>
-            <p>
+            <h2 className='card-title text-3xl'>Primer Tutor</h2>
+            <p className='text-sm'>
               <span className='font-bold'>Nombre</span>: {tutor1[0].nombre}{' '}
               {tutor1[0].apellido_paterno} {tutor1[0].apellido_materno}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Teléfono (fijo)</span>:{' '}
               {tutor1[0].telefono_fijo}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Teléfono (móvil)</span>:{' '}
               {tutor1[0].telefono_movil}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Correo Electrónico</span>:{' '}
               {tutor1[0].correo_electronico}
             </p>
@@ -170,22 +238,22 @@ const StudentData = () => {
 
       {/* Tutor 2 */}
       {tutor2.length > 0 && (
-        <div className='card bg-base-100 w-96 shadow-sm'>
+        <div className='card text-sm bg-info text-info-content w-96 shadow-sm'>
           <div className='card-body'>
-            <h2 className='card-title'>Segundo Tutor</h2>
-            <p>
+            <h2 className='card-title text-3xl'>Segundo Tutor</h2>
+            <p className='text-sm'>
               <span className='font-bold'>Nombre</span>: {tutor2[0].nombre}{' '}
               {tutor2[0].apellido_paterno} {tutor2[0].apellido_materno}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Teléfono (fijo)</span>:{' '}
               {tutor2[0].telefono_fijo}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Teléfono (móvil)</span>:{' '}
               {tutor2[0].telefono_movil}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Correo Electrónico</span>:{' '}
               {tutor2[0].correo_electronico}
             </p>
@@ -195,19 +263,19 @@ const StudentData = () => {
 
       {/* Hermanos */}
       {hermanos.length > 0 && (
-        <div className='card bg-base-100 w-96 shadow-sm'>
+        <div className='card text-sm bg-info text-info-content w-96 shadow-sm'>
           <div className='card-body'>
-            <h2 className='card-title'>Hermanos</h2>
+            <h2 className='card-title text-3xl'>Hermanos</h2>
             {hermanos.map((hermano, i) => (
               <div
                 key={hermano.id}
                 className=''
               >
-                <p>
+                <p className='text-sm'>
                   <span className='font-bold'>Hermano {i + 1}</span>:{' '}
                   {hermano.nombre}
                 </p>
-                <p>
+                <p className='text-sm'>
                   <span className='font-bold'>Escolaridad</span>:{' '}
                   {hermano.nivel}
                 </p>
@@ -219,19 +287,19 @@ const StudentData = () => {
 
       {/* Contacto de Emergencia */}
       {contacto.length > 0 && (
-        <div className='card bg-base-100 w-96 shadow-sm'>
+        <div className='card text-sm bg-info text-info-content w-96 shadow-sm'>
           <div className='card-body'>
-            <h2 className='card-title'>Contactos de Emergencia</h2>
+            <h2 className='card-title text-3xl'>Contactos</h2>
             {contacto.map((contacto, i) => (
               <div
                 key={contacto.id}
                 className=''
               >
-                <p>
+                <p className='text-sm'>
                   <span className='font-bold'>Contacto {i + 1}</span>:{' '}
                   {contacto.nombre}
                 </p>
-                <p>
+                <p className='text-sm'>
                   <span className='font-bold'>Parentesco</span>:{' '}
                   {contacto.parentesco === 1
                     ? 'Papá'
@@ -247,7 +315,7 @@ const StudentData = () => {
                               ? 'Abuela'
                               : 'Desconocido'}
                 </p>
-                <p>
+                <p className='text-sm'>
                   <span className='font-bold'>Teléfono</span>:{' '}
                   {contacto.telefono}
                 </p>
@@ -259,13 +327,13 @@ const StudentData = () => {
 
       {/* Pago */}
       {pago.nombre && (
-        <div className='card bg-base-100 w-96 shadow-sm'>
+        <div className='card text-sm bg-info text-info-content w-96 shadow-sm'>
           <div className='card-body'>
-            <h2 className='card-title'>Pago</h2>
-            <p>
+            <h2 className='card-title text-3xl'>Pago</h2>
+            <p className='text-sm'>
               <span className='font-bold'>Nombre</span>: {pago.nombre}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Parentesco</span>:{' '}
               {pago.responsable === 1
                 ? 'Papá'
@@ -281,14 +349,14 @@ const StudentData = () => {
                           ? 'Abuela'
                           : 'Desconocido'}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Teléfono</span>: {pago.telefono}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>Correo Electrónico</span>:{' '}
               {pago.correo}
             </p>
-            <p>
+            <p className='text-sm'>
               <span className='font-bold'>¿Requiere Factura?</span>:{' '}
               {pago.factura === true ? 'Sí' : 'No'}
             </p>
