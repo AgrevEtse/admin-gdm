@@ -151,6 +151,7 @@ const ListStudentsAdmin = () => {
           <StudentCard
             key={student.curp}
             student={student}
+            ciclo={ciclo}
           />
         ))}
 

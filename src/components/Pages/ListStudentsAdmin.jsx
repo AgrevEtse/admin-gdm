@@ -56,7 +56,7 @@ const ListStudentsAdmin = () => {
       const data = await res.json()
       setStudents(data)
     } catch (error) {
-      console.error('Error fetching students:', error)
+      console.error('Error fetching alumnos:', error)
     } finally {
       setIsLoading(false)
     }
@@ -176,6 +176,7 @@ const ListStudentsAdmin = () => {
           <StudentCard
             key={student.curp}
             student={student}
+            ciclo={ciclo}
           />
         ))}
 

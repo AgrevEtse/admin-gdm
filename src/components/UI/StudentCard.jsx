@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-const StudentCard = ({ student }) => {
+const StudentCard = ({ student, ciclo }) => {
   const navigate = useNavigate()
 
   if (!student) {
@@ -36,7 +36,7 @@ const StudentCard = ({ student }) => {
           <button
             className='btn btn-secondary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
             onClick={() => {
-              navigate(`/dashboard/alumnos/${curp}`)
+              navigate(`/dashboard/alumnos/${curp}`, { state: { ciclo } })
             }}
           >
             Ver Detalles

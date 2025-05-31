@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import {
   StudentIcon,
   SignpostIcon,
@@ -14,13 +14,14 @@ import { toast } from 'react-hot-toast'
 
 import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
 import { formatDate } from '@/utils/dateFormater'
-import { getNombreCiclo } from '@/utils/nombreCiclos'
 import { getParentescoById } from '@/utils/parentescoMap'
 import { getEscolaridadById, getGradoById } from '@/utils/escolaridadId'
 import StudentDataSkeleton from '@/components/UI/StudentDataSkeleton'
 
 const StudentData = () => {
   const { curp } = useParams()
+  const location = useLocation()
+  const ciclo = location.state?.ciclo
 
   const fetchWithAuth = useFetchWithAuth()
 
@@ -74,33 +75,29 @@ const StudentData = () => {
       const dataPago = await resPago.json()
       setPago(dataPago)
 
-      // TODO: Cambiar ciclo dependiendo se si es anual o semestral
       const resInscripcion = await fetchWithAuth(`/inscripcion/findone/`, {
         method: 'POST',
-        body: JSON.stringify({ curp: curp, ciclo: '2025-2026' })
+        body: JSON.stringify({ curp: curp, ciclo: ciclo })
       })
       const dataInscripcion = await resInscripcion.json()
       setInscripcion(dataInscripcion)
       setIsActive(dataInscripcion?.[0]?.esta_activo || false)
     } catch (error) {
-      console.error('Error al cargar los datos del alumno:', error)
+      console.error('Error fetching alumno:', error)
       toast.error('Ocurrió un error al cargar los datos del alumno.')
     } finally {
       setIsLoading(false)
     }
-  }, [curp, fetchWithAuth])
+  }, [curp, fetchWithAuth, ciclo])
 
   useEffect(() => {
     document.title = `${curp} - GDM Admin`
 
     fecthStudentData()
-  }, [curp, fecthStudentData])
+  }, [curp, fecthStudentData, ciclo])
 
   const handleValidarAlumno = async () => {
     try {
-      const ciclo = getNombreCiclo(inscripcion?.[0]?.id_ciclo)
-      if (!ciclo) throw new Error('Ciclo desconocido')
-
       const rol = getEscolaridadById(
         inscripcion?.[0]?.id_escolaridad
       ).toLowerCase()
@@ -123,7 +120,7 @@ const StudentData = () => {
       toast.success(data.message || 'Alumno validado correctamente.')
       fecthStudentData()
     } catch (error) {
-      console.error(error)
+      console.error('Error validating alumno:', error)
       toast.error(error.message || 'Ocurrió un error al validar el alumno.')
     }
   }
@@ -141,9 +138,6 @@ const StudentData = () => {
 
   const handleDescargarDocx = async () => {
     try {
-      const ciclo = getNombreCiclo(inscripcion?.[0]?.id_ciclo)
-      if (!ciclo) throw new Error('Ciclo desconocido')
-
       const res = await fetchWithAuth(`/archivos`, {
         method: 'POST',
         body: JSON.stringify({ curp, ciclo })
@@ -154,7 +148,7 @@ const StudentData = () => {
       const blob = await res.blob()
       descargarArchivo(blob, `${curp}_${ciclo}.docx`)
     } catch (error) {
-      console.error(error)
+      console.error('Error downloading archivo:', error)
       toast.error(error.message || 'Ocurrió un error al descargar el archivo')
     }
   }
@@ -334,8 +328,7 @@ const StudentData = () => {
                 {getGradoById(inscripcion[0].id_escolaridad)}
               </p>
               <p className='text-sm'>
-                <span className='font-bold'>Ciclo</span>:{' '}
-                {getNombreCiclo(inscripcion[0].id_ciclo)}
+                <span className='font-bold'>Ciclo</span>: {ciclo}
               </p>
             </div>
           </div>
