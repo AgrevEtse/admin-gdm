@@ -6,10 +6,10 @@ const TextInput = ({
   onChange
 }) => {
   return (
-    <label className='floating-label'>
-      <span>{label}</span>
+    <label className='floating-label w-full mx-auto'>
+      <span className=''>{label}</span>
       <input
-        className='input input-md'
+        className='input input-md mx-auto'
         type={type}
         value={value}
         placeholder={placeholder}
