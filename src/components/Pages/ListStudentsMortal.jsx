@@ -120,7 +120,7 @@ const ListStudentsAdmin = () => {
             <input
               type='checkbox'
               checked={activeStudents}
-              disabled={ciclo === 0}
+              disabled={!ciclo}
               onChange={handleActiveToggle}
               className='toggle'
             />
@@ -134,6 +134,7 @@ const ListStudentsAdmin = () => {
           <input
             placeholder='jesus, ZEPEDA, VAIO020327...'
             type='text'
+            disabled={!ciclo}
             onChange={(e) => {
               setSearch(e.target.value)
             }}

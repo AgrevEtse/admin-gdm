@@ -112,6 +112,7 @@ const ListStudentsAdmin = () => {
           <select
             className='select w-full max-w-xs'
             value={ciclo}
+            disabled={!grade}
             onChange={(e) => setCiclo(e.target.value)}
           >
             <option
@@ -143,7 +144,7 @@ const ListStudentsAdmin = () => {
             Inactivo
             <input
               type='checkbox'
-              disabled={!grade}
+              disabled={!ciclo}
               checked={activeStudents}
               onChange={handleActiveToggle}
               className='toggle'
@@ -157,6 +158,7 @@ const ListStudentsAdmin = () => {
           </span>
           <input
             placeholder='alejandro, ZEPEDA, VAIO020327...'
+            disabled={!grade || !ciclo}
             type='text'
             onChange={(e) => {
               setSearch(e.target.value)
