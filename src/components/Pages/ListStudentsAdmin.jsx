@@ -14,8 +14,21 @@ const ListStudentsAdmin = () => {
   const [students, setStudents] = useState([])
   const [search, setSearch] = useState('')
   const [grade, setGrade] = useState(0)
+  const [ciclos, setCiclos] = useState([])
+  const [ciclo, setCiclo] = useState(0)
   const [activeStudents, setActiveStudents] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
+
+  const fetchCiclos = useCallback(async () => {
+    try {
+      const res = await fetchWithAuth('/ciclo/')
+      const data = await res.json()
+      setCiclos(data)
+    } catch (error) {
+      console.error('Error fetching ciclos:', error)
+      toast.error('Error al cargar los ciclos escolares.')
+    }
+  }, [fetchWithAuth])
 
   const fetchStudents = useCallback(async () => {
     if (grade === 0) {
@@ -23,16 +36,20 @@ const ListStudentsAdmin = () => {
       return
     }
 
+    if (ciclo === 0) {
+      toast.error('Por favor, selecciona un ciclo escolar.')
+      return
+    }
+
     setStudents([])
     setIsLoading(true)
     try {
-      const ciclo = grade === 'bachillerato' ? '2025B' : '2025-2026'
       const res = await fetchWithAuth('/alumno/todos/', {
         method: 'POST',
         body: JSON.stringify({
+          rol: grade,
           ciclo: ciclo,
-          validado: activeStudents,
-          rol: grade
+          validado: activeStudents
         })
       })
 
@@ -43,7 +60,7 @@ const ListStudentsAdmin = () => {
     } finally {
       setIsLoading(false)
     }
-  }, [activeStudents, grade, fetchWithAuth])
+  }, [activeStudents, grade, fetchWithAuth, ciclo])
 
   const handleActiveToggle = () => {
     const newActive = activeStudents ? 0 : 1
@@ -53,8 +70,9 @@ const ListStudentsAdmin = () => {
   useEffect(() => {
     document.title = 'Alumnos - GDM Admin'
 
+    fetchCiclos()
     fetchStudents()
-  }, [fetchStudents])
+  }, [fetchStudents, fetchCiclos])
 
   const filteredStudents = students.filter(
     ({ nombre, apellido_paterno, apellido_materno, curp }) => {
@@ -62,6 +80,9 @@ const ListStudentsAdmin = () => {
       return textNormalize(fullName).includes(textNormalize(search))
     }
   )
+
+  const annualCiclos = ciclos.filter((c) => c.es_anual)
+  const biannualCiclos = ciclos.filter((c) => !c.es_anual)
 
   return (
     <div className='mx-auto w-full h-full py-[5vh]'>
@@ -71,7 +92,10 @@ const ListStudentsAdmin = () => {
           <select
             className='select w-full max-w-xs'
             value={grade}
-            onChange={(e) => setGrade(e.target.value)}
+            onChange={(e) => {
+              setGrade(e.target.value)
+              setCiclo(0)
+            }}
           >
             <option
               value='0'
@@ -83,6 +107,36 @@ const ListStudentsAdmin = () => {
             <option value='primaria'>Primaria</option>
             <option value='secundaria'>Secundaria</option>
             <option value='bachillerato'>Bachillerato</option>
+          </select>
+
+          <select
+            className='select w-full max-w-xs'
+            value={ciclo}
+            onChange={(e) => setCiclo(e.target.value)}
+          >
+            <option
+              value='0'
+              disabled
+            >
+              Selecciona un ciclo
+            </option>
+            {grade === 'bachillerato'
+              ? biannualCiclos.map((c) => (
+                  <option
+                    key={c.id}
+                    value={c.nombre}
+                  >
+                    {c.nombre}
+                  </option>
+                ))
+              : annualCiclos.map((c) => (
+                  <option
+                    key={c.id}
+                    value={c.nombre}
+                  >
+                    {c.nombre}
+                  </option>
+                ))}
           </select>
 
           <label className='label'>

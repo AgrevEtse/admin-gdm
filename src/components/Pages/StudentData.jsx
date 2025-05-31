@@ -121,7 +121,6 @@ const StudentData = () => {
       if (!res.ok) throw new Error('Error al validar el alumno.')
 
       const data = await res.json()
-      console.log(data)
 
       toast.success(data.message || 'Alumno validado correctamente.')
       navigate(`/dashboard/alumnos/${curp}`)
