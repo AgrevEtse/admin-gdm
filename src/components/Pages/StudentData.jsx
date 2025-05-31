@@ -12,13 +12,12 @@ import {
 } from '@phosphor-icons/react'
 import { toast } from 'react-hot-toast'
 
-import StudentDataSkeleton from '@/components/UI/StudentDataSkeleton'
-
 import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
 import { formatDate } from '@/utils/dateFormater'
 import { getNombreCiclo } from '@/utils/nombreCiclos'
 import { getParentescoById } from '@/utils/parentescoMap'
 import { getEscolaridadById, getGradoById } from '@/utils/escolaridadId'
+import StudentDataSkeleton from '@/components/UI/StudentDataSkeleton'
 
 const StudentData = () => {
   const { curp } = useParams()

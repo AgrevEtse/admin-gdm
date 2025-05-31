@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react'
 import { toast } from 'react-hot-toast'
 
@@ -14,14 +14,16 @@ const ListStudentsAdmin = () => {
   const [students, setStudents] = useState([])
   const [search, setSearch] = useState('')
   const [grade, setGrade] = useState(0)
+  const [activeStudents, setActiveStudents] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
 
-  const fetchStudents = async () => {
+  const fetchStudents = useCallback(async () => {
     if (grade === 0) {
       toast.error('Por favor, selecciona un grado escolar.')
       return
     }
 
+    setStudents([])
     setIsLoading(true)
     try {
       const ciclo = grade === 'bachillerato' ? '2025B' : '2025-2026'
@@ -29,7 +31,7 @@ const ListStudentsAdmin = () => {
         method: 'POST',
         body: JSON.stringify({
           ciclo: ciclo,
-          validado: 0,
+          validado: activeStudents,
           rol: grade
         })
       })
@@ -41,11 +43,18 @@ const ListStudentsAdmin = () => {
     } finally {
       setIsLoading(false)
     }
+  }, [activeStudents, grade, fetchWithAuth])
+
+  const handleActiveToggle = () => {
+    const newActive = activeStudents ? 0 : 1
+    setActiveStudents(newActive)
   }
 
   useEffect(() => {
     document.title = 'Alumnos - GDM Admin'
-  })
+
+    fetchStudents()
+  }, [fetchStudents])
 
   const filteredStudents = students.filter(
     ({ nombre, apellido_paterno, apellido_materno, curp }) => {
@@ -76,12 +85,11 @@ const ListStudentsAdmin = () => {
             <option value='bachillerato'>Bachillerato</option>
           </select>
 
-          <button
-            className='btn btn-primary hover:scale-105 transition-transform duration-200 ease-in-out'
-            onClick={fetchStudents}
-          >
-            Consultar
-          </button>
+          <label className="label">
+            Inactivo
+            <input type="checkbox" disabled={!grade} checked={activeStudents} onChange={handleActiveToggle} className="toggle" />
+            Activo
+          </label>
         </div>
         <label className='input input-md'>
           <span className='label'>
