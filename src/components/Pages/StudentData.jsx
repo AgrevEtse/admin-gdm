@@ -16,8 +16,8 @@ import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
 import { formatDate } from '@/utils/dateFormater'
 import { getNombreCiclo } from '@/utils/nombreCiclos'
 import { getParentescoById } from '@/utils/parentescoMap'
-
-import { getEscolaridadById, getGradoById } from '@/utils/escolaridadId.js'
+import { getEscolaridadById, getGradoById } from '@/utils/escolaridadId'
+import StudentDataSkeleton from '@/components/UI/StudentDataSkeleton'
 
 const StudentData = () => {
   const { curp } = useParams()
@@ -33,12 +33,15 @@ const StudentData = () => {
   const [contacto, setContacto] = useState([])
   const [pago, setPago] = useState({})
   const [inscripcion, setInscripcion] = useState([])
+  const [isLoading, setIsLoading] = useState(null)
 
   useEffect(() => {
     document.title = `${curp} - GDM Admin`
 
     const loadData = async () => {
       try {
+        setIsLoading(true)
+
         const resAlumno = await fetchWithAuth(`/alumno/${curp}`)
         const dataAlumno = await resAlumno.json()
         setAlumno(dataAlumno)
@@ -83,6 +86,8 @@ const StudentData = () => {
       } catch (error) {
         console.error('Error al cargar los datos del alumno:', error)
         toast.error('Ocurrió un error al cargar los datos del alumno')
+      } finally {
+        setIsLoading(false)
       }
     }
 
@@ -172,9 +177,13 @@ const StudentData = () => {
         </button>
       </div>
       <div className='my-16 mx-auto space-y-8 grid grid-cols-1 lg:grid-cols-3 gap-4'>
+        {isLoading &&
+          Array.from({ length: 9 }).map((_, i) => (
+            <StudentDataSkeleton key={i} />
+          ))}
         {/* Alumno */}
-        {alumno.curp && (
-          <div className='card bg-blue-300 text-info-content w-96'>
+        {!isLoading && alumno.curp && (
+          <div className='card bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body text-sm'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Alumno</h2>
@@ -231,8 +240,8 @@ const StudentData = () => {
         )}
 
         {/* Domicilio */}
-        {domicilio.length > 0 && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96'>
+        {!isLoading && domicilio.length > 0 && (
+          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Domicilio</h2>
@@ -265,8 +274,8 @@ const StudentData = () => {
         )}
 
         {/* Escuela de Procedencia */}
-        {escuelaProcedencia.cct && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96'>
+        {!isLoading && escuelaProcedencia.cct && (
+          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Esc. Procedencia</h2>
@@ -288,8 +297,8 @@ const StudentData = () => {
         )}
 
         {/* Inscripción */}
-        {inscripcion.length > 0 && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96'>
+        {!isLoading && inscripcion.length > 0 && (
+          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Inscripción</h2>
@@ -320,8 +329,8 @@ const StudentData = () => {
         )}
 
         {/* Tutor 1 */}
-        {tutor1.length > 0 && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96'>
+        {!isLoading && tutor1.length > 0 && (
+          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Primer Tutor</h2>
@@ -348,8 +357,8 @@ const StudentData = () => {
         )}
 
         {/* Tutor 2 */}
-        {tutor2.length > 0 && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96'>
+        {!isLoading && tutor2.length > 0 && (
+          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Segundo Tutor</h2>
@@ -376,8 +385,8 @@ const StudentData = () => {
         )}
 
         {/* Hermanos */}
-        {hermanos.length > 0 && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96'>
+        {!isLoading && hermanos.length > 0 && (
+          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Hermanos</h2>
@@ -403,8 +412,8 @@ const StudentData = () => {
         )}
 
         {/* Contacto de Emergencia */}
-        {contacto.length > 0 && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96'>
+        {!isLoading && contacto.length > 0 && (
+          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Contactos</h2>
@@ -434,8 +443,8 @@ const StudentData = () => {
         )}
 
         {/* Pago */}
-        {pago.nombre && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96'>
+        {!isLoading && pago.nombre && (
+          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Pago</h2>

@@ -23,7 +23,7 @@ const Dashboard = () => {
       <div className='mt-4'>
         <Link
           to='/dashboard/alumnos'
-          className='btn btn-secondary'
+          className='btn btn-secondary hover:scale-105 transition-transform duration-200 ease-in-out'
         >
           Alumnos
         </Link>

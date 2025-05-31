@@ -77,7 +77,7 @@ const ListStudentsAdmin = () => {
           </select>
 
           <button
-            className='btn btn-primary'
+            className='btn btn-primary hover:scale-105 transition-transform duration-200 ease-in-out'
             onClick={fetchStudents}
           >
             Consultar
