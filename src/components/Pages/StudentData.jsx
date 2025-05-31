@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import {
   StudentIcon,
   SignpostIcon,
@@ -12,15 +12,17 @@ import {
 } from '@phosphor-icons/react'
 import { toast } from 'react-hot-toast'
 
+import StudentDataSkeleton from '@/components/UI/StudentDataSkeleton'
+
 import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
 import { formatDate } from '@/utils/dateFormater'
 import { getNombreCiclo } from '@/utils/nombreCiclos'
 import { getParentescoById } from '@/utils/parentescoMap'
 import { getEscolaridadById, getGradoById } from '@/utils/escolaridadId'
-import StudentDataSkeleton from '@/components/UI/StudentDataSkeleton'
 
 const StudentData = () => {
   const { curp } = useParams()
+  const navigate = useNavigate()
 
   const fetchWithAuth = useFetchWithAuth()
 
@@ -33,6 +35,7 @@ const StudentData = () => {
   const [contacto, setContacto] = useState([])
   const [pago, setPago] = useState({})
   const [inscripcion, setInscripcion] = useState([])
+  const [isActive, setIsActive] = useState(false)
   const [isLoading, setIsLoading] = useState(null)
 
   useEffect(() => {
@@ -83,9 +86,10 @@ const StudentData = () => {
         })
         const dataInscripcion = await resInscripcion.json()
         setInscripcion(dataInscripcion)
+        setIsActive(dataInscripcion?.[0]?.esta_activo || false)
       } catch (error) {
         console.error('Error al cargar los datos del alumno:', error)
-        toast.error('Ocurrió un error al cargar los datos del alumno')
+        toast.error('Ocurrió un error al cargar los datos del alumno.')
       } finally {
         setIsLoading(false)
       }
@@ -115,15 +119,16 @@ const StudentData = () => {
         })
       })
 
-      if (!res.ok) throw new Error('Error al validar el alumno')
+      if (!res.ok) throw new Error('Error al validar el alumno.')
 
       const data = await res.json()
       console.log(data)
 
-      toast.success(data.message || 'Alumno validado correctamente')
+      toast.success(data.message || 'Alumno validado correctamente.')
+      navigate(`/dashboard/alumnos/${curp}`)
     } catch (error) {
       console.error(error)
-      toast.error(error.message || 'Ocurrió un error al validar el alumno')
+      toast.error(error.message || 'Ocurrió un error al validar el alumno.')
     }
   }
 
@@ -162,16 +167,32 @@ const StudentData = () => {
     <div className='container mx-auto px-4 mt-16'>
       <h2 className='text-3xl font-bold text-center'>Datos del Alumno</h2>
       <p className='text-center text-4xl my-8 font-bold'>{curp}</p>
+      {inscripcion.length > 0 && (
+        <h3
+          className={
+            (isActive === true ? 'text-green-500' : 'text-red-500') +
+            ' text-2xl font-bold text-center'
+          }
+        >
+          {isActive === true ? 'Activo' : 'Inactivo'}
+        </h3>
+      )}
       <div className='flex flex-row justify-end space-between mb-8 w-full space-x-4'>
         <button
           className='btn btn-success'
           onClick={handleValidarAlumno}
+          disabled={isActive || isLoading}
+          title={isActive ? 'El alumno ya está activo' : 'Activar alumno'}
         >
-          Alumno Activo
+          Activar Alumno
         </button>
         <button
           className='btn btn-info'
           onClick={handleDescargarDocx}
+          disabled={!isActive || isLoading}
+          title={
+            !isActive ? 'El alumno no está activo' : 'Descargar archivo DOCX'
+          }
         >
           Descargar DOCX
         </button>
@@ -222,7 +243,7 @@ const StudentData = () => {
 
               {/* Se renderiza si contiene algo */}
               {alumno.nota_enfermedad && (
-                <p className='text-sm'>
+                <p className='text-base text-red-500'>
                   <span className='font-bold'>Nota Enfermedad</span>:{' '}
                   {alumno.nota_enfermedad}
                 </p>
@@ -230,7 +251,7 @@ const StudentData = () => {
 
               {/* Se renderiza si contiene algo */}
               {alumno.nota_terapia && (
-                <p className='text-sm'>
+                <p className='text-base text-red-500'>
                   <span className='font-bold'>Nota Terapia</span>:{' '}
                   {alumno.nota_terapia}
                 </p>
@@ -319,10 +340,6 @@ const StudentData = () => {
               <p className='text-sm'>
                 <span className='font-bold'>Ciclo</span>:{' '}
                 {getNombreCiclo(inscripcion[0].id_ciclo)}
-              </p>
-              <p className='text-sm'>
-                <span className='font-bold'>¿Está activo?</span>:{' '}
-                <span>{inscripcion[0].esta_activo === true ? 'Sí' : 'No'}</span>
               </p>
             </div>
           </div>
