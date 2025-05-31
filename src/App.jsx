@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 
 import { useAuth } from '@/context/AuthContext'
@@ -13,7 +13,6 @@ import StudentData from '@/components/Pages/StudentData'
 
 const App = () => {
   const auth = useAuth()
-  const location = useLocation()
 
   return (
     <>
@@ -46,7 +45,7 @@ const App = () => {
 
             <Route
               path='alumnos/:curp'
-              element={<StudentData key={location.key} />}
+              element={<StudentData />}
             />
           </Route>
         </Route>

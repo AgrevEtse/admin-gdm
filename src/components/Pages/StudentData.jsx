@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useState, useEffect, useCallback } from 'react'
+import { useParams } from 'react-router-dom'
 import {
   StudentIcon,
   SignpostIcon,
@@ -21,7 +21,6 @@ import StudentDataSkeleton from '@/components/UI/StudentDataSkeleton'
 
 const StudentData = () => {
   const { curp } = useParams()
-  const navigate = useNavigate()
 
   const fetchWithAuth = useFetchWithAuth()
 
@@ -37,66 +36,65 @@ const StudentData = () => {
   const [isActive, setIsActive] = useState(false)
   const [isLoading, setIsLoading] = useState(null)
 
+  const fecthStudentData = useCallback(async () => {
+    try {
+      setIsLoading(true)
+
+      const resAlumno = await fetchWithAuth(`/alumno/${curp}`)
+      const dataAlumno = await resAlumno.json()
+      setAlumno(dataAlumno)
+
+      const resEscuelaProcedencia = await fetchWithAuth(
+        `/escuelaprocedencia/${curp}`
+      )
+      const dataEscuelaProcedencia = await resEscuelaProcedencia.json()
+      setEscuelaProcedencia(dataEscuelaProcedencia)
+
+      const resDomicilio = await fetchWithAuth(`/domicilio/${curp}`)
+      const dataDomicilio = await resDomicilio.json()
+      setDomicilio(dataDomicilio)
+
+      const resTutor1 = await fetchWithAuth(`/tutor1/${curp}`)
+      const dataTutor1 = await resTutor1.json()
+      setTutor1(dataTutor1)
+
+      const resTutor2 = await fetchWithAuth(`/tutor2/${curp}`)
+      const dataTutor2 = await resTutor2.json()
+      setTutor2(dataTutor2)
+
+      const resHermanos = await fetchWithAuth(`/hermano/${curp}`)
+      const dataHermanos = await resHermanos.json()
+      setHermanos(dataHermanos)
+
+      const resContactos = await fetchWithAuth(`/contactoemergencia/${curp}`)
+      const dataContactos = await resContactos.json()
+      setContacto(dataContactos)
+
+      const resPago = await fetchWithAuth(`/personapagos/${curp}`)
+      const dataPago = await resPago.json()
+      setPago(dataPago)
+
+      // TODO: Cambiar ciclo dependiendo se si es anual o semestral
+      const resInscripcion = await fetchWithAuth(`/inscripcion/findone/`, {
+        method: 'POST',
+        body: JSON.stringify({ curp: curp, ciclo: '2025-2026' })
+      })
+      const dataInscripcion = await resInscripcion.json()
+      setInscripcion(dataInscripcion)
+      setIsActive(dataInscripcion?.[0]?.esta_activo || false)
+    } catch (error) {
+      console.error('Error al cargar los datos del alumno:', error)
+      toast.error('Ocurrió un error al cargar los datos del alumno.')
+    } finally {
+      setIsLoading(false)
+    }
+  }, [curp, fetchWithAuth])
+
   useEffect(() => {
     document.title = `${curp} - GDM Admin`
 
-    const loadData = async () => {
-      try {
-        setIsLoading(true)
-
-        const resAlumno = await fetchWithAuth(`/alumno/${curp}`)
-        const dataAlumno = await resAlumno.json()
-        setAlumno(dataAlumno)
-
-        const resEscuelaProcedencia = await fetchWithAuth(
-          `/escuelaprocedencia/${curp}`
-        )
-        const dataEscuelaProcedencia = await resEscuelaProcedencia.json()
-        setEscuelaProcedencia(dataEscuelaProcedencia)
-
-        const resDomicilio = await fetchWithAuth(`/domicilio/${curp}`)
-        const dataDomicilio = await resDomicilio.json()
-        setDomicilio(dataDomicilio)
-
-        const resTutor1 = await fetchWithAuth(`/tutor1/${curp}`)
-        const dataTutor1 = await resTutor1.json()
-        setTutor1(dataTutor1)
-
-        const resTutor2 = await fetchWithAuth(`/tutor2/${curp}`)
-        const dataTutor2 = await resTutor2.json()
-        setTutor2(dataTutor2)
-
-        const resHermanos = await fetchWithAuth(`/hermano/${curp}`)
-        const dataHermanos = await resHermanos.json()
-        setHermanos(dataHermanos)
-
-        const resContactos = await fetchWithAuth(`/contactoemergencia/${curp}`)
-        const dataContactos = await resContactos.json()
-        setContacto(dataContactos)
-
-        const resPago = await fetchWithAuth(`/personapagos/${curp}`)
-        const dataPago = await resPago.json()
-        setPago(dataPago)
-
-        // TODO: Cambiar ciclo dependiendo se si es anual o semestral
-        const resInscripcion = await fetchWithAuth(`/inscripcion/findone/`, {
-          method: 'POST',
-          body: JSON.stringify({ curp: curp, ciclo: '2025-2026' })
-        })
-        const dataInscripcion = await resInscripcion.json()
-        setInscripcion(dataInscripcion)
-        setIsActive(dataInscripcion?.[0]?.esta_activo || false)
-      } catch (error) {
-        console.error('Error al cargar los datos del alumno:', error)
-        toast.error('Ocurrió un error al cargar los datos del alumno.')
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    loadData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    fecthStudentData()
+  }, [curp, fecthStudentData])
 
   const handleValidarAlumno = async () => {
     try {
@@ -112,9 +110,9 @@ const StudentData = () => {
         method: 'POST',
         body: JSON.stringify({
           curp: curp,
+          rol: rol,
           ciclo: ciclo,
-          validado: 1,
-          rol: rol
+          validado: 1
         })
       })
 
@@ -123,7 +121,7 @@ const StudentData = () => {
       const data = await res.json()
 
       toast.success(data.message || 'Alumno validado correctamente.')
-      navigate(`/dashboard/alumnos/${curp}`)
+      fecthStudentData()
     } catch (error) {
       console.error(error)
       toast.error(error.message || 'Ocurrió un error al validar el alumno.')
