@@ -85,9 +85,15 @@ const ListStudentsAdmin = () => {
             <option value='bachillerato'>Bachillerato</option>
           </select>
 
-          <label className="label">
+          <label className='label'>
             Inactivo
-            <input type="checkbox" disabled={!grade} checked={activeStudents} onChange={handleActiveToggle} className="toggle" />
+            <input
+              type='checkbox'
+              disabled={!grade}
+              checked={activeStudents}
+              onChange={handleActiveToggle}
+              className='toggle'
+            />
             Activo
           </label>
         </div>

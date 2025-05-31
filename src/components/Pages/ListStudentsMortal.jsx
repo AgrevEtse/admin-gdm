@@ -65,9 +65,14 @@ const ListStudentsAdmin = () => {
       <h2 className='text-5xl font-bold text-center'>Lista de Alumnos</h2>
       <div className='flex flex-col items-center my-8 space-y-4'>
         <div className='flex flex-row justify-center items-center space-x-4 w-full max-w-2xl'>
-          <label className="label">
+          <label className='label'>
             Inactivo
-            <input type="checkbox" checked={activeStudents} onChange={handleActiveToggle} className="toggle" />
+            <input
+              type='checkbox'
+              checked={activeStudents}
+              onChange={handleActiveToggle}
+              className='toggle'
+            />
             Activo
           </label>
         </div>
