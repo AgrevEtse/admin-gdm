@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 
-import { useAuth } from '@/context/AuthContext'
+import useAuth from '@/context/useAuth'
 
 import Login from '@/components/Pages/Login'
 import ProtectedRoute from '@/components/Layout/ProtectedRoute'

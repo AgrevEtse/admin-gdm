@@ -3,7 +3,7 @@ import { MagnifyingGlassIcon } from '@phosphor-icons/react'
 import { toast } from 'react-hot-toast'
 
 import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
-import { useAuth } from '@/context/AuthContext'
+import useAuth from '@/context/useAuth'
 import { textNormalize } from '@/utils/textNormalize'
 
 import StudentCard from '@/components/UI/StudentCard'
@@ -115,14 +115,14 @@ const ListStudentsAdmin = () => {
                 ))}
           </select>
 
-          <label className='label'>
+          <label className='label text-warning'>
             Inactivo
             <input
               type='checkbox'
               checked={activeStudents}
               disabled={!ciclo}
               onChange={handleActiveToggle}
-              className='toggle'
+              className='toggle toggle-lg border-warning bg-warning checked:border-warning checked:bg-warning text-warning-content'
             />
             Activo
           </label>

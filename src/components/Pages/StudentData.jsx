@@ -194,7 +194,7 @@ const StudentData = () => {
           ))}
         {/* Alumno */}
         {!isLoading && alumno.curp && (
-          <div className='card bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
+          <div className='card bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body text-sm'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Alumno</h2>
@@ -233,7 +233,7 @@ const StudentData = () => {
 
               {/* Se renderiza si contiene algo */}
               {alumno.nota_enfermedad && (
-                <p className='text-base text-red-500'>
+                <p className='text-base'>
                   <span className='font-bold'>Nota Enfermedad</span>:{' '}
                   {alumno.nota_enfermedad}
                 </p>
@@ -241,7 +241,7 @@ const StudentData = () => {
 
               {/* Se renderiza si contiene algo */}
               {alumno.nota_terapia && (
-                <p className='text-base text-red-500'>
+                <p className='text-base'>
                   <span className='font-bold'>Nota Terapia</span>:{' '}
                   {alumno.nota_terapia}
                 </p>
@@ -252,7 +252,7 @@ const StudentData = () => {
 
         {/* Domicilio */}
         {!isLoading && domicilio.length > 0 && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
+          <div className='card text-sm bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Domicilio</h2>
@@ -286,7 +286,7 @@ const StudentData = () => {
 
         {/* Escuela de Procedencia */}
         {!isLoading && escuelaProcedencia.cct && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
+          <div className='card text-sm bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Esc. Procedencia</h2>
@@ -309,7 +309,7 @@ const StudentData = () => {
 
         {/* Inscripción */}
         {!isLoading && inscripcion.length > 0 && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
+          <div className='card text-sm bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Inscripción</h2>
@@ -336,7 +336,7 @@ const StudentData = () => {
 
         {/* Tutor 1 */}
         {!isLoading && tutor1.length > 0 && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
+          <div className='card text-sm bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Primer Tutor</h2>
@@ -364,7 +364,7 @@ const StudentData = () => {
 
         {/* Tutor 2 */}
         {!isLoading && tutor2.length > 0 && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
+          <div className='card text-sm bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Segundo Tutor</h2>
@@ -392,7 +392,7 @@ const StudentData = () => {
 
         {/* Hermanos */}
         {!isLoading && hermanos.length > 0 && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
+          <div className='card text-sm bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Hermanos</h2>
@@ -419,7 +419,7 @@ const StudentData = () => {
 
         {/* Contacto de Emergencia */}
         {!isLoading && contacto.length > 0 && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
+          <div className='card text-sm bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Contactos</h2>
@@ -450,7 +450,7 @@ const StudentData = () => {
 
         {/* Pago */}
         {!isLoading && pago.nombre && (
-          <div className='card text-sm bg-blue-300 text-info-content w-96 shadow-blue-300 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
+          <div className='card text-sm bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
                 <h2 className='card-title text-3xl'>Pago</h2>

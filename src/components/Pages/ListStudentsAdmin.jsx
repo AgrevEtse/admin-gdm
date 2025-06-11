@@ -140,14 +140,14 @@ const ListStudentsAdmin = () => {
                 ))}
           </select>
 
-          <label className='label'>
+          <label className='label text-warning'>
             Inactivo
             <input
               type='checkbox'
               disabled={!ciclo}
               checked={activeStudents}
               onChange={handleActiveToggle}
-              className='toggle'
+              className='toggle toggle-lg border-warning bg-warning checked:border-warning checked:bg-warning text-warning-content'
             />
             Activo
           </label>

@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import { toast } from 'react-hot-toast'
 
-import { useAuth } from '@/context/AuthContext'
+import useAuth from '@/context/useAuth'
 
 const API_URL = import.meta.env.VITE_API_URL
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
-import { useAuth } from '@/context/AuthContext'
+import useAuth from '@/context/useAuth'
 import TextInput from '@/components/UI/TextInput'
 
 const API_URL = import.meta.env.VITE_API_URL
@@ -53,7 +53,7 @@ function Login() {
   }
 
   return (
-    <fieldset className='fieldset bg-secondary border border-primary-content p-4 rounded-box w-1/3'>
+    <fieldset className='fieldset bg-primary border border-primary-content p-4 rounded-box w-1/3'>
       <legend className='fieldset-legend text-3xl'>Log In</legend>
       <p className='text-lg'>Inicia sesión para acceder a tu cuenta.</p>
       <form className='flex flex-col gap-6 mt-6 w-1/2 justify-center items-center mx-auto'>
@@ -76,7 +76,7 @@ function Login() {
         />
         <button
           type='submit'
-          className='btn btn-primary w-1/2'
+          className='btn btn-secondary w-1/2'
           onClick={handleLogin}
         >
           Iniciar sesión

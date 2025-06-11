@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { UserIcon, SignOutIcon, ListIcon } from '@phosphor-icons/react'
 
-import { useAuth } from '@/context/AuthContext'
+import useAuth from '@/context/useAuth'
 
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
