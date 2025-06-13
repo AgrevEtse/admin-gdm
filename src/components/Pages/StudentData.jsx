@@ -339,7 +339,7 @@ const StudentData = () => {
           <div className='card text-sm bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
-                <h2 className='card-title text-3xl'>Primer Tutor</h2>
+                <h2 className='card-title text-3xl'>Papá / Tutor 1</h2>
                 <PersonIcon size={48} />
               </div>
               <p className='text-sm'>
@@ -358,6 +358,12 @@ const StudentData = () => {
                 <span className='font-bold'>Correo Electrónico</span>:{' '}
                 {tutor1[0].correo_electronico}
               </p>
+              <p
+                className={`text-sm ${tutor1[0].primario === true ? 'text-red-900' : ''}`}
+              >
+                <span className='font-bold'>¿Tutor Principal?</span>:{' '}
+                {tutor1[0].primario === true ? 'Sí' : 'No'}
+              </p>
             </div>
           </div>
         )}
@@ -367,7 +373,7 @@ const StudentData = () => {
           <div className='card text-sm bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
-                <h2 className='card-title text-3xl'>Segundo Tutor</h2>
+                <h2 className='card-title text-3xl'>Mamá / Tutor 2</h2>
                 <PersonIcon size={48} />
               </div>
               <p className='text-sm'>
@@ -385,6 +391,12 @@ const StudentData = () => {
               <p className='text-sm'>
                 <span className='font-bold'>Correo Electrónico</span>:{' '}
                 {tutor2[0].correo_electronico}
+              </p>
+              <p
+                className={`text-sm ${tutor2[0].primario === true ? 'text-red-900' : ''}`}
+              >
+                <span className='font-bold'>¿Tutor Principal?</span>:{' '}
+                {tutor2[0].primario === true ? 'Sí' : 'No'}
               </p>
             </div>
           </div>
