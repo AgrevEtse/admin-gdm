@@ -44,7 +44,7 @@ const App = () => {
             )}
 
             <Route
-              path='alumnos/:curp'
+              path='alumnos/:curp/:ciclo'
               element={<StudentData />}
             />
           </Route>

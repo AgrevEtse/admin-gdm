@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import {
   StudentIcon,
   SignpostIcon,
@@ -19,9 +19,7 @@ import { getEscolaridadById, getGradoById } from '@/utils/escolaridadId'
 import StudentDataSkeleton from '@/components/UI/StudentDataSkeleton'
 
 const StudentData = () => {
-  const { curp } = useParams()
-  const location = useLocation()
-  const ciclo = location.state?.ciclo
+  const { curp, ciclo } = useParams()
 
   const fetchWithAuth = useFetchWithAuth()
 
