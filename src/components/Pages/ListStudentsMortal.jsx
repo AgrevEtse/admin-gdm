@@ -72,7 +72,7 @@ const ListStudentsAdmin = () => {
 
   const filteredStudents = students.filter(
     ({ nombre, apellido_paterno, apellido_materno, curp }) => {
-      const fullName = `${nombre} ${apellido_paterno} ${apellido_materno} ${curp}`
+      const fullName = `${curp} ${nombre} ${apellido_paterno} ${apellido_materno}`
       return textNormalize(fullName).includes(textNormalize(search))
     }
   )
