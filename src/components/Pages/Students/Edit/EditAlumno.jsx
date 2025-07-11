@@ -73,7 +73,7 @@ const EditAlumno = () => {
       if (!response.ok)
         throw new Error('Error al actualizar los datos del alumno')
 
-      toast.success('Datos actualizados correctamente')
+      toast.success('Alumno actualizado correctamente')
       //TODO: Navigate to the student detail page or show a success message
     } catch (error) {
       console.error(error.message)

@@ -76,7 +76,7 @@ const EditHermanos = () => {
           throw new Error(`Error al actualizar el hermano ${i + 1} del alumno`)
       }
 
-      toast.success(`Hermanos actualizado correctamente`)
+      toast.success(`Hermanos actualizados correctamente`)
       //TODO: Navigate to the student detail page or show a success message
     } catch (error) {
       console.error(error.message)

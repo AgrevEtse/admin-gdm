@@ -86,7 +86,7 @@ const EditContactos = () => {
           throw new Error(`Error al actualizar el contacto ${i + 1} del alumno`)
       }
 
-      toast.success(`Contactos actualizado correctamente`)
+      toast.success(`Contactos actualizados correctamente`)
       //TODO: Navigate to the student detail page or show a success message
     } catch (error) {
       console.error(error.message)
