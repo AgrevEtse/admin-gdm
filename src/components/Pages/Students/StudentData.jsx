@@ -14,7 +14,7 @@ import { toast } from 'react-hot-toast'
 
 import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
 import { formatDate } from '@/utils/dateFormater'
-import { getParentescoById } from '@/utils/parentescoMap'
+import { getParentescoById } from '@/utils/parentescoHelpers'
 import { getEscolaridadById, getGradoById } from '@/utils/escolaridadId'
 import StudentDataSkeleton from '@/components/UI/StudentDataSkeleton'
 
@@ -63,11 +63,11 @@ const StudentData = () => {
 
       const resHermanos = await fetchWithAuth(`/hermano/${curp}`)
       const dataHermanos = await resHermanos.json()
-      setHermanos(dataHermanos)
+      setHermanos(dataHermanos.slice(0, 3))
 
       const resContactos = await fetchWithAuth(`/contactoemergencia/${curp}`)
       const dataContactos = await resContactos.json()
-      setContacto(dataContactos)
+      setContacto(dataContactos.slice(0, 3))
 
       const resPago = await fetchWithAuth(`/personapagos/${curp}`)
       const dataPago = await resPago.json()
