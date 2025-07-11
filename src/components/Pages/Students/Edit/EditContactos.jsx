@@ -60,11 +60,13 @@ const EditContactos = () => {
     setIsLoading(true)
 
     try {
-      await contactos.forEach(async (contacto, index) => {
+      for (let i = 0; i < contactos.length; i++) {
+        const contacto = contactos[i]
+
         const isValid = ContactoSchema.safeParse(contacto)
         if (!isValid.success)
           throw new Error(
-            `Contacto ${index + 1}: ${isValid.error.issues[0].message}`
+            `Contacto ${i + 1}: ${isValid.error.issues[0].message}`
           )
 
         const response = await fetchWithAuth(
@@ -81,17 +83,15 @@ const EditContactos = () => {
         )
 
         if (!response.ok)
-          throw new Error(
-            `Error al actualizar el contacto ${index + 1} del alumno`
-          )
-      })
+          throw new Error(`Error al actualizar el contacto ${i + 1} del alumno`)
+      }
 
       toast.success(`Contactos actualizado correctamente`)
-      setIsLoading(false)
       //TODO: Navigate to the student detail page or show a success message
     } catch (error) {
       console.error(error.message)
       toast.error(error.message)
+    } finally {
       setIsLoading(false)
     }
   }
