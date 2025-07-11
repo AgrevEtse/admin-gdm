@@ -59,7 +59,7 @@ const App = () => {
             />
 
             <Route
-              path='alumnos/:curp/edit'
+              path='alumnos/:curp/:ciclo/edit'
               element={<EditLayout />}
             >
               <Route

@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "nombre": "Sin Estudios"
+  },
+  {
+    "id": 2,
+    "nombre": "Preescolar"
+  },
+  {
+    "id": 3,
+    "nombre": "Preescolar Trunco"
+  },
+  {
+    "id": 4,
+    "nombre": "Primaria"
+  },
+  {
+    "id": 5,
+    "nombre": "Primaria Trunca"
+  },
+  {
+    "id": 6,
+    "nombre": "Secundaria"
+  },
+  {
+    "id": 7,
+    "nombre": "Secundaria Trunca"
+  },
+  {
+    "id": 8,
+    "nombre": "Bachillerato"
+  },
+  {
+    "id": 9,
+    "nombre": "Bachillerato Trunco"
+  },
+  {
+    "id": 10,
+    "nombre": "Licenciatura"
+  },
+  {
+    "id": 11,
+    "nombre": "Licenciatura Trunca"
+  },
+  {
+    "id": 12,
+    "nombre": "Posgrado"
+  },
+  {
+    "id": 13,
+    "nombre": "Posgrado Trunco"
+  }
+]

@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react'
 import { toast } from 'react-hot-toast'
 
@@ -10,13 +11,16 @@ import StudentCardSkeleton from '@/components/UI/StudentCardSkeleton'
 
 const ListStudentsAdmin = () => {
   const fetchWithAuth = useFetchWithAuth()
+  const [searchParams, setSearchParams] = useSearchParams()
 
   const [students, setStudents] = useState([])
   const [search, setSearch] = useState('')
-  const [grade, setGrade] = useState(0)
+  const [grade, setGrade] = useState(searchParams.get('grade') || 0)
   const [ciclos, setCiclos] = useState([])
-  const [ciclo, setCiclo] = useState(0)
-  const [activeStudents, setActiveStudents] = useState(0)
+  const [ciclo, setCiclo] = useState(searchParams.get('ciclo') || 0)
+  const [activeStudents, setActiveStudents] = useState(
+    searchParams.get('activeStudents') === '1' ? 1 : 0
+  )
   const [isLoading, setIsLoading] = useState(true)
 
   const fetchCiclos = useCallback(async () => {
@@ -70,9 +74,25 @@ const ListStudentsAdmin = () => {
   useEffect(() => {
     document.title = 'Alumnos - GDM Admin'
 
+    const params = {
+      grade,
+      ciclo,
+      activeStudents: activeStudents.toString()
+    }
+
+    setSearchParams(params)
+
     fetchCiclos()
     fetchStudents()
-  }, [fetchStudents, fetchCiclos])
+  }, [
+    fetchStudents,
+    fetchCiclos,
+    grade,
+    ciclo,
+    activeStudents,
+    setSearchParams,
+    searchParams
+  ])
 
   const filteredStudents = students.filter(
     ({ nombre, apellido_paterno, apellido_materno, curp }) => {

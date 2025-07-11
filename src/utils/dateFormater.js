@@ -12,3 +12,7 @@ export const createCurrentDate = () => {
 export const formatDate = (date) => {
   return date.split('T')[0]
 }
+
+export const createDateISOString = (date) => {
+  return new Date(date).toISOString()
+}
