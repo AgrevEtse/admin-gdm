@@ -1,0 +1,82 @@
+{
+  "Preescolar": [
+    {
+      "grado": 1,
+      "nombre": "1ro"
+    },
+    {
+      "grado": 2,
+      "nombre": "2do"
+    },
+    {
+      "grado": 3,
+      "nombre": "3ro"
+    }
+  ],
+  "Primaria": [
+    {
+      "grado": 1,
+      "nombre": "1ro"
+    },
+    {
+      "grado": 2,
+      "nombre": "2do"
+    },
+    {
+      "grado": 3,
+      "nombre": "3ro"
+    },
+    {
+      "grado": 4,
+      "nombre": "4to"
+    },
+    {
+      "grado": 5,
+      "nombre": "5to"
+    },
+    {
+      "grado": 6,
+      "nombre": "6to"
+    }
+  ],
+  "Secundaria": [
+    {
+      "grado": 1,
+      "nombre": "1ro"
+    },
+    {
+      "grado": 2,
+      "nombre": "2do"
+    },
+    {
+      "grado": 3,
+      "nombre": "3ro"
+    }
+  ],
+  "Bachillerato": [
+    {
+      "grado": 1,
+      "nombre": "1ro"
+    },
+    {
+      "grado": 2,
+      "nombre": "2do"
+    },
+    {
+      "grado": 3,
+      "nombre": "3ro"
+    },
+    {
+      "grado": 4,
+      "nombre": "4to"
+    },
+    {
+      "grado": 5,
+      "nombre": "5to"
+    },
+    {
+      "grado": 6,
+      "nombre": "6to"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import { useState, useEffect, useReducer, useCallback } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
 import { DEFAULT_DOMICILIO } from '@/utils/defaultStates'
@@ -13,6 +13,7 @@ import TextInputForm from '@/components/UI/TextInputForm'
 const EditDomicilio = () => {
   const { curp } = useParams()
   const fetchWithAuth = useFetchWithAuth()
+  const navigate = useNavigate()
 
   const reducer = createReducer(DEFAULT_DOMICILIO)
   const [domicilio, dispatch] = useReducer(reducer, DEFAULT_DOMICILIO)
@@ -73,7 +74,7 @@ const EditDomicilio = () => {
         throw new Error('Error al actualizar el domicilio del alumno')
 
       toast.success('Domicilio actualizado correctamente')
-      //TODO: Navigate to the student detail page or show a success message
+      navigate(-1)
     } catch (error) {
       console.error(error.message)
       toast.error(error.message)

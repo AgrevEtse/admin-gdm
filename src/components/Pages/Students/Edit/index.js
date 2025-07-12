@@ -1,6 +1,7 @@
 export { default as EditAlumno } from './EditAlumno'
 export { default as EditDomicilio } from './EditDomicilio'
 export { default as EditEscuelaProcedencia } from './EditEscuelaProcedencia'
+export { default as EditInscripcion } from './EditInscripcion'
 export { default as EditTutor } from './EditTutor'
 export { default as EditHermanos } from './EditHermanos'
 export { default as EditContactos } from './EditContactos'

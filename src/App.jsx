@@ -15,6 +15,7 @@ import {
   EditAlumno,
   EditDomicilio,
   EditEscuelaProcedencia,
+  EditInscripcion,
   EditTutor,
   EditHermanos,
   EditContactos,
@@ -73,6 +74,10 @@ const App = () => {
               <Route
                 path='esc-procedencia'
                 element={<EditEscuelaProcedencia />}
+              />
+              <Route
+                path='inscripcion'
+                element={<EditInscripcion />}
               />
               <Route
                 path='tutor/:id'

@@ -1,5 +1,5 @@
 import { useState, useEffect, useReducer, useCallback } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
 import { DEFAULT_ESCUELA_PROCEDENCIA } from '@/utils/defaultStates'
@@ -11,6 +11,7 @@ import TextInputForm from '@/components/UI/TextInputForm'
 const EditEscuelaProcedencia = () => {
   const { curp } = useParams()
   const fetchWithAuth = useFetchWithAuth()
+  const navigate = useNavigate()
 
   const reducer = createReducer(DEFAULT_ESCUELA_PROCEDENCIA)
   const [escuelaProcedencia, dispatch] = useReducer(
@@ -19,7 +20,7 @@ const EditEscuelaProcedencia = () => {
   )
   const [isLoading, setIsLoading] = useState(false)
 
-  const fetchEscuelaDomicilio = useCallback(async () => {
+  const fetchEscuelaProcedencia = useCallback(async () => {
     setIsLoading(true)
 
     try {
@@ -41,8 +42,8 @@ const EditEscuelaProcedencia = () => {
   useEffect(() => {
     document.title = `Editar Escuela Procedencia - ${curp} - GDM Admin`
 
-    fetchEscuelaDomicilio()
-  }, [curp, fetchEscuelaDomicilio])
+    fetchEscuelaProcedencia()
+  }, [curp, fetchEscuelaProcedencia])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -79,7 +80,7 @@ const EditEscuelaProcedencia = () => {
         )
 
       toast.success('Escuela de Procedencia actualizada correctamente')
-      //TODO: Navigate to the student detail page or show a success message
+      navigate(-1)
     } catch (error) {
       console.error(error.message)
       toast.error(error.message)

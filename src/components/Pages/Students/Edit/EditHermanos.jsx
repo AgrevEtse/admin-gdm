@@ -1,5 +1,5 @@
 import { useState, useEffect, useReducer, useCallback } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
 import { createReducer } from '@/utils/reducer'
@@ -10,6 +10,7 @@ import TextInputForm from '@/components/UI/TextInputForm'
 const EditHermanos = () => {
   const { curp } = useParams()
   const fetchWithAuth = useFetchWithAuth()
+  const navigate = useNavigate()
 
   const reducer = createReducer([])
   const [hermanos, dispatch] = useReducer(reducer, [])
@@ -77,7 +78,7 @@ const EditHermanos = () => {
       }
 
       toast.success(`Hermanos actualizados correctamente`)
-      //TODO: Navigate to the student detail page or show a success message
+      navigate(-1)
     } catch (error) {
       console.error(error.message)
       toast.error(error.message)

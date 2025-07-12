@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import {
   StudentIcon,
   SignpostIcon,
@@ -8,20 +8,21 @@ import {
   PersonIcon,
   UsersThreeIcon,
   UsersFourIcon,
-  MoneyWavyIcon
+  MoneyWavyIcon,
+  PencilSimpleIcon
 } from '@phosphor-icons/react'
 import { toast } from 'react-hot-toast'
 
 import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
 import { formatDate } from '@/utils/dateFormater'
 import { getParentescoById } from '@/utils/parentescoHelpers'
-import { getEscolaridadById, getGradoById } from '@/utils/escolaridadId'
+import { getEscolaridadById, getGradoById } from '@/utils/escolaridadIdHelpers'
 import StudentDataSkeleton from '@/components/UI/StudentDataSkeleton'
 
 const StudentData = () => {
   const { curp, ciclo } = useParams()
-
   const fetchWithAuth = useFetchWithAuth()
+  const navigate = useNavigate()
 
   const [alumno, setAlumno] = useState({})
   const [domicilio, setDomicilio] = useState([])
@@ -51,15 +52,15 @@ const StudentData = () => {
 
       const resDomicilio = await fetchWithAuth(`/domicilio/${curp}`)
       const dataDomicilio = await resDomicilio.json()
-      setDomicilio(dataDomicilio)
+      setDomicilio(dataDomicilio[0])
 
       const resTutor1 = await fetchWithAuth(`/tutor1/${curp}`)
       const dataTutor1 = await resTutor1.json()
-      setTutor1(dataTutor1)
+      setTutor1(dataTutor1[0])
 
       const resTutor2 = await fetchWithAuth(`/tutor2/${curp}`)
       const dataTutor2 = await resTutor2.json()
-      setTutor2(dataTutor2)
+      setTutor2(dataTutor2[0])
 
       const resHermanos = await fetchWithAuth(`/hermano/${curp}`)
       const dataHermanos = await resHermanos.json()
@@ -78,7 +79,7 @@ const StudentData = () => {
         body: JSON.stringify({ curp: curp, ciclo: ciclo })
       })
       const dataInscripcion = await resInscripcion.json()
-      setInscripcion(dataInscripcion)
+      setInscripcion(dataInscripcion[0])
       setIsActive(dataInscripcion?.[0]?.esta_activo || false)
     } catch (error) {
       console.error('Error fetching alumno:', error)
@@ -154,8 +155,8 @@ const StudentData = () => {
   return (
     <div className='container mx-auto px-4 mt-16'>
       <h2 className='text-3xl font-bold text-center'>Datos del Alumno</h2>
-      <p className='text-center text-4xl my-8 font-bold'>{curp}</p>
-      {inscripcion.length > 0 && (
+      <p className='text-secondary text-center text-4xl my-8 font-bold'>{curp}</p>
+      {inscripcion.id_escolaridad && (
         <h3
           className={
             (isActive === true ? 'text-green-500' : 'text-red-500') +
@@ -244,12 +245,21 @@ const StudentData = () => {
                   {alumno.nota_terapia}
                 </p>
               )}
+              <div className='card-actions justify-end mt-4'>
+                <button
+                  className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/alumno`)}}
+                  disabled={isLoading}
+                >
+                  <PencilSimpleIcon size={32} />
+                </button>
+              </div>
             </div>
           </div>
         )}
 
         {/* Domicilio */}
-        {!isLoading && domicilio.length > 0 && (
+        {!isLoading && domicilio.domicilio && (
           <div className='card text-sm bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
@@ -258,26 +268,35 @@ const StudentData = () => {
               </div>
               <p className='text-sm'>
                 <span className='font-bold'>Domicilio</span>:{' '}
-                {domicilio[0].domicilio}
+                {domicilio.domicilio}
               </p>
 
               <p className='text-sm'>
                 <span className='font-bold'>Colonia</span>:{' '}
-                {domicilio[0].colonia}
+                {domicilio.colonia}
               </p>
 
               <p className='text-sm'>
                 <span className='font-bold'>C.P.</span>:{' '}
-                {domicilio[0].codigo_postal}
+                {domicilio.codigo_postal}
               </p>
 
               <p className='text-sm'>
-                <span className='font-bold'>Ciudad</span>: {domicilio[0].ciudad}
+                <span className='font-bold'>Ciudad</span>: {domicilio.ciudad}
               </p>
 
               <p className='text-sm'>
-                <span className='font-bold'>Estado</span>: {domicilio[0].estado}
+                <span className='font-bold'>Estado</span>: {domicilio.estado}
               </p>
+              <div className='card-actions justify-end mt-4'>
+                <button
+                  className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/domicilio`)}}
+                  disabled={isLoading}
+                >
+                  <PencilSimpleIcon size={32} />
+                </button>
+              </div>
             </div>
           </div>
         )}
@@ -301,12 +320,21 @@ const StudentData = () => {
                 <span className='font-bold'>Nombre Escuela</span>:{' '}
                 {escuelaProcedencia.nombre}
               </p>
+              <div className='card-actions justify-end mt-4'>
+                <button
+                  className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/esc-procedencia`)}}
+                  disabled={isLoading}
+                >
+                  <PencilSimpleIcon size={32} />
+                </button>
+              </div>
             </div>
           </div>
         )}
 
         {/* Inscripción */}
-        {!isLoading && inscripcion.length > 0 && (
+        {!isLoading && inscripcion.id_escolaridad && (
           <div className='card text-sm bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
@@ -315,25 +343,34 @@ const StudentData = () => {
               </div>
               <p className='text-sm'>
                 <span className='font-bold'>Fecha Inscripción</span>:{' '}
-                {formatDate(inscripcion[0].fecha_inscripcion)}
+                {formatDate(inscripcion.fecha_inscripcion)}
               </p>
               <p className='text-sm'>
                 <span className='font-bold'>Escolaridad</span>:{' '}
-                {getEscolaridadById(inscripcion[0].id_escolaridad)}
+                {getEscolaridadById(inscripcion.id_escolaridad)}
               </p>
               <p className='text-sm'>
                 <span className='font-bold'>Grado</span>:{' '}
-                {getGradoById(inscripcion[0].id_escolaridad)}
+                {getGradoById(inscripcion.id_escolaridad)}
               </p>
               <p className='text-sm'>
                 <span className='font-bold'>Ciclo</span>: {ciclo}
               </p>
+              <div className='card-actions justify-end mt-4'>
+                <button
+                  className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/inscripcion`)}}
+                  disabled={isLoading}
+                >
+                  <PencilSimpleIcon size={32} />
+                </button>
+              </div>
             </div>
           </div>
         )}
 
         {/* Tutor 1 */}
-        {!isLoading && tutor1.length > 0 && (
+        {!isLoading && tutor1.nombre && (
           <div className='card text-sm bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
@@ -341,33 +378,42 @@ const StudentData = () => {
                 <PersonIcon size={48} />
               </div>
               <p className='text-sm'>
-                <span className='font-bold'>Nombre</span>: {tutor1[0].nombre}{' '}
-                {tutor1[0].apellido_paterno} {tutor1[0].apellido_materno}
+                <span className='font-bold'>Nombre</span>: {tutor1.nombre}{' '}
+                {tutor1.apellido_paterno} {tutor1.apellido_materno}
               </p>
               <p className='text-sm'>
                 <span className='font-bold'>Teléfono (fijo)</span>:{' '}
-                {tutor1[0].telefono_fijo}
+                {tutor1.telefono_fijo}
               </p>
               <p className='text-sm'>
                 <span className='font-bold'>Teléfono (móvil)</span>:{' '}
-                {tutor1[0].telefono_movil}
+                {tutor1.telefono_movil}
               </p>
               <p className='text-sm'>
                 <span className='font-bold'>Correo Electrónico</span>:{' '}
-                {tutor1[0].correo_electronico}
+                {tutor1.correo_electronico}
               </p>
               <p
-                className={`text-sm ${tutor1[0].primario === true ? 'text-red-900' : ''}`}
+                className={`text-sm ${tutor1.primario === true ? 'text-red-900' : ''}`}
               >
                 <span className='font-bold'>¿Tutor Principal?</span>:{' '}
-                {tutor1[0].primario === true ? 'Sí' : 'No'}
+                {tutor1.primario === true ? 'Sí' : 'No'}
               </p>
+              <div className='card-actions justify-end mt-4'>
+                <button
+                  className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/tutor/1`)}}
+                  disabled={isLoading}
+                >
+                  <PencilSimpleIcon size={32} />
+                </button>
+              </div>
             </div>
           </div>
         )}
 
         {/* Tutor 2 */}
-        {!isLoading && tutor2.length > 0 && (
+        {!isLoading && tutor2.nombre && (
           <div className='card text-sm bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
@@ -375,27 +421,36 @@ const StudentData = () => {
                 <PersonIcon size={48} />
               </div>
               <p className='text-sm'>
-                <span className='font-bold'>Nombre</span>: {tutor2[0].nombre}{' '}
-                {tutor2[0].apellido_paterno} {tutor2[0].apellido_materno}
+                <span className='font-bold'>Nombre</span>: {tutor2.nombre}{' '}
+                {tutor2.apellido_paterno} {tutor2.apellido_materno}
               </p>
               <p className='text-sm'>
                 <span className='font-bold'>Teléfono (fijo)</span>:{' '}
-                {tutor2[0].telefono_fijo}
+                {tutor2.telefono_fijo}
               </p>
               <p className='text-sm'>
                 <span className='font-bold'>Teléfono (móvil)</span>:{' '}
-                {tutor2[0].telefono_movil}
+                {tutor2.telefono_movil}
               </p>
               <p className='text-sm'>
                 <span className='font-bold'>Correo Electrónico</span>:{' '}
-                {tutor2[0].correo_electronico}
+                {tutor2.correo_electronico}
               </p>
               <p
-                className={`text-sm ${tutor2[0].primario === true ? 'text-red-900' : ''}`}
+                className={`text-sm ${tutor2.primario === true ? 'text-red-900' : ''}`}
               >
                 <span className='font-bold'>¿Tutor Principal?</span>:{' '}
-                {tutor2[0].primario === true ? 'Sí' : 'No'}
+                {tutor2.primario === true ? 'Sí' : 'No'}
               </p>
+              <div className='card-actions justify-end mt-4'>
+                <button
+                  className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/tutor/2`)}}
+                  disabled={isLoading}
+                >
+                  <PencilSimpleIcon size={32} />
+                </button>
+              </div>
             </div>
           </div>
         )}
@@ -423,6 +478,15 @@ const StudentData = () => {
                   </p>
                 </div>
               ))}
+              <div className='card-actions justify-end mt-4'>
+                <button
+                  className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/hermanos`)}}
+                  disabled={isLoading}
+                >
+                  <PencilSimpleIcon size={32} />
+                </button>
+              </div>
             </div>
           </div>
         )}
@@ -454,6 +518,15 @@ const StudentData = () => {
                   </p>
                 </div>
               ))}
+              <div className='card-actions justify-end mt-4'>
+                <button
+                  className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/contactos`)}}
+                  disabled={isLoading}
+                >
+                  <PencilSimpleIcon size={32} />
+                </button>
+              </div>
             </div>
           </div>
         )}
@@ -484,6 +557,15 @@ const StudentData = () => {
                 <span className='font-bold'>¿Requiere Factura?</span>:{' '}
                 {pago.factura === true ? 'Sí' : 'No'}
               </p>
+              <div className='card-actions justify-end mt-4'>
+                <button
+                  className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/pago`)}}
+                  disabled={isLoading}
+                >
+                  <PencilSimpleIcon size={32} />
+                </button>
+              </div>
             </div>
           </div>
         )}

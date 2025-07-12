@@ -19,7 +19,7 @@ const NavBar = () => {
       <div className='flex-1 space-x-4'>
         <button
           onClick={() => navigate(-1)}
-          className='btn btn-error text-xl active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+          className='btn btn-warning text-xl active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
         >
           <ArrowFatLeftIcon size={24} />
         </button>
