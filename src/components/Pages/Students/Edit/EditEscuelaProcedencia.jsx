@@ -134,7 +134,6 @@ const EditEscuelaProcedencia = () => {
                 value={escuelaProcedencia.matricula}
                 onChange={handleChange}
                 name='matricula'
-                required={true}
               />
             </>
           )}
