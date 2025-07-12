@@ -3,6 +3,7 @@ const TextInput = ({
   type = 'text',
   value = '',
   placeholder = '',
+  name = '',
   onChange
 }) => {
   return (
@@ -13,6 +14,7 @@ const TextInput = ({
         type={type}
         value={value}
         placeholder={placeholder}
+        name={name}
         onChange={onChange}
       />
     </label>

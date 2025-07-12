@@ -1,16 +1,28 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { UserIcon, SignOutIcon, ListIcon } from '@phosphor-icons/react'
+import { useNavigate, Link } from 'react-router-dom'
+import {
+  UserIcon,
+  SignOutIcon,
+  ListIcon,
+  ArrowFatLeftIcon
+} from '@phosphor-icons/react'
 
 import useAuth from '@/context/useAuth'
 
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const auth = useAuth()
+  const navigate = useNavigate()
 
   return (
     <nav className='fixed top-0 navbar bg-primary text-primary-content shadow-sm h-10 w-[90vw] mx-auto rounded-box z-100 left-1/2 -translate-x-1/2 px-6'>
-      <div className='flex-1'>
+      <div className='flex-1 space-x-4'>
+        <button
+          onClick={() => navigate(-1)}
+          className='btn btn-warning text-xl active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+        >
+          <ArrowFatLeftIcon size={24} />
+        </button>
         <Link to='/dashboard'>
           <button
             className='btn btn-secondary text-secondary-content text-xl active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
