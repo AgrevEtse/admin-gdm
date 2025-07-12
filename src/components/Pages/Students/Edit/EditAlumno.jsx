@@ -1,5 +1,5 @@
 import { useState, useEffect, useReducer, useCallback } from 'react'
-import { useParams,useNavigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
 import { DEFAULT_ALUMNO } from '@/utils/defaultStates'

@@ -60,7 +60,7 @@ const StudentData = () => {
 
       const resTutor2 = await fetchWithAuth(`/tutor2/${curp}`)
       const dataTutor2 = await resTutor2.json()
-      setTutor2(dataTutor2[0])
+      setTutor2(dataTutor2)
 
       const resHermanos = await fetchWithAuth(`/hermano/${curp}`)
       const dataHermanos = await resHermanos.json()
@@ -155,7 +155,9 @@ const StudentData = () => {
   return (
     <div className='container mx-auto px-4 mt-16'>
       <h2 className='text-3xl font-bold text-center'>Datos del Alumno</h2>
-      <p className='text-secondary text-center text-4xl my-8 font-bold'>{curp}</p>
+      <p className='text-secondary text-center text-4xl my-8 font-bold'>
+        {curp}
+      </p>
       {inscripcion.id_escolaridad && (
         <h3
           className={
@@ -248,7 +250,9 @@ const StudentData = () => {
               <div className='card-actions justify-end mt-4'>
                 <button
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
-                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/alumno`)}}
+                  onClick={() => {
+                    navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/alumno`)
+                  }}
                   disabled={isLoading}
                 >
                   <PencilSimpleIcon size={32} />
@@ -272,8 +276,7 @@ const StudentData = () => {
               </p>
 
               <p className='text-sm'>
-                <span className='font-bold'>Colonia</span>:{' '}
-                {domicilio.colonia}
+                <span className='font-bold'>Colonia</span>: {domicilio.colonia}
               </p>
 
               <p className='text-sm'>
@@ -291,7 +294,11 @@ const StudentData = () => {
               <div className='card-actions justify-end mt-4'>
                 <button
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
-                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/domicilio`)}}
+                  onClick={() => {
+                    navigate(
+                      `/dashboard/alumnos/${curp}/${ciclo}/edit/domicilio`
+                    )
+                  }}
                   disabled={isLoading}
                 >
                   <PencilSimpleIcon size={32} />
@@ -323,7 +330,11 @@ const StudentData = () => {
               <div className='card-actions justify-end mt-4'>
                 <button
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
-                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/esc-procedencia`)}}
+                  onClick={() => {
+                    navigate(
+                      `/dashboard/alumnos/${curp}/${ciclo}/edit/esc-procedencia`
+                    )
+                  }}
                   disabled={isLoading}
                 >
                   <PencilSimpleIcon size={32} />
@@ -359,7 +370,11 @@ const StudentData = () => {
               <div className='card-actions justify-end mt-4'>
                 <button
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
-                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/inscripcion`)}}
+                  onClick={() => {
+                    navigate(
+                      `/dashboard/alumnos/${curp}/${ciclo}/edit/inscripcion`
+                    )
+                  }}
                   disabled={isLoading}
                 >
                   <PencilSimpleIcon size={32} />
@@ -402,7 +417,9 @@ const StudentData = () => {
               <div className='card-actions justify-end mt-4'>
                 <button
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
-                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/tutor/1`)}}
+                  onClick={() => {
+                    navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/tutor/1`)
+                  }}
                   disabled={isLoading}
                 >
                   <PencilSimpleIcon size={32} />
@@ -413,7 +430,7 @@ const StudentData = () => {
         )}
 
         {/* Tutor 2 */}
-        {!isLoading && tutor2.nombre && (
+        {!isLoading && tutor2.length > 0 && (
           <div className='card text-sm bg-zinc-400 text-zinc-950 w-96 shadow-zinc-400 shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
             <div className='card-body'>
               <div className='flex items-center justify-between mb-4'>
@@ -445,7 +462,9 @@ const StudentData = () => {
               <div className='card-actions justify-end mt-4'>
                 <button
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
-                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/tutor/2`)}}
+                  onClick={() => {
+                    navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/tutor/2`)
+                  }}
                   disabled={isLoading}
                 >
                   <PencilSimpleIcon size={32} />
@@ -481,7 +500,11 @@ const StudentData = () => {
               <div className='card-actions justify-end mt-4'>
                 <button
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
-                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/hermanos`)}}
+                  onClick={() => {
+                    navigate(
+                      `/dashboard/alumnos/${curp}/${ciclo}/edit/hermanos`
+                    )
+                  }}
                   disabled={isLoading}
                 >
                   <PencilSimpleIcon size={32} />
@@ -521,7 +544,11 @@ const StudentData = () => {
               <div className='card-actions justify-end mt-4'>
                 <button
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
-                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/contactos`)}}
+                  onClick={() => {
+                    navigate(
+                      `/dashboard/alumnos/${curp}/${ciclo}/edit/contactos`
+                    )
+                  }}
                   disabled={isLoading}
                 >
                   <PencilSimpleIcon size={32} />
@@ -560,7 +587,9 @@ const StudentData = () => {
               <div className='card-actions justify-end mt-4'>
                 <button
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
-                  onClick={() => {navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/pago`)}}
+                  onClick={() => {
+                    navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/pago`)
+                  }}
                   disabled={isLoading}
                 >
                   <PencilSimpleIcon size={32} />

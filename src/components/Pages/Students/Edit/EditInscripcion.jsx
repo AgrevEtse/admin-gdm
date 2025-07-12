@@ -3,7 +3,12 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
 import { DEFAULT_INSCRIPCION } from '@/utils/defaultStates'
-import { getGradosByEscolaridad, getFirstGradoByEscolaridad, getIdEscolaridad, getUUIDByEscolaridad } from '@/utils/escolaridadGradosHelpers'
+import {
+  getGradosByEscolaridad,
+  getFirstGradoByEscolaridad,
+  getIdEscolaridad,
+  getUUIDByEscolaridad
+} from '@/utils/escolaridadGradosHelpers'
 import { getEscolaridadById, getGradoById } from '@/utils/escolaridadIdHelpers'
 import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
 import { InscripcionSchema } from '@/schemas/InscripcionSchema'
@@ -32,7 +37,7 @@ const EditInscripcion = () => {
       const formatedData = {
         ...data[0],
         escolaridad: getEscolaridadById(data[0].id_escolaridad),
-        grado: getGradoById(data[0].id_escolaridad),
+        grado: getGradoById(data[0].id_escolaridad)
       }
 
       setInscripcion(formatedData)
@@ -58,24 +63,19 @@ const EditInscripcion = () => {
       const isValid = InscripcionSchema.safeParse(inscripcion)
       if (!isValid.success) throw new Error(isValid.error.issues[0].message)
 
-      const response = await fetchWithAuth(
-        `/inscripcion/${inscripcion.id}`,
-        {
-          method: 'PUT',
-          body: JSON.stringify({
-            ...inscripcion,
-            curp_alumno: undefined,
-            id: undefined,
-            grado: undefined,
-            escolaridad: undefined,
-          })
-        }
-      )
+      const response = await fetchWithAuth(`/inscripcion/${inscripcion.id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          ...inscripcion,
+          curp_alumno: undefined,
+          id: undefined,
+          grado: undefined,
+          escolaridad: undefined
+        })
+      })
 
       if (!response.ok)
-        throw new Error(
-          'Error al actualizar la inscripción del alumno'
-        )
+        throw new Error('Error al actualizar la inscripción del alumno')
 
       toast.success('Inscripción actualizada correctamente')
       navigate(`/dashboard/alumnos/`)
@@ -87,7 +87,7 @@ const EditInscripcion = () => {
     }
   }
 
-  return(
+  return (
     <div className='card bg-base-100 shadow-sm w-full mx-auto px-0 lg:px-8 border-white border-1'>
       <div className='card-body'>
         <h2 className='card-title text-3xl justify-center items-center mb-6'>
@@ -120,7 +120,9 @@ const EditInscripcion = () => {
                       return {
                         ...prev,
                         escolaridad: e.target.value,
-                        grado: Number(getFirstGradoByEscolaridad(e.target.value)),
+                        grado: Number(
+                          getFirstGradoByEscolaridad(e.target.value)
+                        ),
                         id_escolaridad: getIdEscolaridad(
                           e.target.value,
                           getFirstGradoByEscolaridad(e.target.value)
