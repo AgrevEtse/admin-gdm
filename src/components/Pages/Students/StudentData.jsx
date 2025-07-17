@@ -97,9 +97,7 @@ const StudentData = () => {
 
   const handleValidarAlumno = async () => {
     try {
-      const rol = getEscolaridadById(
-        inscripcion?.id_escolaridad
-      ).toLowerCase()
+      const rol = getEscolaridadById(inscripcion?.id_escolaridad).toLowerCase()
       if (!rol) throw new Error('Rol desconocido')
 
       const res = await fetchWithAuth(`/inscripcion/validar`, {
@@ -397,12 +395,12 @@ const StudentData = () => {
                 {tutor1.apellido_paterno} {tutor1.apellido_materno}
               </p>
               <p className='text-sm'>
-                <span className='font-bold'>Teléfono (fijo)</span>:{' '}
-                {tutor1.telefono_fijo}
-              </p>
-              <p className='text-sm'>
                 <span className='font-bold'>Teléfono (móvil)</span>:{' '}
                 {tutor1.telefono_movil}
+              </p>
+              <p className='text-sm'>
+                <span className='font-bold'>Teléfono (fijo)</span>:{' '}
+                {tutor1.telefono_fijo}
               </p>
               <p className='text-sm'>
                 <span className='font-bold'>Correo Electrónico</span>:{' '}
@@ -438,26 +436,26 @@ const StudentData = () => {
                 <PersonIcon size={48} />
               </div>
               <p className='text-sm'>
-                <span className='font-bold'>Nombre</span>: {tutor2.nombre}{' '}
-                {tutor2.apellido_paterno} {tutor2.apellido_materno}
-              </p>
-              <p className='text-sm'>
-                <span className='font-bold'>Teléfono (fijo)</span>:{' '}
-                {tutor2.telefono_fijo}
+                <span className='font-bold'>Nombre</span>: {tutor2[0].nombre}{' '}
+                {tutor2[0].apellido_paterno} {tutor2[0].apellido_materno}
               </p>
               <p className='text-sm'>
                 <span className='font-bold'>Teléfono (móvil)</span>:{' '}
-                {tutor2.telefono_movil}
+                {tutor2[0].telefono_movil}
+              </p>
+              <p className='text-sm'>
+                <span className='font-bold'>Teléfono (fijo)</span>:{' '}
+                {tutor2[0].telefono_fijo}
               </p>
               <p className='text-sm'>
                 <span className='font-bold'>Correo Electrónico</span>:{' '}
-                {tutor2.correo_electronico}
+                {tutor2[0].correo_electronico}
               </p>
               <p
-                className={`text-sm ${tutor2.primario === true ? 'text-red-900' : ''}`}
+                className={`text-sm ${tutor2[0].primario === true ? 'text-red-900' : ''}`}
               >
                 <span className='font-bold'>¿Tutor Principal?</span>:{' '}
-                {tutor2.primario === true ? 'Sí' : 'No'}
+                {tutor2[0].primario === true ? 'Sí' : 'No'}
               </p>
               <div className='card-actions justify-end mt-4'>
                 <button
