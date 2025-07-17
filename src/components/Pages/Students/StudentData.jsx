@@ -98,7 +98,7 @@ const StudentData = () => {
   const handleValidarAlumno = async () => {
     try {
       const rol = getEscolaridadById(
-        inscripcion?.[0]?.id_escolaridad
+        inscripcion?.id_escolaridad
       ).toLowerCase()
       if (!rol) throw new Error('Rol desconocido')
 
