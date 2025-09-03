@@ -4,7 +4,7 @@ import { MagnifyingGlassIcon } from '@phosphor-icons/react'
 import { toast } from 'react-hot-toast'
 
 import { textNormalize } from '@/utils/textNormalize'
-import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
+import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 
 import StudentCard from '@/components/UI/StudentCard'
 import StudentCardSkeleton from '@/components/UI/StudentCardSkeleton'

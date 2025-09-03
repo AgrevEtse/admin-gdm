@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast'
 
 import { DEFAULT_PAGO } from '@/utils/defaultStates'
 import { createReducer } from '@/utils/reducer'
-import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
+import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import { PARENTESCO_ARRAY } from '@/utils/parentescoHelpers'
 import { PagoSchema } from '@/schemas/PagoSchema'
 import TextInputForm from '@/components/UI/TextInputForm'

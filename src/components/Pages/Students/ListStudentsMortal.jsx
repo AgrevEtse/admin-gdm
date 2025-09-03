@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react'
 import { toast } from 'react-hot-toast'
 
-import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
+import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import useAuth from '@/context/useAuth'
 import { textNormalize } from '@/utils/textNormalize'
 

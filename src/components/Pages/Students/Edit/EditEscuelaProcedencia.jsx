@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast'
 
 import { DEFAULT_ESCUELA_PROCEDENCIA } from '@/utils/defaultStates'
 import { createReducer } from '@/utils/reducer'
-import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
+import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import { EscuelaProcedenciaSchema } from '@/schemas/EscuelaProcedenciaSchema'
 import TextInputForm from '@/components/UI/TextInputForm'
 

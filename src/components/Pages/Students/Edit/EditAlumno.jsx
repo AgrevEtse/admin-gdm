@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast'
 
 import { DEFAULT_ALUMNO } from '@/utils/defaultStates'
 import { createReducer } from '@/utils/reducer'
-import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
+import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import { formatDate, createDateISOString } from '@/utils/dateFormater'
 import { PAISES_ARRAY } from '@/utils/paisesHelpers'
 import { AlumnoSchema } from '@/schemas/AlumnoSchema'

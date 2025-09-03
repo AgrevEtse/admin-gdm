@@ -10,7 +10,7 @@ import {
   getUUIDByEscolaridad
 } from '@/utils/escolaridadGradosHelpers'
 import { getEscolaridadById, getGradoById } from '@/utils/escolaridadIdHelpers'
-import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
+import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import { InscripcionSchema } from '@/schemas/InscripcionSchema'
 
 const EditInscripcion = () => {

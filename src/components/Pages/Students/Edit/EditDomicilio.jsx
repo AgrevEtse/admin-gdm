@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast'
 
 import { DEFAULT_DOMICILIO } from '@/utils/defaultStates'
 import { createReducer } from '@/utils/reducer'
-import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
+import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import { ESTADOS_ARRAY } from '@/utils/estadosHelpers'
 import { getMunicipiosByEstado } from '@/utils/municipiosHelpers'
 import { DomicilioSchema } from '@/schemas/DomicilioSchema'

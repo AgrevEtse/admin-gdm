@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
 import { createReducer } from '@/utils/reducer'
-import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
+import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import { HermanoSchema } from '@/schemas/HermanoSchema'
 import TextInputForm from '@/components/UI/TextInputForm'
 

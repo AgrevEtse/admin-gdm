@@ -13,7 +13,7 @@ import {
 } from '@phosphor-icons/react'
 import { toast } from 'react-hot-toast'
 
-import { useFetchWithAuth } from '@/utils/useFetchWithAuth'
+import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import { formatDate } from '@/utils/dateFormater'
 import { getParentescoById } from '@/utils/parentescoHelpers'
 import { getEscolaridadById, getGradoById } from '@/utils/escolaridadIdHelpers'
