@@ -118,7 +118,9 @@ const StudentData = () => {
       fecthStudentData()
     } catch (error) {
       console.error('Error desactivando inscripción:', error)
-      toast.error(error.message || 'Ocurrió un error al desactivar la inscripción.')
+      toast.error(
+        error.message || 'Ocurrió un error al desactivar la inscripción.'
+      )
     }
   }
 
@@ -145,7 +147,9 @@ const StudentData = () => {
       fecthStudentData()
     } catch (error) {
       console.error('Error activando inscripción:', error)
-      toast.error(error.message || 'Ocurrió un error al activar la inscripción.')
+      toast.error(
+        error.message || 'Ocurrió un error al activar la inscripción.'
+      )
     }
   }
 

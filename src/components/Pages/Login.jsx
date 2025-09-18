@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast'
 
 import useAuth from '@/context/useAuth'
 import TextInput from '@/components/UI/TextInput'
+import PasswordInput from '@/components/UI/PasswordInput'
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -65,10 +66,18 @@ function Login() {
             setUser(e.target.value)
           }}
         />
-        <TextInput
+        {/* <TextInput
           label='Contraseña'
           placeholder='**********'
           type='password'
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value)
+          }}
+        /> */}
+        <PasswordInput
+          label='Contraseña'
+          placeholder='**********'
           value={password}
           onChange={(e) => {
             setPassword(e.target.value)
