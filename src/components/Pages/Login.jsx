@@ -66,15 +66,6 @@ function Login() {
             setUser(e.target.value)
           }}
         />
-        {/* <TextInput
-          label='Contraseña'
-          placeholder='**********'
-          type='password'
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value)
-          }}
-        /> */}
         <PasswordInput
           label='Contraseña'
           placeholder='**********'
