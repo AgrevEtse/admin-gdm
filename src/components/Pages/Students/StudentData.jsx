@@ -95,7 +95,36 @@ const StudentData = () => {
     fecthStudentData()
   }, [curp, fecthStudentData, ciclo])
 
-  const handleValidarAlumno = async () => {
+  const handleDesactivarInscripcion = async () => {
+    try {
+      const rol = getEscolaridadById(inscripcion?.id_escolaridad).toLowerCase()
+      if (!rol) throw new Error('Rol desconocido')
+
+      const res = await fetchWithAuth(`/inscripcion/validar`, {
+        method: 'POST',
+        body: JSON.stringify({
+          curp: curp,
+          rol: rol,
+          ciclo: ciclo,
+          validado: 0
+        })
+      })
+
+      if (!res.ok) throw new Error('Error al desactivar la inscripción.')
+
+      const data = await res.json()
+
+      toast.success(data.message || 'Inscripción desactivada correctamente.')
+      fecthStudentData()
+    } catch (error) {
+      console.error('Error desactivando inscripción:', error)
+      toast.error(
+        error.message || 'Ocurrió un error al desactivar la inscripción.'
+      )
+    }
+  }
+
+  const handleActivarInscripcion = async () => {
     try {
       const rol = getEscolaridadById(inscripcion?.id_escolaridad).toLowerCase()
       if (!rol) throw new Error('Rol desconocido')
@@ -110,15 +139,17 @@ const StudentData = () => {
         })
       })
 
-      if (!res.ok) throw new Error('Error al validar el alumno.')
+      if (!res.ok) throw new Error('Error al activar la inscripción.')
 
       const data = await res.json()
 
-      toast.success(data.message || 'Alumno validado correctamente.')
+      toast.success(data.message || 'Inscripción activada correctamente.')
       fecthStudentData()
     } catch (error) {
-      console.error('Error validating alumno:', error)
-      toast.error(error.message || 'Ocurrió un error al validar el alumno.')
+      console.error('Error activando inscripción:', error)
+      toast.error(
+        error.message || 'Ocurrió un error al activar la inscripción.'
+      )
     }
   }
 
@@ -168,20 +199,26 @@ const StudentData = () => {
       )}
       <div className='flex flex-row justify-end space-between mb-8 w-full space-x-4'>
         <button
-          className='btn btn-success'
-          onClick={handleValidarAlumno}
-          disabled={isActive || isLoading}
-          title={isActive ? 'El alumno ya está activo' : 'Activar alumno'}
+          className='btn btn-error'
+          onClick={handleDesactivarInscripcion}
+          disabled={!isActive || isLoading}
+          title='Desactivar Inscripción'
         >
-          Activar Alumno
+          Desactivar Inscripción
+        </button>
+        <button
+          className='btn btn-success'
+          onClick={handleActivarInscripcion}
+          disabled={isActive || isLoading}
+          title='Activar Inscripción'
+        >
+          Activar Inscripción
         </button>
         <button
           className='btn btn-info'
           onClick={handleDescargarDocx}
-          disabled={!isActive || isLoading}
-          title={
-            !isActive ? 'El alumno no está activo' : 'Descargar archivo DOCX'
-          }
+          disabled={isLoading}
+          title='Descargar archivo DOCX'
         >
           Descargar DOCX
         </button>
