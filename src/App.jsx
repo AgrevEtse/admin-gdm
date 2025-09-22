@@ -11,6 +11,7 @@ import Dashboard from '@/components/Pages/Dashboard'
 import ListStudentsAdmin from '@/components/Pages/Students/ListStudentsAdmin'
 import ListStudentsMortal from '@/components/Pages/Students/ListStudentsMortal'
 import StudentData from '@/components/Pages/Students/StudentData'
+import Ciclos from '@/components/Pages/Ciclos'
 import {
   EditAlumno,
   EditDomicilio,
@@ -96,6 +97,11 @@ const App = () => {
                 element={<EditPago />}
               />
             </Route>
+
+            <Route
+              path='ciclos'
+              element={<Ciclos />}
+            />
           </Route>
         </Route>
       </Routes>
