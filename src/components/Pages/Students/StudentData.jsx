@@ -74,7 +74,7 @@ const StudentData = () => {
       const dataPago = await resPago.json()
       setPago(dataPago)
 
-      const resInscripcion = await fetchWithAuth(`/inscripcion/findone/`, {
+      const resInscripcion = await fetchWithAuth(`/inscripcion/findone`, {
         method: 'POST',
         body: JSON.stringify({ curp: curp, ciclo: ciclo })
       })

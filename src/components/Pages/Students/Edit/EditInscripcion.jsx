@@ -25,7 +25,7 @@ const EditInscripcion = () => {
     setIsLoading(true)
 
     try {
-      const response = await fetchWithAuth(`/inscripcion/findone/`, {
+      const response = await fetchWithAuth(`/inscripcion/findone`, {
         method: 'POST',
         body: JSON.stringify({ curp: curp, ciclo: ciclo })
       })
