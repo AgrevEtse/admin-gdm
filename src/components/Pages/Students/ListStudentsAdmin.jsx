@@ -15,8 +15,8 @@ const ListStudentsAdmin = () => {
 
   const [students, setStudents] = useState([])
   const [search, setSearch] = useState('')
-  const [grade, setGrade] = useState(searchParams.get('grade') || 0)
   const [ciclos, setCiclos] = useState([])
+  const [grado, setGrado] = useState(searchParams.get('grado') || 'secundaria')
   const [ciclo, setCiclo] = useState(searchParams.get('ciclo') || 0)
   const [activeStudents, setActiveStudents] = useState(
     searchParams.get('activeStudents') === '1' ? 1 : 0
@@ -35,12 +35,12 @@ const ListStudentsAdmin = () => {
   }, [fetchWithAuth])
 
   const fetchStudents = useCallback(async () => {
-    if (grade === 0) {
+    if (grado === 0 || grado === '0') {
       toast.error('Por favor, selecciona un grado escolar.')
       return
     }
 
-    if (ciclo === 0) {
+    if (ciclo === 0 || ciclo === '0') {
       toast.error('Por favor, selecciona un ciclo escolar.')
       return
     }
@@ -51,7 +51,7 @@ const ListStudentsAdmin = () => {
       const res = await fetchWithAuth('/alumno/todos', {
         method: 'POST',
         body: JSON.stringify({
-          rol: grade,
+          rol: grado,
           ciclo: ciclo,
           validado: activeStudents
         })
@@ -64,7 +64,7 @@ const ListStudentsAdmin = () => {
     } finally {
       setIsLoading(false)
     }
-  }, [activeStudents, grade, fetchWithAuth, ciclo])
+  }, [activeStudents, grado, fetchWithAuth, ciclo])
 
   const handleActiveToggle = () => {
     const newActive = activeStudents ? 0 : 1
@@ -75,7 +75,7 @@ const ListStudentsAdmin = () => {
     document.title = 'Alumnos - GDM Admin'
 
     const params = {
-      grade,
+      grado,
       ciclo,
       activeStudents: activeStudents.toString()
     }
@@ -87,7 +87,7 @@ const ListStudentsAdmin = () => {
   }, [
     fetchStudents,
     fetchCiclos,
-    grade,
+    grado,
     ciclo,
     activeStudents,
     setSearchParams,
@@ -111,9 +111,9 @@ const ListStudentsAdmin = () => {
         <div className='flex flex-row justify-between items-center space-x-4 w-full max-w-2xl'>
           <select
             className='select w-full max-w-xs'
-            value={grade}
+            value={grado}
             onChange={(e) => {
-              setGrade(e.target.value)
+              setGrado(e.target.value)
               setCiclo(0)
             }}
           >
@@ -121,7 +121,7 @@ const ListStudentsAdmin = () => {
               value='0'
               disabled
             >
-              Selecciona un grado
+              Selecciona un grado...
             </option>
             <option value='preescolar'>Preescolar</option>
             <option value='primaria'>Primaria</option>
@@ -132,16 +132,16 @@ const ListStudentsAdmin = () => {
           <select
             className='select w-full max-w-xs'
             value={ciclo}
-            disabled={!grade}
+            disabled={!grado} //TODO: Desactivar si grado es "0" (en string)
             onChange={(e) => setCiclo(e.target.value)}
           >
             <option
               value='0'
               disabled
             >
-              Selecciona un ciclo
+              Selecciona un ciclo...
             </option>
-            {grade === 'bachillerato'
+            {grado === 'bachillerato'
               ? biannualCiclos.map((c) => (
                   <option
                     key={c.id}
@@ -164,7 +164,7 @@ const ListStudentsAdmin = () => {
             Inactivo
             <input
               type='checkbox'
-              disabled={!ciclo}
+              disabled={!ciclo} //TODO: Desactivar si ciclo es "0" (en string)
               checked={activeStudents}
               onChange={handleActiveToggle}
               className='toggle toggle-lg border-warning bg-warning checked:border-warning checked:bg-warning text-warning-content'
@@ -178,7 +178,7 @@ const ListStudentsAdmin = () => {
           </span>
           <input
             placeholder='alejandro, ZEPEDA, VAIO020327...'
-            disabled={!grade || !ciclo}
+            disabled={!grado || !ciclo} //TODO: Desactivar si grado o ciclo es "0" (en string)
             type='text'
             onChange={(e) => {
               setSearch(e.target.value)
