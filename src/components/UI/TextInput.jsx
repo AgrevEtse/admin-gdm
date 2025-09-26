@@ -4,6 +4,7 @@ const TextInput = ({
   value = '',
   placeholder = '',
   name = '',
+  autocomplete = '',
   onChange
 }) => {
   return (
@@ -15,6 +16,7 @@ const TextInput = ({
         value={value}
         placeholder={placeholder}
         name={name}
+        autoComplete={autocomplete}
         onChange={onChange}
       />
     </label>

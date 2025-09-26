@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import {
   UserIcon,
@@ -10,9 +10,23 @@ import {
 import useAuth from '@/context/useAuth'
 
 const NavBar = () => {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuRef = useRef(null)
+
   const auth = useAuth()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    // cerrar menú si pierde el focus
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   return (
     <nav className='fixed top-0 navbar bg-primary text-primary-content shadow-sm h-10 w-[90vw] mx-auto rounded-box z-100 left-1/2 -translate-x-1/2 px-6'>
@@ -33,18 +47,21 @@ const NavBar = () => {
         </Link>
       </div>
 
-      {/* Profile Menu */}
-      <div className=''>
+      {/* Hamburguer Menu */}
+      <div>
         <button
           className='btn btn-accent active:scale-110 hover:scale-110 transition-transform duration-200 ease-in-out'
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <ListIcon size={32} />
         </button>
       </div>
 
-      {menuOpen && (
-        <div className='absolute top-full right-4 mt-2 bg-base-200 rounded-box shadow-lg z-50 w-52 justify-center items-center text-center mx-auto p-4 flex flex-col'>
+      {isMenuOpen && (
+        <div
+          className='absolute top-full right-4 mt-2 bg-base-200 rounded-box shadow-lg z-50 w-52 justify-center items-center text-center mx-auto p-4 flex flex-col'
+          ref={menuRef}
+        >
           <div className='flex flex-col items-center my-4'>
             <UserIcon
               size={80}

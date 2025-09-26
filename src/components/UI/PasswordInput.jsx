@@ -5,6 +5,7 @@ export default function PasswordInput({
   label = 'Contraseña',
   placeholder = '**********',
   name = 'password',
+  autocomplete = 'current-password',
   value,
   onChange
 }) {
@@ -19,6 +20,7 @@ export default function PasswordInput({
         value={value}
         placeholder={placeholder}
         name={name}
+        autoComplete={autocomplete}
         onChange={onChange}
       />
       <button

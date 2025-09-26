@@ -125,7 +125,7 @@ const Ciclos = () => {
     <div className='flex flex-col justify-center items-center h-full space-y-6 mt-10'>
       <h2 className='text-3xl font-bold'>Ciclos</h2>
       {/* {isLoading ? (
-        <CiclosSectionSkeleton /> 
+        <CiclosSectionSkeleton />
         // TODO: Mejorar el skeleton
         // TODO: Agregar skeleton para dos cards
       ) : '' } */}
