@@ -230,7 +230,7 @@ const Ciclos = () => {
 
             <div className='card-actions justify-end'>
               <button
-                className='btn btn-primary'
+                className='btn btn-primary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
                 onClick={handleCreateCiclo}
               >
                 Crear Ciclo
@@ -279,7 +279,7 @@ const Ciclos = () => {
 
             <div className='card-actions justify-end'>
               <button
-                className='btn btn-primary'
+                className='btn btn-primary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
                 onClick={() => handleAssignCiclo('anual')}
               >
                 Asignar Anual
@@ -320,7 +320,7 @@ const Ciclos = () => {
             </label>
             <div className='card-actions justify-end'>
               <button
-                className='btn btn-primary'
+                className='btn btn-primary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
                 onClick={() => handleAssignCiclo('semestral')}
               >
                 Asignar Semestral

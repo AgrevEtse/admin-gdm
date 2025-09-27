@@ -39,7 +39,7 @@ const NavBar = () => {
         </button>
         <Link to='/dashboard'>
           <button
-            className='btn btn-secondary text-secondary-content text-xl active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+            className='btn btn-ghost text-xl active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
             title='GDM Admin'
           >
             GDM Admin
@@ -47,8 +47,21 @@ const NavBar = () => {
         </Link>
       </div>
 
+      <div className='flex-1 hidden lg:flex justify-evenly'>
+        <Link to='/dashboard/alumnos'>
+          <button className='btn btn-secondary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'>
+            Alumnos
+          </button>
+        </Link>
+        <Link to='/dashboard/ciclos'>
+          <button className='btn btn-secondary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'>
+            Ciclos
+          </button>
+        </Link>
+      </div>
+
       {/* Hamburguer Menu */}
-      <div>
+      <div className='flex-1 flex justify-end relative'>
         <button
           className='btn btn-accent active:scale-110 hover:scale-110 transition-transform duration-200 ease-in-out'
           onClick={() => setIsMenuOpen(!isMenuOpen)}
