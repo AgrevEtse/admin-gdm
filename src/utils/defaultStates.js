@@ -1,5 +1,13 @@
 import { createCurrentDate } from '@/utils/dateFormater'
 
+export const DEFAULT_CICLO = {
+  nombre: '',
+  es_anual: '',
+  fecha_inicio: createCurrentDate(),
+  fecha_fin: createCurrentDate(),
+  valido: 0
+}
+
 export const DEFAULT_CURP = ''
 
 export const DEFAULT_ESCUELA_PROCEDENCIA = {

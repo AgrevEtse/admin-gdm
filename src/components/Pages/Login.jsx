@@ -57,11 +57,16 @@ function Login() {
     <fieldset className='fieldset bg-primary border border-primary-content p-4 rounded-box w-1/3'>
       <legend className='fieldset-legend text-3xl'>Log In</legend>
       <p className='text-lg'>Inicia sesión para acceder a tu cuenta.</p>
-      <form className='flex flex-col gap-6 mt-6 w-1/2 justify-center items-center mx-auto'>
+      <form
+        className='flex flex-col gap-6 mt-6 w-1/2 justify-center items-center mx-auto'
+        onSubmit={handleLogin}
+      >
         <TextInput
           label='Usuario'
           placeholder='usuario'
           value={user}
+          name='username'
+          autocomplete='username'
           onChange={(e) => {
             setUser(e.target.value)
           }}
@@ -69,6 +74,8 @@ function Login() {
         <PasswordInput
           label='Contraseña'
           placeholder='**********'
+          name='password'
+          autocomplete='current-password'
           value={password}
           onChange={(e) => {
             setPassword(e.target.value)
@@ -77,7 +84,6 @@ function Login() {
         <button
           type='submit'
           className='btn btn-secondary w-1/2'
-          onClick={handleLogin}
         >
           Iniciar sesión
         </button>

@@ -11,7 +11,7 @@ const Dashboard = () => {
   }, [])
 
   return (
-    <div className='flex flex-col justify-center items-center h-full space-y-6'>
+    <div className='flex flex-col justify-center items-center h-full space-y-6 mt-10'>
       <h2 className='text-3xl font-bold'>
         Bienvenido al Dashboard, {auth.user.rol.toUpperCase()}
       </h2>

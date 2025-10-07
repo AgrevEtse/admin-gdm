@@ -26,7 +26,7 @@ const ListStudentsAdmin = () => {
 
   const fetchCiclos = useCallback(async () => {
     try {
-      const res = await fetchWithAuth('/ciclo/')
+      const res = await fetchWithAuth('/ciclo')
       const data = await res.json()
       setCiclos(data)
     } catch (error) {
@@ -44,7 +44,7 @@ const ListStudentsAdmin = () => {
     setStudents([])
     setIsLoading(true)
     try {
-      const res = await fetchWithAuth('/alumno/todos/', {
+      const res = await fetchWithAuth('/alumno/todos', {
         method: 'POST',
         body: JSON.stringify({
           rol: auth.user.rol,
@@ -67,6 +67,7 @@ const ListStudentsAdmin = () => {
     setActiveStudents(newActive)
   }
 
+  // TODO: Hacer fetch del ciclo dependiendo el grado
   useEffect(() => {
     document.title = 'Alumnos - GDM Admin'
 
