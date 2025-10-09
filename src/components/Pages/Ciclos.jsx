@@ -134,20 +134,20 @@ const Ciclos = () => {
 
       {/* TODO: Mejorar el diseño de las cards y hacerlas más grandes */}
       <h2 className='text-xl font-bold'>Ciclos Activos</h2>
-      <div className='w-full max-w-4xl px-4 flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0'>
-        <div className='card bg-base-100 w-96'>
+      <div className='w-full max-w-4xl px-4 flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0 justify-center'>
+        <div className='card bg-base-100 w-3xs'>
           <div className='card-body'>
-            <h2 className='card-title'>Ciclo Anual</h2>
-            <p>
+            <h2 className='card-title justify-center'>Ciclo Anual</h2>
+            <p className='text-center'>
               {cicloAnual ? cicloAnual.nombre : 'No hay ciclo anual actual'}
             </p>
           </div>
         </div>
 
-        <div className='card bg-base-100 w-96'>
+        <div className='card bg-base-100 w-3xs'>
           <div className='card-body'>
-            <h2 className='card-title'>Ciclo Semestral</h2>
-            <p>
+            <h2 className='card-title justify-center'>Ciclo Semestral</h2>
+            <p className='text-center'>
               {cicloSemestral
                 ? cicloSemestral.nombre
                 : 'No hay ciclo semestral actual'}

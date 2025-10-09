@@ -7,7 +7,6 @@ import {
   getGradosByEscolaridad,
   getFirstGradoByEscolaridad,
   getIdEscolaridad,
-  getUUIDByEscolaridad
 } from '@/utils/escolaridadGradosHelpers'
 import { getEscolaridadById, getGradoById } from '@/utils/escolaridadIdHelpers'
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
@@ -19,7 +18,25 @@ const EditInscripcion = () => {
   const navigate = useNavigate()
 
   const [inscripcion, setInscripcion] = useState(DEFAULT_INSCRIPCION)
+  const [cicloAnnual, setCicloAnnual] = useState('00000000-0000-0000-0000-000000000000')
+  const [cicloBiannual, setCicloBiannual] = useState('00000000-0000-0000-0000-000000000001')
   const [isLoading, setIsLoading] = useState(false)
+
+  const fetchActualCiclos = useCallback(async () => {
+    try {
+      const resCicloAnnual = await fetchWithAuth('/ciclo/anual')
+      const dataCicloAnual = await resCicloAnnual.json()
+      setCicloAnnual(dataCicloAnual.id)
+
+      const resCicloBiannual = await fetchWithAuth('/ciclo/semestre')
+      const dataCicloBiannual = await resCicloBiannual.json()
+      setCicloBiannual(dataCicloBiannual.id)
+
+    } catch (error) {
+      console.error(error)
+      toast.error('Error al obtener los ciclos escolares')
+    }
+  })
 
   const fetchInscripcion = useCallback(async () => {
     setIsLoading(true)
@@ -52,6 +69,7 @@ const EditInscripcion = () => {
   useEffect(() => {
     document.title = `Editar Inscripción - ${curp} - GDM Admin`
 
+    fetchActualCiclos()
     fetchInscripcion()
   }, [curp, fetchInscripcion])
 
@@ -127,7 +145,7 @@ const EditInscripcion = () => {
                           e.target.value,
                           getFirstGradoByEscolaridad(e.target.value)
                         ),
-                        id_ciclo: getUUIDByEscolaridad(e.target.value)
+                        id_ciclo: e.target.value === 'Bachillerato' ? cicloBiannual : cicloAnnual,
                       }
                     })
                   }}
