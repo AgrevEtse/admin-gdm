@@ -20,13 +20,21 @@ const Dashboard = () => {
         className='w-3/4'
         alt='Escudo de la escuela Gómez de Mendiola'
       />
-      <div className='mt-4'>
+      <div className='mt-4 flex space-x-4'>
         <Link
           to='/dashboard/alumnos'
           className='btn btn-secondary hover:scale-105 transition-transform duration-200 ease-in-out'
         >
           Alumnos
         </Link>
+        {auth.user.rol === 'admin' && (
+          <Link
+            to='/dashboard/ciclos'
+            className='btn btn-secondary hover:scale-105 transition-transform duration-200 ease-in-out'
+          >
+            Ciclos
+          </Link>
+        )}
       </div>
     </div>
   )

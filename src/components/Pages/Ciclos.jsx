@@ -134,20 +134,20 @@ const Ciclos = () => {
 
       {/* TODO: Mejorar el diseño de las cards y hacerlas más grandes */}
       <h2 className='text-xl font-bold'>Ciclos Activos</h2>
-      <div className='w-full max-w-4xl px-4 flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0'>
-        <div className='card bg-base-100 w-96'>
+      <div className='w-full max-w-4xl px-4 flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0 justify-center'>
+        <div className='card bg-base-100 w-3xs'>
           <div className='card-body'>
-            <h2 className='card-title'>Ciclo Anual</h2>
-            <p>
+            <h2 className='card-title justify-center'>Ciclo Anual</h2>
+            <p className='text-center'>
               {cicloAnual ? cicloAnual.nombre : 'No hay ciclo anual actual'}
             </p>
           </div>
         </div>
 
-        <div className='card bg-base-100 w-96'>
+        <div className='card bg-base-100 w-3xs'>
           <div className='card-body'>
-            <h2 className='card-title'>Ciclo Semestral</h2>
-            <p>
+            <h2 className='card-title justify-center'>Ciclo Semestral</h2>
+            <p className='text-center'>
               {cicloSemestral
                 ? cicloSemestral.nombre
                 : 'No hay ciclo semestral actual'}
@@ -159,11 +159,101 @@ const Ciclos = () => {
       <div className='divider'></div>
 
       {/* TODO: Mejorar el diseño de las cards */}
+      <h2 className='text-xl font-bold'>Asignar Ciclos</h2>
+      <div className='w-full max-w-4xl px-4 flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0'>
+        <div className='card card-border bg-base-100'>
+          <div className='card-body space-y-2'>
+            <h2 className='card-title justify-center'>Anual</h2>
+
+            <label className='select select-md border-white mx-auto max-w-sm lg:min-w-sm'>
+              <span className='label'>
+                Ciclo <span className='text-rose-600'>*</span>
+              </span>
+              <select
+                value={newCicloAnual}
+                required
+                onChange={(e) => {
+                  setNewCicloAnual(e.target.value)
+                }}
+              >
+                <option
+                  disabled
+                  value=''
+                >
+                  Selecciona el ciclo...
+                </option>
+                {annualCiclos.map((c) => (
+                  <option
+                    key={c.id}
+                    value={c.nombre}
+                  >
+                    {c.nombre}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <div className='card-actions justify-end'>
+              <button
+                className='btn btn-primary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+                onClick={() => handleAssignCiclo('anual')}
+              >
+                Asignar Anual
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className='card card-border bg-base-100'>
+          <div className='card-body space-y-2'>
+            <h2 className='card-title justify-center'>Semestral</h2>
+            <label className='select select-md border-white mx-auto max-w-sm lg:min-w-sm'>
+              <span className='label'>
+                Ciclo <span className='text-rose-600'>*</span>
+              </span>
+              <select
+                value={newCicloSemestral}
+                required
+                onChange={(e) => {
+                  setNewCicloSemestral(e.target.value)
+                }}
+              >
+                <option
+                  disabled
+                  value=''
+                >
+                  Selecciona el ciclo...
+                </option>
+                {biannualCiclos.map((c) => (
+                  <option
+                    key={c.id}
+                    value={c.nombre}
+                  >
+                    {c.nombre}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <div className='card-actions justify-end'>
+              <button
+                className='btn btn-primary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+                onClick={() => handleAssignCiclo('semestral')}
+              >
+                Asignar Semestral
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className='divider'></div>
+
+      {/* TODO: Mejorar el diseño de las cards */}
       <h2 className='text-xl font-bold'>Crear Ciclo</h2>
       <div className='w-full max-w-4xl px-4 flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0'>
         <div className='card card-border bg-base-100 w-full'>
           <div className='card-body'>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-2'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mb-2'>
               <TextInputForm
                 label='Nombre del Ciclo'
                 value={newCiclo.nombre}
@@ -234,96 +324,6 @@ const Ciclos = () => {
                 onClick={handleCreateCiclo}
               >
                 Crear Ciclo
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className='divider'></div>
-
-      {/* TODO: Mejorar el diseño de las cards */}
-      <h2 className='text-xl font-bold'>Asignar Ciclos</h2>
-      <div className='w-full max-w-4xl px-4 flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0'>
-        <div className='card card-border bg-base-100'>
-          <div className='card-body'>
-            <h2 className='card-title'>Anual</h2>
-
-            <label className='select select-md border-white mx-auto max-w-sm lg:min-w-sm'>
-              <span className='label'>
-                Ciclo <span className='text-rose-600'>*</span>
-              </span>
-              <select
-                value={newCicloAnual}
-                required
-                onChange={(e) => {
-                  setNewCicloAnual(e.target.value)
-                }}
-              >
-                <option
-                  disabled
-                  value=''
-                >
-                  Selecciona el ciclo...
-                </option>
-                {annualCiclos.map((c) => (
-                  <option
-                    key={c.id}
-                    value={c.nombre}
-                  >
-                    {c.nombre}
-                  </option>
-                ))}
-              </select>
-            </label>
-
-            <div className='card-actions justify-end'>
-              <button
-                className='btn btn-primary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
-                onClick={() => handleAssignCiclo('anual')}
-              >
-                Asignar Anual
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className='card card-border bg-base-100'>
-          <div className='card-body'>
-            <h2 className='card-title'>Semestral</h2>
-            <label className='select select-md border-white mx-auto max-w-sm lg:min-w-sm'>
-              <span className='label'>
-                Ciclo <span className='text-rose-600'>*</span>
-              </span>
-              <select
-                value={newCicloSemestral}
-                required
-                onChange={(e) => {
-                  setNewCicloSemestral(e.target.value)
-                }}
-              >
-                <option
-                  disabled
-                  value=''
-                >
-                  Selecciona el ciclo...
-                </option>
-                {biannualCiclos.map((c) => (
-                  <option
-                    key={c.id}
-                    value={c.nombre}
-                  >
-                    {c.nombre}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <div className='card-actions justify-end'>
-              <button
-                className='btn btn-primary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
-                onClick={() => handleAssignCiclo('semestral')}
-              >
-                Asignar Semestral
               </button>
             </div>
           </div>

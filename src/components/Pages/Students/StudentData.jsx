@@ -62,13 +62,13 @@ const StudentData = () => {
       const dataTutor2 = await resTutor2.json()
       setTutor2(dataTutor2)
 
-      const resHermanos = await fetchWithAuth(`/hermano/${curp}`)
-      const dataHermanos = await resHermanos.json()
-      setHermanos(dataHermanos.slice(0, 3))
+      //const resHermanos = await fetchWithAuth(`/hermano/${curp}?ciclo=${ciclo}`)
+      //const dataHermanos = await resHermanos.json()
+      //setHermanos(dataHermanos.slice(0, 3))
 
-      const resContactos = await fetchWithAuth(`/contactoemergencia/${curp}`)
-      const dataContactos = await resContactos.json()
-      setContacto(dataContactos.slice(0, 3))
+      //const resContactos = await fetchWithAuth(`/contactoemergencia/${curp}`)
+      //const dataContactos = await resContactos.json()
+      //setContacto(dataContactos.slice(0, 3))
 
       const resPago = await fetchWithAuth(`/personapagos/${curp}`)
       const dataPago = await resPago.json()
