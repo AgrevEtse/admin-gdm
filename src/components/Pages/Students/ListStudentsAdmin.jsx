@@ -21,7 +21,25 @@ const ListStudentsAdmin = () => {
   const [activeStudents, setActiveStudents] = useState(
     searchParams.get('activeStudents') === '1' ? 1 : 0
   )
+  const [cicloAnnual, setCicloAnnual] = useState('')
+  const [cicloBiannual, setCicloBiannual] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+
+  const fetchActualCiclos = useCallback(async () => {
+    try {
+      const resCicloAnnual = await fetchWithAuth('/ciclo/anual')
+      const dataCicloAnual = await resCicloAnnual.json()
+      setCicloAnnual(dataCicloAnual.nombre)
+      setCiclo(dataCicloAnual.nombre)
+
+      const resCicloBiannual = await fetchWithAuth('/ciclo/semestre')
+      const dataCicloBiannual = await resCicloBiannual.json()
+      setCicloBiannual(dataCicloBiannual.nombre)
+    } catch (error) {
+      console.error(error)
+      toast.error('Error al obtener los ciclos escolares')
+    }
+  }, [fetchWithAuth])
 
   const fetchCiclos = useCallback(async () => {
     try {
@@ -35,12 +53,12 @@ const ListStudentsAdmin = () => {
   }, [fetchWithAuth])
 
   const fetchStudents = useCallback(async () => {
-    if (grado === 0 || grado === '0') {
+    if ((grado === 0 || grado === '0') && !isLoading) {
       toast.error('Por favor, selecciona un grado escolar.')
       return
     }
 
-    if (ciclo === 0 || ciclo === '0') {
+    if ((ciclo === 0 || ciclo === '0') && !isLoading) {
       toast.error('Por favor, selecciona un ciclo escolar.')
       return
     }
@@ -74,6 +92,11 @@ const ListStudentsAdmin = () => {
   useEffect(() => {
     document.title = 'Alumnos - GDM Admin'
 
+    fetchActualCiclos()
+    fetchCiclos()
+  }, [fetchActualCiclos, fetchCiclos])
+
+  useEffect(() => {
     const params = {
       grado,
       ciclo,
@@ -82,11 +105,10 @@ const ListStudentsAdmin = () => {
 
     setSearchParams(params)
 
-    fetchCiclos()
     fetchStudents()
   }, [
-    fetchStudents,
     fetchCiclos,
+    fetchStudents,
     grado,
     ciclo,
     activeStudents,
@@ -114,7 +136,9 @@ const ListStudentsAdmin = () => {
             value={grado}
             onChange={(e) => {
               setGrado(e.target.value)
-              setCiclo(0)
+              e.target.value === 'bachillerato'
+                ? setCiclo(cicloBiannual)
+                : setCiclo(cicloAnnual)
             }}
           >
             <option

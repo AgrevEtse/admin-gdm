@@ -36,7 +36,7 @@ const EditInscripcion = () => {
       console.error(error)
       toast.error('Error al obtener los ciclos escolares')
     }
-  })
+  }, [fetchWithAuth])
 
   const fetchInscripcion = useCallback(async () => {
     setIsLoading(true)
@@ -71,7 +71,7 @@ const EditInscripcion = () => {
 
     fetchActualCiclos()
     fetchInscripcion()
-  }, [curp, fetchInscripcion])
+  }, [curp, fetchInscripcion, fetchActualCiclos])
 
   const handleUpdate = async (e) => {
     e.preventDefault()

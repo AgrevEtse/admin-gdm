@@ -53,11 +53,13 @@ const NavBar = () => {
             Alumnos
           </button>
         </Link>
-        <Link to='/dashboard/ciclos'>
-          <button className='btn btn-secondary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'>
-            Ciclos
-          </button>
-        </Link>
+        {auth.user.rol === 'admin' && (
+          <Link to='/dashboard/ciclos'>
+            <button className='btn btn-secondary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'>
+              Ciclos
+            </button>
+          </Link>
+        )}
       </div>
 
       {/* Hamburguer Menu */}

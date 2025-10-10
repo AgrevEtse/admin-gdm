@@ -36,7 +36,7 @@ const ListStudentsAdmin = () => {
   }, [fetchWithAuth])
 
   const fetchStudents = useCallback(async () => {
-    if (ciclo === 0) {
+    if ((ciclo === 0 || ciclo === '0') && !isLoading) {
       toast.error('Por favor, selecciona un ciclo escolar.')
       return
     }
@@ -67,10 +67,27 @@ const ListStudentsAdmin = () => {
     setActiveStudents(newActive)
   }
 
-  // TODO: Hacer fetch del ciclo dependiendo el grado
+  const fetchActualCiclo = useCallback(async () => {
+    const grado = auth.user.rol === 'bachillerato' ? 'semestre' : 'anual'
+
+    try {
+      const resCiclo = await fetchWithAuth(`/ciclo/${grado}`)
+      const dataCiclo = await resCiclo.json()
+      setCiclo(dataCiclo.nombre)
+    } catch (error) {
+      console.error(error)
+      toast.error('Error al obtener los ciclos escolares')
+    }
+  }, [fetchWithAuth])
+
   useEffect(() => {
     document.title = 'Alumnos - GDM Admin'
 
+    fetchCiclos()
+    fetchActualCiclo()
+  }, [fetchCiclos, fetchActualCiclo])
+
+  useEffect(() => {
     const params = {
       ciclo,
       activeStudents: activeStudents.toString()
@@ -78,9 +95,8 @@ const ListStudentsAdmin = () => {
 
     setSearchParams(params)
 
-    fetchCiclos()
     fetchStudents()
-  }, [fetchStudents, fetchCiclos, ciclo, activeStudents, setSearchParams])
+  }, [fetchStudents, ciclo, activeStudents, setSearchParams])
 
   const filteredStudents = students.filter(
     ({ nombre, apellido_paterno, apellido_materno, curp }) => {
