@@ -6,7 +6,7 @@ import { DEFAULT_INSCRIPCION } from '@/utils/defaultStates'
 import {
   getGradosByEscolaridad,
   getFirstGradoByEscolaridad,
-  getIdEscolaridad,
+  getIdEscolaridad
 } from '@/utils/escolaridadGradosHelpers'
 import { getEscolaridadById, getGradoById } from '@/utils/escolaridadIdHelpers'
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
@@ -18,8 +18,12 @@ const EditInscripcion = () => {
   const navigate = useNavigate()
 
   const [inscripcion, setInscripcion] = useState(DEFAULT_INSCRIPCION)
-  const [cicloAnnual, setCicloAnnual] = useState('00000000-0000-0000-0000-000000000000')
-  const [cicloBiannual, setCicloBiannual] = useState('00000000-0000-0000-0000-000000000001')
+  const [cicloAnnual, setCicloAnnual] = useState(
+    '00000000-0000-0000-0000-000000000000'
+  )
+  const [cicloBiannual, setCicloBiannual] = useState(
+    '00000000-0000-0000-0000-000000000001'
+  )
   const [isLoading, setIsLoading] = useState(false)
 
   const fetchActualCiclos = useCallback(async () => {
@@ -31,7 +35,6 @@ const EditInscripcion = () => {
       const resCicloBiannual = await fetchWithAuth('/ciclo/semestre')
       const dataCicloBiannual = await resCicloBiannual.json()
       setCicloBiannual(dataCicloBiannual.id)
-
     } catch (error) {
       console.error(error)
       toast.error('Error al obtener los ciclos escolares')
@@ -145,7 +148,10 @@ const EditInscripcion = () => {
                           e.target.value,
                           getFirstGradoByEscolaridad(e.target.value)
                         ),
-                        id_ciclo: e.target.value === 'Bachillerato' ? cicloBiannual : cicloAnnual,
+                        id_ciclo:
+                          e.target.value === 'Bachillerato'
+                            ? cicloBiannual
+                            : cicloAnnual
                       }
                     })
                   }}
