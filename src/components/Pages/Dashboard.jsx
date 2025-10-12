@@ -27,14 +27,12 @@ const Dashboard = () => {
         >
           Alumnos
         </Link>
-        {auth.user.rol === 'admin' && (
-          <Link
-            to='/dashboard/ciclos'
-            className='btn btn-secondary hover:scale-105 transition-transform duration-200 ease-in-out'
-          >
-            Ciclos
-          </Link>
-        )}
+        <Link
+          to='/dashboard/ciclos'
+          className='btn btn-secondary hover:scale-105 transition-transform duration-200 ease-in-out'
+        >
+          Ciclos
+        </Link>
       </div>
     </div>
   )

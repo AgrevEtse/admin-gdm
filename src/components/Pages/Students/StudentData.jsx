@@ -62,13 +62,13 @@ const StudentData = () => {
       const dataTutor2 = await resTutor2.json()
       setTutor2(dataTutor2)
 
-      //const resHermanos = await fetchWithAuth(`/hermano/${curp}?ciclo=${ciclo}`)
-      //const dataHermanos = await resHermanos.json()
-      //setHermanos(dataHermanos.slice(0, 3))
+      const resHermanos = await fetchWithAuth(`/hermano/${curp}?ciclo=${ciclo}`)
+      const dataHermanos = await resHermanos.json()
+      setHermanos(dataHermanos.slice(0, 3))
 
-      //const resContactos = await fetchWithAuth(`/contactoemergencia/${curp}`)
-      //const dataContactos = await resContactos.json()
-      //setContacto(dataContactos.slice(0, 3))
+      const resContactos = await fetchWithAuth(`/contactoemergencia/${curp}`)
+      const dataContactos = await resContactos.json()
+      setContacto(dataContactos.slice(0, 3))
 
       const resPago = await fetchWithAuth(`/personapagos/${curp}`)
       const dataPago = await resPago.json()
@@ -158,7 +158,7 @@ const StudentData = () => {
     const a = document.createElement('a')
     a.href = url
     a.download = nombreArchivo
-    document.body.appendChild(a) // necesario para Firefox
+    document.body.appendChild(a) // Necesario para Firefox segúnn Copilot
     a.click()
     a.remove()
     URL.revokeObjectURL(url)
@@ -558,17 +558,14 @@ const StudentData = () => {
                 <UsersFourIcon size={48} />
               </div>
               {contacto.map((contacto, i) => (
-                <div
-                  key={contacto.id}
-                  className=''
-                >
+                <div key={contacto.id}>
                   <p className='text-sm'>
                     <span className='font-bold'>Contacto {i + 1}</span>:{' '}
                     {contacto.nombre}
                   </p>
                   <p className='text-sm'>
                     <span className='font-bold'>Parentesco</span>:{' '}
-                    {getParentescoById(contacto.parentesco)}
+                    {contacto.parentesco}
                   </p>
                   <p className='text-sm'>
                     <span className='font-bold'>Teléfono</span>:{' '}

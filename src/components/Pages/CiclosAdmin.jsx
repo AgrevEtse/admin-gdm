@@ -8,7 +8,7 @@ import { createDateISOString } from '@/utils/dateFormater'
 import CiclosSectionSkeleton from '@/components/UI/CiclosSectionSkeleton'
 import TextInputForm from '@/components/UI/TextInputForm'
 
-const Ciclos = () => {
+const CiclosAdmin = () => {
   const fetchWithAuth = useFetchWithAuth()
 
   const [ciclos, setCiclos] = useState([])
@@ -126,22 +126,6 @@ const Ciclos = () => {
       <h2 className='text-3xl font-bold'>Ciclos</h2>
       <div className='divider'></div>
 
-      {/* {isLoading ? (
-        <>
-          <div className='w-full flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0'>
-            
-          </div>
-          <div className='divider'></div>
-          <div className='w-full flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0 justify-center items-center'>
-            <CiclosSectionSkeleton />
-            <CiclosSectionSkeleton />
-          </div>
-          <div className='divider'></div>
-          <CiclosSectionSkeleton />
-        </>
-      ) : '' } */}
-
-      {/* TODO: Mejorar el diseño de las cards y hacerlas más grandes */}
       <h2 className='text-xl font-bold'>Ciclos Activos</h2>
       <div className='w-full px-4 flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0 justify-center'>
         {isLoading ? (
@@ -361,4 +345,4 @@ const Ciclos = () => {
   )
 }
 
-export default Ciclos
+export default CiclosAdmin

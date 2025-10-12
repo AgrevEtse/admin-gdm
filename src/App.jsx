@@ -11,7 +11,8 @@ import Dashboard from '@/components/Pages/Dashboard'
 import ListStudentsAdmin from '@/components/Pages/Students/ListStudentsAdmin'
 import ListStudentsMortal from '@/components/Pages/Students/ListStudentsMortal'
 import StudentData from '@/components/Pages/Students/StudentData'
-import Ciclos from '@/components/Pages/Ciclos'
+import CiclosAdmin from '@/components/Pages/CiclosAdmin'
+import CiclosMortal from '@/components/Pages/CiclosMortal'
 import {
   EditAlumno,
   EditDomicilio,
@@ -98,10 +99,17 @@ const App = () => {
               />
             </Route>
 
-            <Route
-              path='ciclos'
-              element={<Ciclos />}
-            />
+            {auth.user.rol === 'admin' ? (
+              <Route
+                path='ciclos'
+                element={<CiclosAdmin />}
+              />
+            ) : (
+              <Route
+                path='ciclos'
+                element={<CiclosMortal />}
+              />
+            )}
           </Route>
         </Route>
       </Routes>
