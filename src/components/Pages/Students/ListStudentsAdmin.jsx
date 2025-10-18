@@ -53,15 +53,15 @@ const ListStudentsAdmin = () => {
   }, [fetchWithAuth])
 
   const fetchStudents = useCallback(async () => {
-    if ((grado === 0 || grado === '0') && !isLoading) {
-      toast.error('Por favor, selecciona un grado escolar.')
-      return
-    }
+      if ((grado === 0 || grado === '0') && !isLoading) {
+        toast.error('Por favor, selecciona un grado escolar.')
+        return
+      }
 
-    if ((ciclo === 0 || ciclo === '0') && !isLoading) {
-      toast.error('Por favor, selecciona un ciclo escolar.')
-      return
-    }
+      if ((ciclo === 0 || ciclo === '0') && !isLoading) {
+        toast.error('Por favor, selecciona un ciclo escolar.')
+        return
+      }
 
     setStudents([])
     setIsLoading(true)
@@ -156,11 +156,11 @@ const ListStudentsAdmin = () => {
           <select
             className='select w-full max-w-xs'
             value={ciclo}
-            disabled={!grado} //TODO: Desactivar si grado es "0" (en string)
+            disabled={!grado}
             onChange={(e) => setCiclo(e.target.value)}
           >
             <option
-              value='0'
+              value='0' 
               disabled
             >
               Selecciona un ciclo...
@@ -188,7 +188,7 @@ const ListStudentsAdmin = () => {
             Inactivo
             <input
               type='checkbox'
-              disabled={!ciclo} //TODO: Desactivar si ciclo es "0" (en string)
+              disabled={!ciclo}
               checked={activeStudents}
               onChange={handleActiveToggle}
               className='toggle toggle-lg border-warning bg-warning checked:border-warning checked:bg-warning text-warning-content'
@@ -202,7 +202,7 @@ const ListStudentsAdmin = () => {
           </span>
           <input
             placeholder='alejandro, ZEPEDA, VAIO020327...'
-            disabled={!grado || !ciclo} //TODO: Desactivar si grado o ciclo es "0" (en string)
+            disabled={!grado || !ciclo}
             type='text'
             onChange={(e) => {
               setSearch(e.target.value)
@@ -210,7 +210,7 @@ const ListStudentsAdmin = () => {
           />
         </label>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 justify-center items-center'>
+      <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 justify-center items-center'>
         {isLoading &&
           Array.from({ length: 6 }).map((_, i) => (
             <StudentCardSkeleton key={i} />
@@ -225,9 +225,13 @@ const ListStudentsAdmin = () => {
         ))}
 
         {filteredStudents.length === 0 && !isLoading && (
-          <div className='col-span-full text-center text-gray-500'>
-            No se encontraron alumnos.
-          </div>
+          <>
+            <div className='w-2xs'></div>
+            <div className='w-2xs text-center text-gray-500'>
+              No se encontraron alumnos.
+            </div>
+            <div className='w-2xs'></div>
+          </>
         )}
       </div>
     </div>

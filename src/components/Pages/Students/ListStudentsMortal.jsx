@@ -160,7 +160,7 @@ const ListStudentsAdmin = () => {
             <MagnifyingGlassIcon size={20} />
           </span>
           <input
-            placeholder='jesus, ZEPEDA, VAIO020327...'
+            placeholder='alejandro, ZEPEDA, VAIO020327...'
             type='text'
             disabled={!ciclo}
             onChange={(e) => {
@@ -184,9 +184,13 @@ const ListStudentsAdmin = () => {
         ))}
 
         {filteredStudents.length === 0 && !isLoading && (
-          <div className='col-span-full text-center text-gray-500'>
-            No se encontraron alumnos.
-          </div>
+          <>
+            <div className='w-2xs'></div>
+            <div className='w-2xs text-center text-gray-500'>
+              No se encontraron alumnos.
+            </div>
+            <div className='w-2xs'></div>
+          </>
         )}
       </div>
     </div>
