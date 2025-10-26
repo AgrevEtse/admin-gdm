@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast'
 import { DEFAULT_PAGO } from '@/utils/defaultStates'
 import { createReducer } from '@/utils/reducer'
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
-import { PARENTESCO_ARRAY } from '@/utils/parentescoHelpers'
+import { PARENTESCO_ARRAY_PAGO } from '@/utils/parentescoHelpers'
 import { PagoSchema } from '@/schemas/PagoSchema'
 import TextInputForm from '@/components/UI/TextInputForm'
 
@@ -53,8 +53,8 @@ const EditPago = () => {
           name === 'responsable'
             ? Number(value)
             : name === 'factura'
-              ? value === 'true'
-              : value
+            ? Number(value)
+            : value
       }
     })
   }
@@ -91,7 +91,7 @@ const EditPago = () => {
   }
 
   return (
-    <div className='card bg-base-100 shadow-sm w-full mx-auto px-0 lg:px-8 border-white border-1'>
+    <div className='card bg-base-100 shadow-sm w-full mx-auto px-0 lg:px-8 border-white border'>
       <div className='card-body'>
         <h2 className='card-title text-3xl justify-center items-center mb-6'>
           Datos de la Persona de Pagos
@@ -135,7 +135,7 @@ const EditPago = () => {
                   >
                     Escoge el parentesco...
                   </option>
-                  {PARENTESCO_ARRAY.map((parentesco) => (
+                  {PARENTESCO_ARRAY_PAGO.map((parentesco) => (
                     <option
                       key={parentesco.id}
                       value={parentesco.value}
@@ -175,12 +175,12 @@ const EditPago = () => {
                 >
                   <option
                     disabled
-                    value='0'
+                    value=''
                   >
                     Escoge la opción...
                   </option>
-                  <option value={true}>Sí</option>
-                  <option value={false}>No</option>
+                  <option value={1}>Sí</option>
+                  <option value={0}>No</option>
                 </select>
               </label>
             </>

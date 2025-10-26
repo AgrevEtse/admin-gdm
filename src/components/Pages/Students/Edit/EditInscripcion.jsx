@@ -109,7 +109,7 @@ const EditInscripcion = () => {
   }
 
   return (
-    <div className='card bg-base-100 shadow-sm w-full mx-auto px-0 lg:px-8 border-white border-1'>
+    <div className='card bg-base-100 shadow-sm w-full mx-auto px-0 lg:px-8 border-white border'>
       <div className='card-body'>
         <h2 className='card-title text-3xl justify-center items-center mb-6'>
           Datos de la Inscripción
@@ -185,7 +185,11 @@ const EditInscripcion = () => {
                         id_escolaridad: getIdEscolaridad(
                           prev.escolaridad,
                           e.target.value
-                        )
+                        ),
+                        id_ciclo:
+                          prev.escolaridad === 'Bachillerato'
+                            ? cicloBiannual
+                            : cicloAnnual
                       }
                     })
                   }}

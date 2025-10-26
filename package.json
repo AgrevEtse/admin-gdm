@@ -12,28 +12,28 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
-    "@tailwindcss/vite": "^4.1.13",
-    "daisyui": "^5.1.13",
+    "@tailwindcss/vite": "^4.1.16",
+    "daisyui": "^5.3.10",
     "prop-types": "^15.8.1",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-hot-toast": "^2.6.0",
-    "react-router-dom": "^7.9.1",
-    "tailwindcss": "^4.1.13",
-    "zod": "^4.1.9"
+    "react-router-dom": "^7.9.4",
+    "tailwindcss": "^4.1.16",
+    "zod": "^4.1.12"
   },
   "devDependencies": {
-    "@eslint/js": "^9.36.0",
-    "@types/react": "^19.1.13",
-    "@types/react-dom": "^19.1.9",
-    "@vitejs/plugin-react-swc": "^4.1.0",
-    "eslint": "^9.36.0",
+    "@eslint/js": "^9.38.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react-swc": "^4.2.0",
+    "eslint": "^9.38.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
+    "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.4.0",
     "prettier": "^3.6.2",
-    "vite": "^7.1.6"
+    "vite": "^7.1.12"
   },
   "prettier": {
     "semi": false,
@@ -45,5 +45,6 @@
     "bracketSpacing": true,
     "endOfLine": "crlf"
   },
-  "packageManager": "pnpm@10.18.3+sha512.bbd16e6d7286fd7e01f6b3c0b3c932cda2965c06a908328f74663f10a9aea51f1129eea615134bf992831b009eabe167ecb7008b597f40ff9bc75946aadfb08d"
+  "packageManager": "pnpm@10.19.0+sha512.c9fc7236e92adf5c8af42fd5bf1612df99c2ceb62f27047032f4720b33f8eacdde311865e91c411f2774f618d82f320808ecb51718bfa82c060c4ba7c76a32b8"
+
 }

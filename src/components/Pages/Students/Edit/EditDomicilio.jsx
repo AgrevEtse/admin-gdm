@@ -84,7 +84,7 @@ const EditDomicilio = () => {
   }
 
   return (
-    <div className='card bg-base-100 shadow-sm w-full mx-auto px-0 lg:px-8 border-white border-1'>
+    <div className='card bg-base-100 shadow-sm w-full mx-auto px-0 lg:px-8 border-white border'>
       <div className='card-body'>
         <h2 className='card-title text-3xl justify-center items-center mb-6'>
           Datos del Domicilio

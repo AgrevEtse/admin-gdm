@@ -1,30 +1,26 @@
 [
   {
-    "id": 1,
-    "nombre": "Papá"
+    "id": "padre",
+    "nombre": "Padre"
   },
   {
-    "id": 2,
-    "nombre": "Mamá"
+    "id": "madre",
+    "nombre": "Madre"
   },
   {
-    "id": 3,
-    "nombre": "Tío"
-  },
-  {
-    "id": 4,
+    "id": "tia",
     "nombre": "Tía"
   },
   {
-    "id": 5,
+    "id": "tio",
+    "nombre": "Tío"
+  },
+  {
+    "id": "abuelo",
     "nombre": "Abuelo"
   },
   {
-    "id": 6,
+    "id": "abuela",
     "nombre": "Abuela"
-  },
-  {
-    "id": 7,
-    "nombre": "Otro"
   }
 ]

@@ -135,7 +135,7 @@ const CiclosAdmin = () => {
           </>
         ) : (
           <>
-            <div className='card bg-emerald-500 w-xs border-1'>
+            <div className='card bg-emerald-500 w-xs border'>
               <div className='card-body'>
                 <h2 className='card-title justify-center'>Ciclo Anual</h2>
                 <p className='text-center'>
@@ -143,7 +143,7 @@ const CiclosAdmin = () => {
                 </p>
               </div>
             </div>
-            <div className='card bg-red-500 w-xs border-1'>
+            <div className='card bg-red-500 w-xs border'>
               <div className='card-body'>
                 <h2 className='card-title justify-center'>Ciclo Semestral</h2>
                 <p className='text-center'>
@@ -168,7 +168,7 @@ const CiclosAdmin = () => {
           </>
         ) : (
           <>
-            <div className='card bg-emerald-500 border-1'>
+            <div className='card bg-emerald-500 border'>
               <div className='card-body space-y-2'>
                 <h2 className='card-title justify-center'>Anual</h2>
 
@@ -211,7 +211,7 @@ const CiclosAdmin = () => {
               </div>
             </div>
 
-            <div className='card bg-red-500 border-1'>
+            <div className='card bg-red-500 border'>
               <div className='card-body space-y-2'>
                 <h2 className='card-title justify-center'>Semestral</h2>
                 <label className='select select-md border-white mx-auto max-w-sm lg:min-w-sm'>
@@ -262,7 +262,7 @@ const CiclosAdmin = () => {
         {isLoading ? (
           <CiclosSectionSkeleton />
         ) : (
-          <div className='card bg-secondary w-full border-1'>
+          <div className='card bg-secondary w-full border'>
             <div className='card-body'>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mb-2'>
                 <TextInputForm
