@@ -54,6 +54,7 @@ const ListStudentsAdmin = () => {
       })
 
       const data = await res.json()
+      data.sort((a, b) => a.curp.localeCompare(b.curp))
       setStudents(data)
     } catch (error) {
       console.error('Error fetching alumnos:', error)

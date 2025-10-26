@@ -20,14 +20,14 @@ const StudentCard = ({ student, ciclo }) => {
     !escolaridad
   ) {
     return (
-      <div className='card bg-primary text-primary-content w-2xs h-64 shadow-primary shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
+      <div className='card bg-primary text-primary-content w-2xs h-64 shadow-primary shadow-sm border hover:shadow-lg transition-shadow duration-200 ease-in-out'>
         Datos incompletos
       </div>
     )
   }
 
   return (
-    <div className='card bg-primary text-primary-content w-2xs h-64 mx-auto shadow-primary shadow-sm border-1 hover:shadow-lg transition-shadow duration-200 ease-in-out'>
+    <div className='card bg-primary text-primary-content w-2xs h-64 mx-auto shadow-primary shadow-sm border hover:shadow-lg transition-shadow duration-200 ease-in-out'>
       <div className='card-body'>
         <h2 className='card-title'>{curp}</h2>
         <p>{`${fullName}`}</p>
