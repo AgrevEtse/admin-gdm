@@ -33,6 +33,12 @@ const Dashboard = () => {
         >
           Ciclos
         </Link>
+        <Link
+          to='/dashboard/bajas'
+          className='btn btn-secondary hover:scale-105 transition-transform duration-200 ease-in-out'
+        >
+          Bajas
+        </Link>
       </div>
     </div>
   )

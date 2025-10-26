@@ -58,6 +58,11 @@ const NavBar = () => {
             Ciclos
           </button>
         </Link>
+        <Link to='/dashboard/bajas'>
+          <button className='btn btn-accent active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'>
+            Bajas
+          </button>
+        </Link>
       </div>
 
       {/* Hamburguer Menu */}

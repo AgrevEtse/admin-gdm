@@ -110,6 +110,11 @@ const App = () => {
                 element={<CiclosMortal />}
               />
             )}
+
+            <Route
+              path='bajas'
+              element={<h1>Baneo</h1>}
+            />
           </Route>
         </Route>
       </Routes>
