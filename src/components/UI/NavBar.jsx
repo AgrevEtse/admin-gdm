@@ -8,6 +8,7 @@ import {
 } from '@phosphor-icons/react'
 
 import useAuth from '@/context/useAuth'
+import RoleBasedView from '@/components/Layout/RoleBasedView'
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -58,11 +59,17 @@ const NavBar = () => {
             Ciclos
           </button>
         </Link>
-        <Link to='/dashboard/bajas'>
-          <button className='btn btn-accent active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'>
-            Bajas
-          </button>
-        </Link>
+
+        <RoleBasedView
+          adminComponent={
+            <Link to='/dashboard/bajas'>
+              <button className='btn btn-accent active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'>
+                Bajas
+              </button>
+            </Link>
+          }
+          mortalComponent={null}
+        />
       </div>
 
       {/* Hamburguer Menu */}

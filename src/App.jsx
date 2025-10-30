@@ -1,18 +1,15 @@
 import { Route, Routes } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 
-import useAuth from '@/context/useAuth'
-
 import Login from '@/components/Pages/Login'
 import ProtectedRoute from '@/components/Layout/ProtectedRoute'
 import DashboardLayout from '@/components/Layout/DashboardLayout'
-import EditLayout from '@/components/Layout/EditLayout'
 import Dashboard from '@/components/Pages/Dashboard'
+import RoleBasedView from '@/components/Layout/RoleBasedView'
 import ListStudentsAdmin from '@/components/Pages/Students/ListStudentsAdmin'
 import ListStudentsMortal from '@/components/Pages/Students/ListStudentsMortal'
 import StudentData from '@/components/Pages/Students/StudentData'
-import CiclosAdmin from '@/components/Pages/CiclosAdmin'
-import CiclosMortal from '@/components/Pages/CiclosMortal'
+import EditLayout from '@/components/Layout/EditLayout'
 import {
   EditAlumno,
   EditDomicilio,
@@ -23,10 +20,11 @@ import {
   EditContactos,
   EditPago
 } from '@/components/Pages/Students/Edit'
+import CiclosAdmin from '@/components/Pages/CiclosAdmin'
+import CiclosMortal from '@/components/Pages/CiclosMortal'
+import Bajas from '@/components/Pages/Bajas'
 
 const App = () => {
-  const auth = useAuth()
-
   return (
     <>
       <Routes>
@@ -44,17 +42,15 @@ const App = () => {
               element={<Dashboard />}
             />
 
-            {auth.user.rol === 'admin' ? (
-              <Route
-                path='alumnos'
-                element={<ListStudentsAdmin />}
-              />
-            ) : (
-              <Route
-                path='alumnos'
-                element={<ListStudentsMortal />}
-              />
-            )}
+            <Route
+              path='alumnos'
+              element={
+                <RoleBasedView
+                  adminComponent={<ListStudentsAdmin />}
+                  mortalComponent={<ListStudentsMortal />}
+                />
+              }
+            />
 
             <Route
               path='alumnos/:curp/:ciclo'
@@ -99,21 +95,24 @@ const App = () => {
               />
             </Route>
 
-            {auth.user.rol === 'admin' ? (
-              <Route
-                path='ciclos'
-                element={<CiclosAdmin />}
-              />
-            ) : (
-              <Route
-                path='ciclos'
-                element={<CiclosMortal />}
-              />
-            )}
+            <Route
+              path='ciclos'
+              element={
+                <RoleBasedView
+                  adminComponent={<CiclosAdmin />}
+                  mortalComponent={<CiclosMortal />}
+                />
+              }
+            />
 
             <Route
               path='bajas'
-              element={<h1>Baneo</h1>}
+              element={
+                <RoleBasedView
+                  adminComponent={<Bajas />}
+                  mortalComponent={null}
+                />
+              }
             />
           </Route>
         </Route>

@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import useAuth from '@/context/useAuth'
+import RoleBasedView from '@/components/Layout/RoleBasedView'
 
 const Dashboard = () => {
   const auth = useAuth()
@@ -33,12 +34,18 @@ const Dashboard = () => {
         >
           Ciclos
         </Link>
-        <Link
-          to='/dashboard/bajas'
-          className='btn btn-secondary hover:scale-105 transition-transform duration-200 ease-in-out'
-        >
-          Bajas
-        </Link>
+
+        <RoleBasedView
+          adminComponent={
+            <Link
+              to='/dashboard/bajas'
+              className='btn btn-secondary hover:scale-105 transition-transform duration-200 ease-in-out'
+            >
+              Bajas
+            </Link>
+          }
+          mortalComponent={null}
+        />
       </div>
     </div>
   )
