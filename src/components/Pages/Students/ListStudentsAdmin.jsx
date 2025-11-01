@@ -53,15 +53,15 @@ const ListStudentsAdmin = () => {
   }, [fetchWithAuth])
 
   const fetchStudents = useCallback(async () => {
-      if ((grado === 0 || grado === '0') && !isLoading) {
-        toast.error('Por favor, selecciona un grado escolar.')
-        return
-      }
+    if ((grado === 0 || grado === '0') && !isLoading) {
+      toast.error('Por favor, selecciona un grado escolar.')
+      return
+    }
 
-      if ((ciclo === 0 || ciclo === '0') && !isLoading) {
-        toast.error('Por favor, selecciona un ciclo escolar.')
-        return
-      }
+    if ((ciclo === 0 || ciclo === '0') && !isLoading) {
+      toast.error('Por favor, selecciona un ciclo escolar.')
+      return
+    }
 
     setStudents([])
     setIsLoading(true)
@@ -161,7 +161,7 @@ const ListStudentsAdmin = () => {
             onChange={(e) => setCiclo(e.target.value)}
           >
             <option
-              value='0' 
+              value='0'
               disabled
             >
               Selecciona un ciclo...

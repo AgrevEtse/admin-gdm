@@ -53,8 +53,8 @@ const EditPago = () => {
           name === 'responsable'
             ? Number(value)
             : name === 'factura'
-            ? Number(value)
-            : value
+              ? Number(value)
+              : value
       }
     })
   }
