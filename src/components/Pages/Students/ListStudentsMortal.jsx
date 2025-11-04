@@ -82,7 +82,7 @@ const ListStudentsAdmin = () => {
   }, [fetchWithAuth])
 
   useEffect(() => {
-    document.title = 'Alumnos - GDM Admin'
+    document.title = 'Inscripciones - GDM Admin'
 
     fetchCiclos()
     fetchActualCiclo()
@@ -111,7 +111,7 @@ const ListStudentsAdmin = () => {
 
   return (
     <div className='mx-auto w-full h-full py-[5vh]'>
-      <h2 className='text-5xl font-bold text-center'>Lista de Alumnos</h2>
+      <h2 className='text-5xl font-bold text-center'>Lista de Inscripciones</h2>
       <div className='flex flex-col items-center my-8 space-y-4'>
         <div className='flex flex-row justify-center items-center space-x-4 w-full max-w-2xl'>
           <select

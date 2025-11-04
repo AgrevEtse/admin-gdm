@@ -23,10 +23,10 @@ const Dashboard = () => {
       />
       <div className='mt-4 flex space-x-4'>
         <Link
-          to='/dashboard/alumnos'
+          to='/dashboard/inscripciones'
           className='btn btn-secondary hover:scale-105 transition-transform duration-200 ease-in-out'
         >
-          Alumnos
+          Inscripciones
         </Link>
         <Link
           to='/dashboard/ciclos'

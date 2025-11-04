@@ -90,7 +90,7 @@ const StudentData = () => {
   }, [curp, fetchWithAuth, ciclo])
 
   useEffect(() => {
-    document.title = `${curp} - GDM Admin`
+    document.title = `${curp} - Inscripciones - GDM Admin`
 
     fecthStudentData()
   }, [curp, fecthStudentData, ciclo])
@@ -286,7 +286,9 @@ const StudentData = () => {
                 <button
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
                   onClick={() => {
-                    navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/alumno`)
+                    navigate(
+                      `/dashboard/inscripciones/${curp}/${ciclo}/edit/alumno`
+                    )
                   }}
                   disabled={isLoading}
                 >
@@ -331,7 +333,7 @@ const StudentData = () => {
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
                   onClick={() => {
                     navigate(
-                      `/dashboard/alumnos/${curp}/${ciclo}/edit/domicilio`
+                      `/dashboard/inscripciones/${curp}/${ciclo}/edit/domicilio`
                     )
                   }}
                   disabled={isLoading}
@@ -367,7 +369,7 @@ const StudentData = () => {
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
                   onClick={() => {
                     navigate(
-                      `/dashboard/alumnos/${curp}/${ciclo}/edit/esc-procedencia`
+                      `/dashboard/inscripciones/${curp}/${ciclo}/edit/esc-procedencia`
                     )
                   }}
                   disabled={isLoading}
@@ -407,7 +409,7 @@ const StudentData = () => {
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
                   onClick={() => {
                     navigate(
-                      `/dashboard/alumnos/${curp}/${ciclo}/edit/inscripcion`
+                      `/dashboard/inscripciones/${curp}/${ciclo}/edit/inscripcion`
                     )
                   }}
                   disabled={isLoading}
@@ -453,7 +455,9 @@ const StudentData = () => {
                 <button
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
                   onClick={() => {
-                    navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/tutor/1`)
+                    navigate(
+                      `/dashboard/inscripciones/${curp}/${ciclo}/edit/tutor/1`
+                    )
                   }}
                   disabled={isLoading}
                 >
@@ -498,7 +502,9 @@ const StudentData = () => {
                 <button
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
                   onClick={() => {
-                    navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/tutor/2`)
+                    navigate(
+                      `/dashboard/inscripciones/${curp}/${ciclo}/edit/tutor/2`
+                    )
                   }}
                   disabled={isLoading}
                 >
@@ -537,7 +543,7 @@ const StudentData = () => {
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
                   onClick={() => {
                     navigate(
-                      `/dashboard/alumnos/${curp}/${ciclo}/edit/hermanos`
+                      `/dashboard/inscripciones/${curp}/${ciclo}/edit/hermanos`
                     )
                   }}
                   disabled={isLoading}
@@ -578,7 +584,7 @@ const StudentData = () => {
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
                   onClick={() => {
                     navigate(
-                      `/dashboard/alumnos/${curp}/${ciclo}/edit/contactos`
+                      `/dashboard/inscripciones/${curp}/${ciclo}/edit/contactos`
                     )
                   }}
                   disabled={isLoading}
@@ -620,7 +626,9 @@ const StudentData = () => {
                 <button
                   className='btn btn-success active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
                   onClick={() => {
-                    navigate(`/dashboard/alumnos/${curp}/${ciclo}/edit/pago`)
+                    navigate(
+                      `/dashboard/inscripciones/${curp}/${ciclo}/edit/pago`
+                    )
                   }}
                   disabled={isLoading}
                 >

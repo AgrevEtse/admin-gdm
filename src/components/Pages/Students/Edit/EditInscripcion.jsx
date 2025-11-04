@@ -99,7 +99,7 @@ const EditInscripcion = () => {
         throw new Error('Error al actualizar la inscripción del alumno')
 
       toast.success('Inscripción actualizada correctamente')
-      navigate(`/dashboard/alumnos/`)
+      navigate(`/dashboard/inscripciones/`)
     } catch (error) {
       console.error(error.message)
       toast.error(error.message)

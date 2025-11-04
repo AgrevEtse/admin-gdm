@@ -44,7 +44,7 @@ const App = () => {
             />
 
             <Route
-              path='alumnos'
+              path='inscripciones'
               element={
                 <RoleBasedView
                   adminComponent={<ListStudentsAdmin />}
@@ -54,12 +54,12 @@ const App = () => {
             />
 
             <Route
-              path='alumnos/:curp/:ciclo'
+              path='inscripciones/:curp/:ciclo'
               element={<StudentData />}
             />
 
             <Route
-              path='alumnos/:curp/:ciclo/edit'
+              path='inscripciones/:curp/:ciclo/edit'
               element={<EditLayout />}
             >
               <Route

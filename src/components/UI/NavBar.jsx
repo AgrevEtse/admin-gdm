@@ -49,9 +49,9 @@ const NavBar = () => {
       </div>
 
       <div className='flex-1 hidden lg:flex justify-evenly'>
-        <Link to='/dashboard/alumnos'>
+        <Link to='/dashboard/inscripciones'>
           <button className='btn btn-accent active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'>
-            Alumnos
+            Inscripciones
           </button>
         </Link>
         <Link to='/dashboard/ciclos'>

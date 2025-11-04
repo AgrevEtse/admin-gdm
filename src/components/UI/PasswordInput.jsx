@@ -25,7 +25,7 @@ export default function PasswordInput({
       />
       <button
         type='button'
-        className='absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 cursor-pointer'
+        className='absolute right-3 top-1/2 -translate-y-1/2 text-white cursor-pointer'
         onClick={() => setShowPassword(!showPassword)}
       >
         {showPassword ? <EyeClosedIcon size={18} /> : <EyeIcon size={18} />}
