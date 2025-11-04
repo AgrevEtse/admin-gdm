@@ -61,7 +61,7 @@ const ListStudentsAdmin = () => {
     } finally {
       setIsLoading(false)
     }
-  }, [activeStudents, auth, fetchWithAuth, ciclo])
+  }, [activeStudents, auth, fetchWithAuth, ciclo, isLoading])
 
   const handleActiveToggle = () => {
     const newActive = activeStudents ? 0 : 1
@@ -79,7 +79,7 @@ const ListStudentsAdmin = () => {
       console.error(error)
       toast.error('Error al obtener los ciclos escolares')
     }
-  }, [fetchWithAuth])
+  }, [fetchWithAuth, auth])
 
   useEffect(() => {
     document.title = 'Inscripciones - GDM Admin'

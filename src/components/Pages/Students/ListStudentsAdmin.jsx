@@ -83,7 +83,7 @@ const ListStudentsAdmin = () => {
     } finally {
       setIsLoading(false)
     }
-  }, [activeStudents, grado, fetchWithAuth, ciclo])
+  }, [activeStudents, grado, fetchWithAuth, ciclo, isLoading])
 
   const handleActiveToggle = () => {
     const newActive = activeStudents ? 0 : 1

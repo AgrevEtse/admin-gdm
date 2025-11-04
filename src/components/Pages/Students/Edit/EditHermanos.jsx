@@ -33,7 +33,7 @@ const EditHermanos = () => {
     } finally {
       setIsLoading(false)
     }
-  }, [curp, fetchWithAuth])
+  }, [curp, fetchWithAuth, ciclo])
 
   useEffect(() => {
     document.title = `Editar Hermanos - ${curp} - GDM Admin`
