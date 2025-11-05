@@ -1,2 +1,12 @@
 # Fuerza los finales de línea LF en todos los archivos de texto
 * text eol=lf
+
+# Archivos binarios (no convertir, no tocar)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.svg binary
+*.ico binary
+*.pdf binary
