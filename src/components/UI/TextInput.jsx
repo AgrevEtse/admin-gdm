@@ -8,7 +8,7 @@ const TextInput = ({
   onChange
 }) => {
   return (
-    <label className='floating-label w-full mx-auto'>
+    <label className='floating-label mx-auto w-full'>
       <span className=''>{label}</span>
       <input
         className='input input-md mx-auto'

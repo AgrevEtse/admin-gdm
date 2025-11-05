@@ -128,10 +128,10 @@ const ListStudentsAdmin = () => {
   const biannualCiclos = ciclos.filter((c) => !c.es_anual)
 
   return (
-    <div className='mx-auto w-full h-full py-[5vh]'>
-      <h2 className='text-5xl font-bold text-center'>Lista de Inscripciones</h2>
-      <div className='flex flex-col items-center lg:items-end my-8 space-y-4'>
-        <div className='flex flex-row justify-between items-center space-x-4 w-full max-w-2xl'>
+    <div className='mx-auto h-full w-full py-[5vh]'>
+      <h2 className='text-center text-5xl font-bold'>Lista de Inscripciones</h2>
+      <div className='my-8 flex flex-col items-center space-y-4 lg:items-end'>
+        <div className='flex w-full max-w-2xl flex-row items-center justify-between space-x-4'>
           <select
             className='select w-full max-w-xs'
             value={grado}
@@ -211,7 +211,7 @@ const ListStudentsAdmin = () => {
           />
         </label>
       </div>
-      <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 justify-center items-center'>
+      <div className='grid w-full grid-cols-1 items-center justify-center gap-8 p-4 md:grid-cols-2 lg:grid-cols-3'>
         {isLoading &&
           Array.from({ length: 6 }).map((_, i) => (
             <StudentCardSkeleton key={i} />

@@ -54,11 +54,11 @@ function Login() {
   }
 
   return (
-    <fieldset className='fieldset bg-primary border border-primary-content p-4 rounded-box w-1/3'>
+    <fieldset className='fieldset bg-primary border-primary-content rounded-box w-1/3 border p-4'>
       <legend className='fieldset-legend text-3xl'>Log In</legend>
       <p className='text-lg'>Inicia sesión para acceder a tu cuenta.</p>
       <form
-        className='flex flex-col gap-6 mt-6 w-1/2 justify-center items-center mx-auto'
+        className='mx-auto mt-6 flex w-1/2 flex-col items-center justify-center gap-6'
         onSubmit={handleLogin}
       >
         <TextInput

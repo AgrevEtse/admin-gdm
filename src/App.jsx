@@ -23,6 +23,7 @@ import {
 import CiclosAdmin from '@/components/Pages/CiclosAdmin'
 import CiclosMortal from '@/components/Pages/CiclosMortal'
 import BajasList from '@/components/Pages/Bajas/BajasList'
+import BajasAlumnosList from '@/components/Pages/Bajas/BajasAlumnosList'
 import BajasForm from '@/components/Pages/Bajas/BajasForm'
 
 const App = () => {
@@ -111,6 +112,16 @@ const App = () => {
               element={
                 <RoleBasedView
                   adminComponent={<BajasList />}
+                  mortalComponent={null}
+                />
+              }
+            />
+
+            <Route
+              path='bajas/alumnos'
+              element={
+                <RoleBasedView
+                  adminComponent={<BajasAlumnosList />}
                   mortalComponent={null}
                 />
               }

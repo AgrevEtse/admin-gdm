@@ -12,7 +12,7 @@ export default function PasswordInput({
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <label className='floating-label w-full mx-auto relative'>
+    <label className='floating-label relative mx-auto w-full'>
       <span>{label}</span>
       <input
         className='input input-md mx-auto pr-10' // padding-right extra para que no choque el botón
@@ -25,7 +25,7 @@ export default function PasswordInput({
       />
       <button
         type='button'
-        className='absolute right-3 top-1/2 -translate-y-1/2 text-white cursor-pointer'
+        className='absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer text-white'
         onClick={() => setShowPassword(!showPassword)}
       >
         {showPassword ? <EyeClosedIcon size={18} /> : <EyeIcon size={18} />}

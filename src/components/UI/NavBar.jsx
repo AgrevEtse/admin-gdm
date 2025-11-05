@@ -30,17 +30,17 @@ const NavBar = () => {
   }, [])
 
   return (
-    <nav className='fixed top-0 navbar bg-primary text-primary-content shadow-sm h-10 w-[90vw] mx-auto rounded-box z-100 left-1/2 -translate-x-1/2 px-6'>
+    <nav className='navbar bg-primary text-primary-content rounded-box fixed top-0 left-1/2 z-100 mx-auto h-10 w-[90vw] -translate-x-1/2 px-6 shadow-sm'>
       <div className='flex-1 space-x-4'>
         <button
           onClick={() => navigate(-1)}
-          className='btn btn-warning text-xl active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+          className='btn btn-warning text-xl transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
         >
           <ArrowFatLeftIcon size={24} />
         </button>
         <Link to='/dashboard'>
           <button
-            className='btn btn-ghost text-xl active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+            className='btn btn-ghost text-xl transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
             title='GDM Admin'
           >
             GDM Admin
@@ -48,14 +48,14 @@ const NavBar = () => {
         </Link>
       </div>
 
-      <div className='flex-1 hidden lg:flex justify-evenly'>
+      <div className='hidden flex-1 justify-evenly lg:flex'>
         <Link to='/dashboard/inscripciones'>
-          <button className='btn btn-accent active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'>
+          <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
             Inscripciones
           </button>
         </Link>
         <Link to='/dashboard/ciclos'>
-          <button className='btn btn-accent active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'>
+          <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
             Ciclos
           </button>
         </Link>
@@ -63,8 +63,19 @@ const NavBar = () => {
         <RoleBasedView
           adminComponent={
             <Link to='/dashboard/bajas'>
-              <button className='btn btn-accent active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'>
-                Bajas
+              <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
+                Dar de Baja
+              </button>
+            </Link>
+          }
+          mortalComponent={null}
+        />
+
+        <RoleBasedView
+          adminComponent={
+            <Link to='/dashboard/bajas/alumnos'>
+              <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
+                Bajas Alumnos
               </button>
             </Link>
           }
@@ -73,9 +84,9 @@ const NavBar = () => {
       </div>
 
       {/* Hamburguer Menu */}
-      <div className='flex-1 flex justify-end relative'>
+      <div className='relative flex flex-1 justify-end'>
         <button
-          className='btn btn-secondary active:scale-110 hover:scale-110 transition-transform duration-200 ease-in-out'
+          className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-110 active:scale-110'
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <ListIcon size={32} />
@@ -84,24 +95,24 @@ const NavBar = () => {
 
       {isMenuOpen && (
         <div
-          className='absolute top-full right-4 mt-2 bg-base-200 rounded-box shadow-lg z-50 w-52 justify-center items-center text-center mx-auto p-4 flex flex-col'
+          className='bg-base-200 rounded-box absolute top-full right-4 z-50 mx-auto mt-2 flex w-52 flex-col items-center justify-center p-4 text-center shadow-lg'
           ref={menuRef}
         >
-          <div className='flex flex-col items-center my-4'>
+          <div className='my-4 flex flex-col items-center'>
             <UserIcon
               size={80}
-              className='bg-cyan-600 rounded-full'
+              className='rounded-full bg-cyan-600'
             />
             {auth.user && (
-              <p className='text-lg font-semibold mt-2'>
+              <p className='mt-2 text-lg font-semibold'>
                 {auth.user.rol.toUpperCase()}
               </p>
             )}
           </div>
-          <ul className='menu menu-compact p-2 justify-center items-center text-center mx-auto'>
+          <ul className='menu menu-compact mx-auto items-center justify-center p-2 text-center'>
             <li>
               <button
-                className='btn btn-error w-full text-white active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+                className='btn btn-error w-full text-white transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                 onClick={auth.logout}
               >
                 <SignOutIcon size={20} />

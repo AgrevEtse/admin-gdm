@@ -6,7 +6,7 @@ const DashboardLayout = () => {
   return (
     <div>
       <NavBar />
-      <div className='w-full h-full'>
+      <div className='h-full w-full'>
         <Outlet />
       </div>
     </div>

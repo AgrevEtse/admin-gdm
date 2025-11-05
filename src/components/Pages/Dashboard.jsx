@@ -12,7 +12,7 @@ const Dashboard = () => {
   }, [])
 
   return (
-    <div className='flex flex-col justify-center items-center h-full space-y-6 mt-10'>
+    <div className='mt-10 flex h-full flex-col items-center justify-center space-y-6'>
       <h2 className='text-3xl font-bold'>
         Bienvenido al Dashboard, {auth.user.rol.toUpperCase()}
       </h2>
@@ -24,13 +24,13 @@ const Dashboard = () => {
       <div className='mt-4 flex space-x-4'>
         <Link
           to='/dashboard/inscripciones'
-          className='btn btn-secondary hover:scale-105 transition-transform duration-200 ease-in-out'
+          className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105'
         >
           Inscripciones
         </Link>
         <Link
           to='/dashboard/ciclos'
-          className='btn btn-secondary hover:scale-105 transition-transform duration-200 ease-in-out'
+          className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105'
         >
           Ciclos
         </Link>
@@ -39,9 +39,21 @@ const Dashboard = () => {
           adminComponent={
             <Link
               to='/dashboard/bajas'
-              className='btn btn-secondary hover:scale-105 transition-transform duration-200 ease-in-out'
+              className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105'
             >
-              Bajas
+              Dar de Baja
+            </Link>
+          }
+          mortalComponent={null}
+        />
+
+        <RoleBasedView
+          adminComponent={
+            <Link
+              to='/dashboard/bajas/alumnos'
+              className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105'
+            >
+              Bajas Alumnos
             </Link>
           }
           mortalComponent={null}

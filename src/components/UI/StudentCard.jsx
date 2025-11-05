@@ -21,21 +21,21 @@ const StudentCard = ({ student, ciclo }) => {
     !escolaridad
   ) {
     return (
-      <div className='card bg-primary text-primary-content w-2xs h-64 shadow-primary shadow-sm border hover:shadow-lg transition-shadow duration-200 ease-in-out'>
+      <div className='card bg-primary text-primary-content shadow-primary h-64 w-2xs border shadow-sm transition-shadow duration-200 ease-in-out hover:shadow-lg'>
         Datos incompletos
       </div>
     )
   }
 
   return (
-    <div className='card bg-primary text-primary-content w-2xs h-64 mx-auto shadow-primary shadow-sm border hover:shadow-lg transition-shadow duration-200 ease-in-out'>
+    <div className='card bg-primary text-primary-content shadow-primary mx-auto h-64 w-2xs border shadow-sm transition-shadow duration-200 ease-in-out hover:shadow-lg'>
       <div className='card-body'>
         <h2 className='card-title'>{curp}</h2>
         <p>{`${fullName}`}</p>
         <p>Escolaridad: {escolaridad}</p>
         <div className='card-actions justify-end'>
           <button
-            className='btn btn-secondary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+            className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
             onClick={() => {
               navigate(`/dashboard/inscripciones/${curp}/${ciclo}`)
             }}

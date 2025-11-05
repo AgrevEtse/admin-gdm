@@ -4,10 +4,10 @@ import { toast } from 'react-hot-toast'
 
 import { textNormalize } from '@/utils/textNormalize'
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
-import BajasItem from '@/components/UI/BajasItem'
-import BajasItemSkeleton from '@/components/UI/BajasItemSkeleton'
+import BajasAlumnoItem from '@/components/UI/BajasAlumnoItem'
+import BajasAlumnoItemSkeleton from '@/components/UI/BajasAlumnoItemSkeleton'
 
-const BajasList = () => {
+const BajasAlumnosList = () => {
   const fetchWithAuth = useFetchWithAuth()
 
   const [students, setStudents] = useState([])
@@ -17,7 +17,7 @@ const BajasList = () => {
   const fetchStudents = useCallback(async () => {
     setIsLoading(true)
     try {
-      const res = await fetchWithAuth('/alumno/all')
+      const res = await fetchWithAuth('/baneo/alumno')
       const data = await res.json()
       data.sort((a, b) => a.curp.localeCompare(b.curp))
       setStudents(data)
@@ -30,7 +30,7 @@ const BajasList = () => {
   }, [fetchWithAuth])
 
   useEffect(() => {
-    document.title = 'Dar de Baja - GDM Admin'
+    document.title = 'Bajas Alumnos - GDM Admin'
 
     fetchStudents()
   }, [fetchStudents])
@@ -44,7 +44,7 @@ const BajasList = () => {
 
   return (
     <div className='mx-auto h-full w-full py-[5vh]'>
-      <h2 className='text-center text-5xl font-bold'>Dar de Baja</h2>
+      <h2 className='text-center text-5xl font-bold'>Bajas Alumnos</h2>
       <div className='my-8 flex flex-col items-center space-y-4 lg:items-end'>
         <label className='input input-md'>
           <span className='label'>
@@ -62,7 +62,7 @@ const BajasList = () => {
         <div className='flex w-full flex-col items-center justify-between space-y-4'>
           {isLoading &&
             Array.from({ length: 6 }).map((_, i) => (
-              <BajasItemSkeleton key={i} />
+              <BajasAlumnoItemSkeleton key={i} />
             ))}
           {!isLoading && filteredStudents.length === 0 && (
             <div className='w-2xl max-w-full p-6 text-center'>
@@ -72,7 +72,7 @@ const BajasList = () => {
           {!isLoading &&
             filteredStudents.length > 0 &&
             filteredStudents.map((student) => (
-              <BajasItem
+              <BajasAlumnoItem
                 key={student.curp}
                 student={student}
               />
@@ -83,4 +83,4 @@ const BajasList = () => {
   )
 }
 
-export default BajasList
+export default BajasAlumnosList
