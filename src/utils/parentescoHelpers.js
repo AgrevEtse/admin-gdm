@@ -8,7 +8,7 @@ export const getParentescoById = (parentescoId) => {
     4: 'Tío',
     5: 'Abuelo',
     6: 'Abuela',
-    7: 'Otro',
+    7: 'Otro'
   }
 
   return parentescoMap[parentescoId] || 'Otro'
@@ -20,8 +20,10 @@ export const PARENTESCO_ARRAY = parentescoJSON.map(({ id, nombre }) => ({
   label: nombre
 }))
 
-export const PARENTESCO_ARRAY_PAGO = parentescoJSON.map(({ id, nombre }, index) => ({
-  id,
-  value: index + 1,
-  label: nombre
-}))
+export const PARENTESCO_ARRAY_PAGO = parentescoJSON.map(
+  ({ id, nombre }, index) => ({
+    id,
+    value: index + 1,
+    label: nombre
+  })
+)

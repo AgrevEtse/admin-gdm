@@ -53,15 +53,15 @@ const ListStudentsAdmin = () => {
   }, [fetchWithAuth])
 
   const fetchStudents = useCallback(async () => {
-      if ((grado === 0 || grado === '0') && !isLoading) {
-        toast.error('Por favor, selecciona un grado escolar.')
-        return
-      }
+    if ((grado === 0 || grado === '0') && !isLoading) {
+      toast.error('Por favor, selecciona un grado escolar.')
+      return
+    }
 
-      if ((ciclo === 0 || ciclo === '0') && !isLoading) {
-        toast.error('Por favor, selecciona un ciclo escolar.')
-        return
-      }
+    if ((ciclo === 0 || ciclo === '0') && !isLoading) {
+      toast.error('Por favor, selecciona un ciclo escolar.')
+      return
+    }
 
     setStudents([])
     setIsLoading(true)
@@ -83,7 +83,7 @@ const ListStudentsAdmin = () => {
     } finally {
       setIsLoading(false)
     }
-  }, [activeStudents, grado, fetchWithAuth, ciclo])
+  }, [activeStudents, grado, fetchWithAuth, ciclo, isLoading])
 
   const handleActiveToggle = () => {
     const newActive = activeStudents ? 0 : 1
@@ -91,7 +91,7 @@ const ListStudentsAdmin = () => {
   }
 
   useEffect(() => {
-    document.title = 'Alumnos - GDM Admin'
+    document.title = 'Inscripciones - GDM Admin'
 
     fetchActualCiclos()
     fetchCiclos()
@@ -128,10 +128,10 @@ const ListStudentsAdmin = () => {
   const biannualCiclos = ciclos.filter((c) => !c.es_anual)
 
   return (
-    <div className='mx-auto w-full h-full py-[5vh]'>
-      <h2 className='text-5xl font-bold text-center'>Lista de Alumnos</h2>
-      <div className='flex flex-col items-center lg:items-end my-8 space-y-4'>
-        <div className='flex flex-row justify-between items-center space-x-4 w-full max-w-2xl'>
+    <div className='mx-auto h-full w-full py-[5vh]'>
+      <h2 className='text-center text-5xl font-bold'>Lista de Inscripciones</h2>
+      <div className='my-8 flex flex-col items-center space-y-4 lg:items-end'>
+        <div className='flex w-full max-w-2xl flex-row items-center justify-between space-x-4'>
           <select
             className='select w-full max-w-xs'
             value={grado}
@@ -161,7 +161,7 @@ const ListStudentsAdmin = () => {
             onChange={(e) => setCiclo(e.target.value)}
           >
             <option
-              value='0' 
+              value='0'
               disabled
             >
               Selecciona un ciclo...
@@ -211,7 +211,7 @@ const ListStudentsAdmin = () => {
           />
         </label>
       </div>
-      <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 justify-center items-center'>
+      <div className='grid w-full grid-cols-1 items-center justify-center gap-8 p-4 md:grid-cols-2 lg:grid-cols-3'>
         {isLoading &&
           Array.from({ length: 6 }).map((_, i) => (
             <StudentCardSkeleton key={i} />

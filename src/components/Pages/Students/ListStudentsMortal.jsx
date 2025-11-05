@@ -61,7 +61,7 @@ const ListStudentsAdmin = () => {
     } finally {
       setIsLoading(false)
     }
-  }, [activeStudents, auth, fetchWithAuth, ciclo])
+  }, [activeStudents, auth, fetchWithAuth, ciclo, isLoading])
 
   const handleActiveToggle = () => {
     const newActive = activeStudents ? 0 : 1
@@ -79,10 +79,10 @@ const ListStudentsAdmin = () => {
       console.error(error)
       toast.error('Error al obtener los ciclos escolares')
     }
-  }, [fetchWithAuth])
+  }, [fetchWithAuth, auth])
 
   useEffect(() => {
-    document.title = 'Alumnos - GDM Admin'
+    document.title = 'Inscripciones - GDM Admin'
 
     fetchCiclos()
     fetchActualCiclo()
@@ -110,10 +110,10 @@ const ListStudentsAdmin = () => {
   const biannualCiclos = ciclos.filter((c) => !c.es_anual)
 
   return (
-    <div className='mx-auto w-full h-full py-[5vh]'>
-      <h2 className='text-5xl font-bold text-center'>Lista de Alumnos</h2>
-      <div className='flex flex-col items-center my-8 space-y-4'>
-        <div className='flex flex-row justify-center items-center space-x-4 w-full max-w-2xl'>
+    <div className='mx-auto h-full w-full py-[5vh]'>
+      <h2 className='text-center text-5xl font-bold'>Lista de Inscripciones</h2>
+      <div className='my-8 flex flex-col items-center space-y-4'>
+        <div className='flex w-full max-w-2xl flex-row items-center justify-center space-x-4'>
           <select
             className='select w-full max-w-xs'
             value={ciclo}
@@ -170,7 +170,7 @@ const ListStudentsAdmin = () => {
           />
         </label>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 justify-center items-center'>
+      <div className='grid grid-cols-1 items-center justify-center gap-8 p-4 md:grid-cols-2 lg:grid-cols-3'>
         {isLoading &&
           Array.from({ length: 6 }).map((_, i) => (
             <StudentCardSkeleton key={i} />

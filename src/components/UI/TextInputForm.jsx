@@ -8,7 +8,7 @@ const TextInputForm = ({
   onChange
 }) => {
   return (
-    <label className='input border-white mx-auto max-w-sm lg:min-w-sm'>
+    <label className='input mx-auto max-w-sm border-white lg:min-w-sm'>
       <span className='label'>
         {label} {required && <span className='text-rose-600'>*</span>}
       </span>

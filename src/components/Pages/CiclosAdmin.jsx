@@ -122,12 +122,12 @@ const CiclosAdmin = () => {
   const biannualCiclos = ciclos.filter((c) => !c.es_anual)
 
   return (
-    <div className='flex flex-col justify-center items-center h-full space-y-6 mt-10'>
+    <div className='mt-10 flex h-full flex-col items-center justify-center space-y-6'>
       <h2 className='text-3xl font-bold'>Ciclos</h2>
       <div className='divider'></div>
 
       <h2 className='text-xl font-bold'>Ciclos Activos</h2>
-      <div className='w-full px-4 flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0 justify-center'>
+      <div className='flex w-full flex-col justify-center space-y-6 px-4 md:flex-row md:space-y-0 md:space-x-6'>
         {isLoading ? (
           <>
             <CiclosSectionSkeleton />
@@ -135,7 +135,7 @@ const CiclosAdmin = () => {
           </>
         ) : (
           <>
-            <div className='card bg-emerald-500 w-xs border'>
+            <div className='card w-xs border bg-emerald-500'>
               <div className='card-body'>
                 <h2 className='card-title justify-center'>Ciclo Anual</h2>
                 <p className='text-center'>
@@ -143,7 +143,7 @@ const CiclosAdmin = () => {
                 </p>
               </div>
             </div>
-            <div className='card bg-red-500 w-xs border'>
+            <div className='card w-xs border bg-red-500'>
               <div className='card-body'>
                 <h2 className='card-title justify-center'>Ciclo Semestral</h2>
                 <p className='text-center'>
@@ -160,7 +160,7 @@ const CiclosAdmin = () => {
       <div className='divider'></div>
 
       <h2 className='text-xl font-bold'>Asignar Ciclos</h2>
-      <div className='w-full px-4 flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0'>
+      <div className='flex w-full flex-col space-y-6 px-4 md:flex-row md:space-y-0 md:space-x-6'>
         {isLoading ? (
           <>
             <CiclosSectionSkeleton />
@@ -168,11 +168,11 @@ const CiclosAdmin = () => {
           </>
         ) : (
           <>
-            <div className='card bg-emerald-500 border'>
+            <div className='card border bg-emerald-500'>
               <div className='card-body space-y-2'>
                 <h2 className='card-title justify-center'>Anual</h2>
 
-                <label className='select select-md border-white mx-auto max-w-sm lg:min-w-sm'>
+                <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
                   <span className='label'>
                     Ciclo <span className='text-rose-600'>*</span>
                   </span>
@@ -202,7 +202,7 @@ const CiclosAdmin = () => {
 
                 <div className='card-actions justify-end'>
                   <button
-                    className='btn btn-primary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+                    className='btn btn-primary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                     onClick={() => handleAssignCiclo('anual')}
                   >
                     Asignar Anual
@@ -211,10 +211,10 @@ const CiclosAdmin = () => {
               </div>
             </div>
 
-            <div className='card bg-red-500 border'>
+            <div className='card border bg-red-500'>
               <div className='card-body space-y-2'>
                 <h2 className='card-title justify-center'>Semestral</h2>
-                <label className='select select-md border-white mx-auto max-w-sm lg:min-w-sm'>
+                <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
                   <span className='label'>
                     Ciclo <span className='text-rose-600'>*</span>
                   </span>
@@ -243,7 +243,7 @@ const CiclosAdmin = () => {
                 </label>
                 <div className='card-actions justify-end'>
                   <button
-                    className='btn btn-primary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+                    className='btn btn-primary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                     onClick={() => handleAssignCiclo('semestral')}
                   >
                     Asignar Semestral
@@ -258,13 +258,13 @@ const CiclosAdmin = () => {
       <div className='divider'></div>
 
       <h2 className='text-xl font-bold'>Crear Ciclo</h2>
-      <div className='w-full px-4 flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0'>
+      <div className='flex w-full flex-col space-y-6 px-4 md:flex-row md:space-y-0 md:space-x-6'>
         {isLoading ? (
           <CiclosSectionSkeleton />
         ) : (
           <div className='card bg-secondary w-full border'>
             <div className='card-body'>
-              <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mb-2'>
+              <div className='mb-2 grid grid-cols-1 gap-6 md:grid-cols-2'>
                 <TextInputForm
                   label='Nombre del Ciclo'
                   value={newCiclo.nombre}
@@ -275,7 +275,7 @@ const CiclosAdmin = () => {
                   }
                   required={true}
                 />
-                <label className='select select-md border-white mx-auto max-w-sm lg:min-w-sm'>
+                <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
                   <span className='label'>
                     Tipo de Ciclo <span className='text-rose-600'>*</span>
                   </span>
@@ -299,7 +299,7 @@ const CiclosAdmin = () => {
                     <option value={false}>Semestral</option>
                   </select>
                 </label>
-                <label className='input input-md border-white mx-auto max-w-sm lg:min-w-sm'>
+                <label className='input input-md mx-auto max-w-sm border-white lg:min-w-sm'>
                   <span className='label'>
                     Fecha Inicio <span className='text-rose-600'>*</span>
                   </span>
@@ -313,7 +313,7 @@ const CiclosAdmin = () => {
                     name='fecha_inicio'
                   />
                 </label>
-                <label className='input input-md border-white mx-auto max-w-sm lg:min-w-sm'>
+                <label className='input input-md mx-auto max-w-sm border-white lg:min-w-sm'>
                   <span className='label'>
                     Fecha Fin <span className='text-rose-600'>*</span>
                   </span>
@@ -331,7 +331,7 @@ const CiclosAdmin = () => {
 
               <div className='card-actions justify-end'>
                 <button
-                  className='btn btn-primary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+                  className='btn btn-primary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                   onClick={handleCreateCiclo}
                 >
                   Crear Ciclo

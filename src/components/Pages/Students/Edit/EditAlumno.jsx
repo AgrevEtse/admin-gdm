@@ -85,22 +85,22 @@ const EditAlumno = () => {
   }
 
   return (
-    <div className='card bg-base-100 shadow-sm w-full mx-auto px-0 lg:px-8 border-white border'>
+    <div className='card bg-base-100 mx-auto w-full border border-white px-0 shadow-sm lg:px-8'>
       <div className='card-body'>
-        <h2 className='card-title text-3xl justify-center items-center mb-6'>
+        <h2 className='card-title mb-6 items-center justify-center text-3xl'>
           Datos del Alumno
         </h2>
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+        <div className='grid grid-cols-1 gap-8 lg:grid-cols-2'>
           {isLoading &&
             Array.from({ length: 12 }).map((_, index) => (
               <label
-                className='input border-white mx-auto max-w-sm lg:min-w-sm skeleton'
+                className='input skeleton mx-auto max-w-sm border-white lg:min-w-sm'
                 key={index}
               >
                 <span className='label skeleton'>
                   {'                              '}
                 </span>
-                <input className='border-white skeleton' />
+                <input className='skeleton border-white' />
               </label>
             ))}
           {!isLoading && (
@@ -132,7 +132,7 @@ const EditAlumno = () => {
                 required={true}
               />
 
-              <label className='select select-md border-white mx-auto max-w-sm lg:min-w-sm'>
+              <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
                 <span className='label'>
                   Género <span className='text-rose-600'>*</span>
                 </span>
@@ -153,7 +153,7 @@ const EditAlumno = () => {
                 </select>
               </label>
 
-              <label className='select select-md border-white mx-auto max-w-sm lg:min-w-sm'>
+              <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
                 <span className='label'>
                   Tipo Sanguíneo <span className='text-rose-600'>*</span>
                 </span>
@@ -180,7 +180,7 @@ const EditAlumno = () => {
                 </select>
               </label>
 
-              <label className='select select-md border-white mx-auto max-w-sm lg:min-w-sm'>
+              <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
                 <span className='label'>
                   Lateralidad <span className='text-rose-600'>*</span>
                 </span>
@@ -201,7 +201,7 @@ const EditAlumno = () => {
                 </select>
               </label>
 
-              <label className='input input-md border-white mx-auto max-w-sm lg:min-w-sm'>
+              <label className='input input-md mx-auto max-w-sm border-white lg:min-w-sm'>
                 <span className='label'>
                   Fecha Nacimiento <span className='text-rose-600'>*</span>
                 </span>
@@ -214,7 +214,7 @@ const EditAlumno = () => {
                 />
               </label>
 
-              <label className='select select-md border-white mx-auto max-w-sm lg:min-w-sm'>
+              <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
                 <span className='label'>
                   Nacionalidad <span className='text-rose-600'>*</span>
                 </span>
@@ -259,7 +259,7 @@ const EditAlumno = () => {
                 required={true}
               />
 
-              <fieldset className='fieldset max-w-sm lg:min-w-sm mx-auto flex flex-col justify-center items-center'>
+              <fieldset className='fieldset mx-auto flex max-w-sm flex-col items-center justify-center lg:min-w-sm'>
                 <legend className='fieldset-legend'>Cuestiones Médicas</legend>
                 <textarea
                   value={alumno.nota_enfermedad}
@@ -267,12 +267,12 @@ const EditAlumno = () => {
                   minLength={0}
                   maxLength={200}
                   name='nota_enfermedad'
-                  className='textarea h-24 border-white w-full '
+                  className='textarea h-24 w-full border-white'
                   placeholder='Indique si el alumno padece de alguna discapacidad, enfermedad crónica, alergias o algún tipo de tratamiento médico.'
                 ></textarea>
               </fieldset>
 
-              <fieldset className='fieldset max-w-sm lg:min-w-sm mx-auto flex flex-col justify-center items-center'>
+              <fieldset className='fieldset mx-auto flex max-w-sm flex-col items-center justify-center lg:min-w-sm'>
                 <legend className='fieldset-legend'>Terapias</legend>
                 <textarea
                   value={alumno.nota_terapia}
@@ -280,16 +280,16 @@ const EditAlumno = () => {
                   minLength={0}
                   maxLength={200}
                   name='nota_terapia'
-                  className='textarea h-24 border-white w-full'
+                  className='textarea h-24 w-full border-white'
                   placeholder='Indique si el alumno asiste a terapia, explique de que tipo: físico, psicológica u otra y por qué'
                 ></textarea>
               </fieldset>
             </>
           )}
         </div>
-        <div className='card-actions justify-end mt-4'>
+        <div className='card-actions mt-4 justify-end'>
           <button
-            className='btn btn-primary active:scale-105 hover:scale-105 transition-transform duration-200 ease-in-out'
+            className='btn btn-primary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
             onClick={handleUpdate}
             disabled={isLoading}
           >

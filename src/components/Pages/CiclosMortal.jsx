@@ -36,12 +36,12 @@ const CiclosMortal = () => {
   }, [fetchCiclos])
 
   return (
-    <div className='flex flex-col justify-center items-center h-full space-y-6 mt-10'>
+    <div className='mt-10 flex h-full flex-col items-center justify-center space-y-6'>
       <h2 className='text-3xl font-bold'>Ciclos</h2>
       <div className='divider'></div>
 
       <h2 className='text-xl font-bold'>Ciclos Activos</h2>
-      <div className='w-full px-4 flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0 justify-center'>
+      <div className='flex w-full flex-col justify-center space-y-6 px-4 md:flex-row md:space-y-0 md:space-x-6'>
         {isLoading ? (
           <>
             <CiclosSectionSkeleton />
@@ -49,7 +49,7 @@ const CiclosMortal = () => {
           </>
         ) : (
           <>
-            <div className='card bg-emerald-500 w-xs border'>
+            <div className='card w-xs border bg-emerald-500'>
               <div className='card-body'>
                 <h2 className='card-title justify-center'>Ciclo Anual</h2>
                 <p className='text-center'>
@@ -57,7 +57,7 @@ const CiclosMortal = () => {
                 </p>
               </div>
             </div>
-            <div className='card bg-red-500 w-xs border'>
+            <div className='card w-xs border bg-red-500'>
               <div className='card-body'>
                 <h2 className='card-title justify-center'>Ciclo Semestral</h2>
                 <p className='text-center'>
