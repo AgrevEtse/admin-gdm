@@ -35,14 +35,13 @@ const AppRouter = () => {
         />
         <Route element={<ProtectedRoute />}>
           <Route
-            path='/dashboard'
+            path='dashboard'
             element={<DashboardLayout />}
           >
             <Route
               index
               element={<Dashboard />}
             />
-
             <Route
               path='inscripciones'
               element={
@@ -52,12 +51,10 @@ const AppRouter = () => {
                 />
               }
             />
-
             <Route
               path='inscripciones/:curp/:ciclo'
               element={<StudentData />}
             />
-
             <Route
               path='inscripciones/:curp/:ciclo/edit'
               element={<EditLayout />}
@@ -66,36 +63,43 @@ const AppRouter = () => {
                 path='alumno'
                 element={<EditAlumno />}
               />
+
               <Route
                 path='domicilio'
                 element={<EditDomicilio />}
               />
+
               <Route
                 path='esc-procedencia'
                 element={<EditEscuelaProcedencia />}
               />
+
               <Route
                 path='inscripcion'
                 element={<EditInscripcion />}
               />
+
               <Route
                 path='tutor/:id'
                 element={<EditTutor />}
               />
+
               <Route
                 path='hermanos'
                 element={<EditHermanos />}
               />
+
               <Route
                 path='contactos'
                 element={<EditContactos />}
               />
+
               <Route
                 path='pago'
                 element={<EditPago />}
               />
-            </Route>
-
+            </Route>{' '}
+            {/* /inscripciones/:curp/:ciclo/edit */}
             <Route
               path='ciclos'
               element={
@@ -105,7 +109,6 @@ const AppRouter = () => {
                 />
               }
             />
-
             <Route
               path='bajas'
               element={
@@ -115,7 +118,6 @@ const AppRouter = () => {
                 />
               }
             />
-
             <Route
               path='bajas/alumnos'
               element={
@@ -125,7 +127,6 @@ const AppRouter = () => {
                 />
               }
             />
-
             <Route
               path='bajas/:curp'
               element={
@@ -135,8 +136,10 @@ const AppRouter = () => {
                 />
               }
             />
-          </Route>
-        </Route>
+          </Route>{' '}
+          {/* dashboard */}
+        </Route>{' '}
+        {/* <ProtectedRoute /> */}
       </Routes>
     </BrowserRouter>
   )

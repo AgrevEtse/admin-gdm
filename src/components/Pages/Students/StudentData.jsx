@@ -52,7 +52,7 @@ const StudentData = () => {
 
       const resDomicilio = await fetchWithAuth(`/domicilio/${curp}`)
       const dataDomicilio = await resDomicilio.json()
-      setDomicilio(dataDomicilio[0])
+      setDomicilio(dataDomicilio)
 
       const resTutor1 = await fetchWithAuth(`/tutor1/${curp}`)
       const dataTutor1 = await resTutor1.json()

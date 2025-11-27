@@ -83,7 +83,7 @@ const ListStudentsAdmin = () => {
     } finally {
       setIsLoading(false)
     }
-  }, [activeStudents, grado, fetchWithAuth, ciclo, isLoading])
+  }, [activeStudents, grado, fetchWithAuth, ciclo])
 
   const handleActiveToggle = () => {
     const newActive = activeStudents ? 0 : 1
@@ -107,15 +107,7 @@ const ListStudentsAdmin = () => {
     setSearchParams(params)
 
     fetchStudents()
-  }, [
-    fetchCiclos,
-    fetchStudents,
-    grado,
-    ciclo,
-    activeStudents,
-    setSearchParams,
-    searchParams
-  ])
+  }, [fetchStudents, grado, ciclo, activeStudents, setSearchParams])
 
   const filteredStudents = students.filter(
     ({ nombre, apellido_paterno, apellido_materno, curp }) => {
