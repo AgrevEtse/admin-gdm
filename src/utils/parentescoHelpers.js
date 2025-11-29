@@ -14,6 +14,20 @@ export const getParentescoById = (parentescoId) => {
   return parentescoMap[parentescoId] || 'Otro'
 }
 
+export const getParentescoByValue = (parentescoValue) => {
+  const parentescoMap = {
+    padre: 1,
+    madre: 2,
+    tia: 3,
+    tio: 4,
+    abuelo: 5,
+    abuela: 6,
+    Otro: 7
+  }
+
+  return parentescoMap[parentescoValue] || 7
+}
+
 export const PARENTESCO_ARRAY = parentescoJSON.map(({ id, nombre }) => ({
   id,
   value: id,

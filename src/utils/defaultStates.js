@@ -45,7 +45,8 @@ export const DEFAULT_INSCRIPCION = {
   escolaridad: '0',
   grado: 0,
   fecha_inscripcion: createCurrentDate(),
-  esta_activo: false
+  esta_activo: false,
+  grupo: null
 }
 
 export const DEFAULT_TUTOR = {
@@ -73,7 +74,8 @@ export const DEFAULT_HERMANO = {
 export const DEFAULT_CONTACTO = {
   nombre: '',
   telefono: '',
-  parentesco: 0
+  parentesco: 0,
+  otro: ''
 }
 
 export const DEFAULT_PAGO = {

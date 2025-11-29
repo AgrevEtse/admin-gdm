@@ -394,6 +394,9 @@ const StudentData = () => {
                 {formatDate(inscripcion.fecha_inscripcion)}
               </p>
               <p className='text-sm'>
+                <span className='font-bold'>Ciclo</span>: {ciclo}
+              </p>
+              <p className='text-sm'>
                 <span className='font-bold'>Escolaridad</span>:{' '}
                 {getEscolaridadById(inscripcion.id_escolaridad)}
               </p>
@@ -402,7 +405,8 @@ const StudentData = () => {
                 {getGradoById(inscripcion.id_escolaridad)}
               </p>
               <p className='text-sm'>
-                <span className='font-bold'>Ciclo</span>: {ciclo}
+                <span className='font-bold'>Grupo</span>:{' '}
+                {inscripcion.grupo === null ? 'N/A' : inscripcion.grupo}
               </p>
               <div className='card-actions mt-4 justify-end'>
                 <button
@@ -571,7 +575,10 @@ const StudentData = () => {
                   </p>
                   <p className='text-sm'>
                     <span className='font-bold'>Parentesco</span>:{' '}
-                    {contacto.parentesco}
+                    {contacto.parentesco === 'Otro'
+                      ? contacto.otro
+                      : contacto.parentesco.charAt(0).toUpperCase() +
+                        contacto.parentesco.slice(1).toLowerCase()}
                   </p>
                   <p className='text-sm'>
                     <span className='font-bold'>Teléfono</span>:{' '}
