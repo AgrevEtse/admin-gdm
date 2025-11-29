@@ -49,7 +49,7 @@ const CiclosMortal = () => {
           </>
         ) : (
           <>
-            <div className='card w-xs border bg-emerald-500'>
+            <div className='card w-xs border bg-emerald-600'>
               <div className='card-body'>
                 <h2 className='card-title justify-center'>Ciclo Anual</h2>
                 <p className='text-center'>

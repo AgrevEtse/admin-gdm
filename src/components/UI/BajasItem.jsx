@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { UserMinusIcon } from '@phosphor-icons/react'
+import { UserMinusIcon } from '@/assets/svg'
 
 const BajasItem = ({ student }) => {
   const navigate = useNavigate()
@@ -17,7 +17,7 @@ const BajasItem = ({ student }) => {
           className='btn btn-primary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
           onClick={() => navigate(`/dashboard/bajas/${student.curp}`)}
         >
-          <UserMinusIcon size={32} />
+          <UserMinusIcon className='h-9 w-9' />
         </button>
       </div>
     </div>

@@ -135,7 +135,7 @@ const CiclosAdmin = () => {
           </>
         ) : (
           <>
-            <div className='card w-xs border bg-emerald-500'>
+            <div className='card w-xs border bg-emerald-600'>
               <div className='card-body'>
                 <h2 className='card-title justify-center'>Ciclo Anual</h2>
                 <p className='text-center'>
@@ -168,7 +168,7 @@ const CiclosAdmin = () => {
           </>
         ) : (
           <>
-            <div className='card border bg-emerald-500'>
+            <div className='card border bg-emerald-600'>
               <div className='card-body space-y-2'>
                 <h2 className='card-title justify-center'>Anual</h2>
 

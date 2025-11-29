@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
-import { StudentIcon } from '@phosphor-icons/react'
+import { StudentIcon } from '@/assets/svg'
 import { toast } from 'react-hot-toast'
 
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
@@ -97,7 +97,7 @@ const BajasForm = () => {
             <div className='card-body text-sm'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Alumno</h2>
-                <StudentIcon size={48} />
+                <StudentIcon className='h-12 w-12' />
               </div>
               <p className='text-sm'>
                 <span className='font-bold'>Nombre</span>: {student.nombre}{' '}

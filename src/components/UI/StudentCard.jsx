@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { EyeIcon } from '@phosphor-icons/react'
+import { EyeIcon } from '@/assets/svg'
 
 const StudentCard = ({ student, ciclo }) => {
   const navigate = useNavigate()
@@ -40,7 +40,7 @@ const StudentCard = ({ student, ciclo }) => {
               navigate(`/dashboard/inscripciones/${curp}/${ciclo}`)
             }}
           >
-            <EyeIcon size={32} />
+            <EyeIcon className='h-9 w-9' />
           </button>
         </div>
       </div>

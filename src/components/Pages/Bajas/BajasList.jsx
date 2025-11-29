@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { MagnifyingGlassIcon } from '@phosphor-icons/react'
+import { MagnifyingGlassIcon } from '@/assets/svg'
 import { toast } from 'react-hot-toast'
 
 import { textNormalize } from '@/utils/textNormalize'
@@ -48,7 +48,7 @@ const BajasList = () => {
       <div className='my-8 flex flex-col items-center space-y-4 lg:items-end'>
         <label className='input input-md'>
           <span className='label'>
-            <MagnifyingGlassIcon size={20} />
+            <MagnifyingGlassIcon className='h-5 w-5' />
           </span>
           <input
             placeholder='alejandro, ZEPEDA, VAIO020327...'

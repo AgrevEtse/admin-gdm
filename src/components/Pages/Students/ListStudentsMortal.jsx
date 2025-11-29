@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { MagnifyingGlassIcon } from '@phosphor-icons/react'
+import { MagnifyingGlassIcon } from '@/assets/svg'
 import { toast } from 'react-hot-toast'
 
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
@@ -158,7 +158,7 @@ const ListStudentsAdmin = () => {
         </div>
         <label className='input input-md'>
           <span className='label'>
-            <MagnifyingGlassIcon size={20} />
+            <MagnifyingGlassIcon className='h-5 w-5' />
           </span>
           <input
             placeholder='alejandro, ZEPEDA, VAIO020327...'
