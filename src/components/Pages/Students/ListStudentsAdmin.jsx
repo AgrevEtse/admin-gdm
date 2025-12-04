@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { MagnifyingGlassIcon } from '@phosphor-icons/react'
+import { MagnifyingGlassIcon } from '@/assets/svg'
 import { toast } from 'react-hot-toast'
 
 import { textNormalize } from '@/utils/textNormalize'
@@ -83,7 +83,7 @@ const ListStudentsAdmin = () => {
     } finally {
       setIsLoading(false)
     }
-  }, [activeStudents, grado, fetchWithAuth, ciclo, isLoading])
+  }, [activeStudents, grado, fetchWithAuth, ciclo])
 
   const handleActiveToggle = () => {
     const newActive = activeStudents ? 0 : 1
@@ -107,15 +107,7 @@ const ListStudentsAdmin = () => {
     setSearchParams(params)
 
     fetchStudents()
-  }, [
-    fetchCiclos,
-    fetchStudents,
-    grado,
-    ciclo,
-    activeStudents,
-    setSearchParams,
-    searchParams
-  ])
+  }, [fetchStudents, grado, ciclo, activeStudents, setSearchParams])
 
   const filteredStudents = students.filter(
     ({ nombre, apellido_paterno, apellido_materno, curp }) => {
@@ -199,7 +191,7 @@ const ListStudentsAdmin = () => {
         </div>
         <label className='input input-md'>
           <span className='label'>
-            <MagnifyingGlassIcon size={20} />
+            <MagnifyingGlassIcon className='h-5 w-5' />
           </span>
           <input
             placeholder='alejandro, ZEPEDA, VAIO020327...'

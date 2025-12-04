@@ -1,11 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import {
-  UserIcon,
-  SignOutIcon,
-  ListIcon,
-  ArrowFatLeftIcon
-} from '@phosphor-icons/react'
+import { UserIcon, SignOutIcon, ListIcon, ArrowFatLeftIcon } from '@/assets/svg'
 
 import useAuth from '@/context/useAuth'
 import RoleBasedView from '@/components/Layout/RoleBasedView'
@@ -36,7 +31,7 @@ const NavBar = () => {
           onClick={() => navigate(-1)}
           className='btn btn-warning text-xl transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
         >
-          <ArrowFatLeftIcon size={24} />
+          <ArrowFatLeftIcon className='h-7 w-7' />
         </button>
         <Link to='/dashboard'>
           <button
@@ -89,7 +84,7 @@ const NavBar = () => {
           className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-110 active:scale-110'
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          <ListIcon size={32} />
+          <ListIcon className='h-9 w-9' />
         </button>
       </div>
 
@@ -99,10 +94,7 @@ const NavBar = () => {
           ref={menuRef}
         >
           <div className='my-4 flex flex-col items-center'>
-            <UserIcon
-              size={80}
-              className='rounded-full bg-cyan-600'
-            />
+            <UserIcon className='h-20 w-20 rounded-full bg-cyan-600' />
             {auth.user && (
               <p className='mt-2 text-lg font-semibold'>
                 {auth.user.rol.toUpperCase()}
@@ -115,7 +107,7 @@ const NavBar = () => {
                 className='btn btn-error w-full text-white transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                 onClick={auth.logout}
               >
-                <SignOutIcon size={20} />
+                <SignOutIcon className='h-6 w-6' />
                 Salir
               </button>
             </li>

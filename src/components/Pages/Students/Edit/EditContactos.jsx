@@ -4,7 +4,10 @@ import { toast } from 'react-hot-toast'
 
 import { createReducer } from '@/utils/reducer'
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
-import { PARENTESCO_ARRAY } from '@/utils/parentescoHelpers'
+import {
+  PARENTESCO_ARRAY,
+  getParentescoByValue
+} from '@/utils/parentescoHelpers'
 import { ContactoSchema } from '@/schemas/ContactoSchema'
 import TextInputForm from '@/components/UI/TextInputForm'
 
@@ -51,7 +54,7 @@ const EditContactos = () => {
       payload: {
         index,
         field: name,
-        value: name === 'parentesco' ? Number(value) : value
+        value: value
       }
     })
   }
@@ -63,6 +66,8 @@ const EditContactos = () => {
     try {
       for (let i = 0; i < contactos.length; i++) {
         const contacto = contactos[i]
+
+        contacto.parentesco = getParentescoByValue(contacto.parentesco)
 
         const isValid = ContactoSchema.safeParse(contacto)
         if (!isValid.success)
@@ -77,6 +82,7 @@ const EditContactos = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               ...contacto,
+              otro: contacto.parentesco === 7 ? contacto.otro : undefined,
               curp_alumno: undefined,
               id: undefined
             })
@@ -166,6 +172,16 @@ const EditContactos = () => {
                     ))}
                   </select>
                 </label>
+                {contacto.parentesco === 'Otro' && (
+                  <TextInputForm
+                    label='Otro'
+                    name='otro'
+                    value={contacto.otro}
+                    placeholder='Especifica el parentesco...'
+                    onChange={(e) => handleChange(index, e)}
+                    required={true}
+                  />
+                )}
               </div>
             ))}
         </div>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback, useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 import AuthContext from '@/context/AuthContext'
@@ -13,25 +13,31 @@ export const AuthProvider = ({ children }) => {
     JSON.parse(localStorage.getItem('user')) || initialUserState
   )
 
-  const isAuthenticated = () => {
+  const isAuthenticated = useCallback(() => {
     return user.token !== null && user.rol !== null
-  }
+  }, [user.token, user.rol])
 
-  const login = (user) => {
+  const login = useCallback((user) => {
     localStorage.setItem('user', JSON.stringify(user))
     setUser(user)
-  }
+  }, [])
 
-  const logout = () => {
+  const logout = useCallback(() => {
     localStorage.removeItem('user')
     setUser(initialUserState)
-  }
+  }, [])
 
-  return (
-    <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
-      {children}
-    </AuthContext.Provider>
+  const value = useMemo(
+    () => ({
+      user,
+      isAuthenticated,
+      login,
+      logout
+    }),
+    [user, isAuthenticated, login, logout]
   )
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
 
 AuthProvider.propTypes = {

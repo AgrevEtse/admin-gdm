@@ -10,7 +10,7 @@ import {
   UsersFourIcon,
   MoneyWavyIcon,
   PencilSimpleIcon
-} from '@phosphor-icons/react'
+} from '@/assets/svg'
 import { toast } from 'react-hot-toast'
 
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
@@ -52,7 +52,7 @@ const StudentData = () => {
 
       const resDomicilio = await fetchWithAuth(`/domicilio/${curp}`)
       const dataDomicilio = await resDomicilio.json()
-      setDomicilio(dataDomicilio[0])
+      setDomicilio(dataDomicilio)
 
       const resTutor1 = await fetchWithAuth(`/tutor1/${curp}`)
       const dataTutor1 = await resTutor1.json()
@@ -234,7 +234,7 @@ const StudentData = () => {
             <div className='card-body text-sm'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Alumno</h2>
-                <StudentIcon size={48} />
+                <StudentIcon className='h-12 w-12' />
               </div>
               <p className='text-sm'>
                 <span className='font-bold'>CURP</span>: {alumno.curp}
@@ -292,7 +292,7 @@ const StudentData = () => {
                   }}
                   disabled={isLoading}
                 >
-                  <PencilSimpleIcon size={32} />
+                  <PencilSimpleIcon className='h-9 w-9' />
                 </button>
               </div>
             </div>
@@ -305,7 +305,7 @@ const StudentData = () => {
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Domicilio</h2>
-                <SignpostIcon size={48} />
+                <SignpostIcon className='h-12 w-12' />
               </div>
               <p className='text-sm'>
                 <span className='font-bold'>Domicilio</span>:{' '}
@@ -338,7 +338,7 @@ const StudentData = () => {
                   }}
                   disabled={isLoading}
                 >
-                  <PencilSimpleIcon size={32} />
+                  <PencilSimpleIcon className='h-9 w-9' />
                 </button>
               </div>
             </div>
@@ -351,7 +351,7 @@ const StudentData = () => {
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Esc. Procedencia</h2>
-                <GraduationCapIcon size={48} />
+                <GraduationCapIcon className='h-12 w-12' />
               </div>
               <p className='text-sm'>
                 <span className='font-bold'>CCT</span>: {escuelaProcedencia.cct}
@@ -374,7 +374,7 @@ const StudentData = () => {
                   }}
                   disabled={isLoading}
                 >
-                  <PencilSimpleIcon size={32} />
+                  <PencilSimpleIcon className='h-9 w-9' />
                 </button>
               </div>
             </div>
@@ -387,11 +387,14 @@ const StudentData = () => {
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Inscripción</h2>
-                <CertificateIcon size={48} />
+                <CertificateIcon className='h-12 w-12' />
               </div>
               <p className='text-sm'>
                 <span className='font-bold'>Fecha Inscripción</span>:{' '}
                 {formatDate(inscripcion.fecha_inscripcion)}
+              </p>
+              <p className='text-sm'>
+                <span className='font-bold'>Ciclo</span>: {ciclo}
               </p>
               <p className='text-sm'>
                 <span className='font-bold'>Escolaridad</span>:{' '}
@@ -402,7 +405,8 @@ const StudentData = () => {
                 {getGradoById(inscripcion.id_escolaridad)}
               </p>
               <p className='text-sm'>
-                <span className='font-bold'>Ciclo</span>: {ciclo}
+                <span className='font-bold'>Grupo</span>:{' '}
+                {inscripcion.grupo === null ? 'N/A' : inscripcion.grupo}
               </p>
               <div className='card-actions mt-4 justify-end'>
                 <button
@@ -414,7 +418,7 @@ const StudentData = () => {
                   }}
                   disabled={isLoading}
                 >
-                  <PencilSimpleIcon size={32} />
+                  <PencilSimpleIcon className='h-9 w-9' />
                 </button>
               </div>
             </div>
@@ -427,7 +431,7 @@ const StudentData = () => {
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Papá / Tutor 1</h2>
-                <PersonIcon size={48} />
+                <PersonIcon className='h-12 w-12' />
               </div>
               <p className='text-sm'>
                 <span className='font-bold'>Nombre</span>: {tutor1.nombre}{' '}
@@ -461,7 +465,7 @@ const StudentData = () => {
                   }}
                   disabled={isLoading}
                 >
-                  <PencilSimpleIcon size={32} />
+                  <PencilSimpleIcon className='h-9 w-9' />
                 </button>
               </div>
             </div>
@@ -474,7 +478,7 @@ const StudentData = () => {
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Mamá / Tutor 2</h2>
-                <PersonIcon size={48} />
+                <PersonIcon className='h-12 w-12' />
               </div>
               <p className='text-sm'>
                 <span className='font-bold'>Nombre</span>: {tutor2[0].nombre}{' '}
@@ -508,7 +512,7 @@ const StudentData = () => {
                   }}
                   disabled={isLoading}
                 >
-                  <PencilSimpleIcon size={32} />
+                  <PencilSimpleIcon className='h-9 w-9' />
                 </button>
               </div>
             </div>
@@ -521,7 +525,7 @@ const StudentData = () => {
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Hermanos</h2>
-                <UsersThreeIcon size={48} />
+                <UsersThreeIcon className='h-12 w-12' />
               </div>
               {hermanos.map((hermano, i) => (
                 <div
@@ -548,7 +552,7 @@ const StudentData = () => {
                   }}
                   disabled={isLoading}
                 >
-                  <PencilSimpleIcon size={32} />
+                  <PencilSimpleIcon className='h-9 w-9' />
                 </button>
               </div>
             </div>
@@ -561,7 +565,7 @@ const StudentData = () => {
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Contactos</h2>
-                <UsersFourIcon size={48} />
+                <UsersFourIcon className='h-12 w-12' />
               </div>
               {contacto.map((contacto, i) => (
                 <div key={contacto.id}>
@@ -571,7 +575,10 @@ const StudentData = () => {
                   </p>
                   <p className='text-sm'>
                     <span className='font-bold'>Parentesco</span>:{' '}
-                    {contacto.parentesco}
+                    {contacto.parentesco === 'Otro'
+                      ? contacto.otro
+                      : contacto.parentesco.charAt(0).toUpperCase() +
+                        contacto.parentesco.slice(1).toLowerCase()}
                   </p>
                   <p className='text-sm'>
                     <span className='font-bold'>Teléfono</span>:{' '}
@@ -589,7 +596,7 @@ const StudentData = () => {
                   }}
                   disabled={isLoading}
                 >
-                  <PencilSimpleIcon size={32} />
+                  <PencilSimpleIcon className='h-9 w-9' />
                 </button>
               </div>
             </div>
@@ -602,7 +609,7 @@ const StudentData = () => {
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Pago</h2>
-                <MoneyWavyIcon size={48} />
+                <MoneyWavyIcon className='h-12 w-12' />
               </div>
               <p className='text-sm'>
                 <span className='font-bold'>Nombre</span>: {pago.nombre}
@@ -632,7 +639,7 @@ const StudentData = () => {
                   }}
                   disabled={isLoading}
                 >
-                  <PencilSimpleIcon size={32} />
+                  <PencilSimpleIcon className='h-9 w-9' />
                 </button>
               </div>
             </div>

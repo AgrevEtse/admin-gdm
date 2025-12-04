@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { EyeIcon, EyeClosedIcon } from '@phosphor-icons/react'
+import { EyeIcon, EyeClosedIcon } from '@/assets/svg'
 
 export default function PasswordInput({
   label = 'Contraseña',
@@ -28,7 +28,11 @@ export default function PasswordInput({
         className='absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer text-white'
         onClick={() => setShowPassword(!showPassword)}
       >
-        {showPassword ? <EyeClosedIcon size={18} /> : <EyeIcon size={18} />}
+        {showPassword ? (
+          <EyeClosedIcon className='h-5 w-5' />
+        ) : (
+          <EyeIcon className='h-5 w-5' />
+        )}
       </button>
     </label>
   )

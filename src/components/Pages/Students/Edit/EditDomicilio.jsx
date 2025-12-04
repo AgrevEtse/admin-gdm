@@ -29,7 +29,7 @@ const EditDomicilio = () => {
 
       const data = await response.json()
 
-      dispatch({ type: 'SET_STATE', payload: data[0] })
+      dispatch({ type: 'SET_STATE', payload: data })
     } catch (error) {
       console.error(error)
       toast.error(error.message)

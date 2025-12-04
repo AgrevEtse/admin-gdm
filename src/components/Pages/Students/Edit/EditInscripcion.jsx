@@ -213,6 +213,33 @@ const EditInscripcion = () => {
                     )}
                 </select>
               </label>
+
+              <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
+                <span className='label'>
+                  Grupo <span className='text-rose-600'>*</span>
+                </span>
+                <select
+                  required
+                  value={inscripcion.grupo + ''}
+                  onChange={(e) => {
+                    setInscripcion((prev) => ({
+                      ...prev,
+                      grupo: e.target.value
+                    }))
+                  }}
+                >
+                  <option
+                    disabled
+                    value='null'
+                  >
+                    Escoge el grupo...
+                  </option>
+                  <option value='A'>A</option>
+                  <option value='B'>B</option>
+                  <option value='C'>C</option>
+                  <option value='D'>D</option>
+                </select>
+              </label>
             </>
           )}
         </div>
