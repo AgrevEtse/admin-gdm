@@ -85,30 +85,3 @@ export const DEFAULT_PAGO = {
   factura: false,
   responsable: 0
 }
-
-export const DEFAULT_FORM = {
-  escuela_procedencia: DEFAULT_ESCUELA_PROCEDENCIA,
-  alumno: DEFAULT_ALUMNO,
-  domicilio: DEFAULT_DOMICILIO,
-  inscripcion: DEFAULT_INSCRIPCION,
-  tutor1: DEFAULT_TUTOR,
-  tutor2: DEFAULT_TUTOR,
-  hermano1: DEFAULT_HERMANO,
-  hermano2: DEFAULT_HERMANO,
-  hermano3: DEFAULT_HERMANO,
-  contacto1: DEFAULT_CONTACTO,
-  contacto2: DEFAULT_CONTACTO,
-  contacto3: DEFAULT_CONTACTO,
-  pago: DEFAULT_PAGO
-}
-
-export const DEFAULT_HERMANOS_ARRAY = [
-  DEFAULT_HERMANO,
-  DEFAULT_HERMANO,
-  DEFAULT_HERMANO
-]
-export const DEFAULT_CONTACTOS_ARRAY = [
-  DEFAULT_CONTACTO,
-  DEFAULT_CONTACTO,
-  DEFAULT_CONTACTO
-]
