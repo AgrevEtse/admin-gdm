@@ -4,8 +4,7 @@ export const DEFAULT_CICLO = {
   nombre: '',
   es_anual: '',
   fecha_inicio: createCurrentDate(),
-  fecha_fin: createCurrentDate(),
-  valido: 0
+  fecha_fin: createCurrentDate()
 }
 
 export const DEFAULT_CURP = ''

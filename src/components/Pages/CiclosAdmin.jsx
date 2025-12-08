@@ -69,8 +69,7 @@ const CiclosAdmin = () => {
           ...newCiclo,
           fecha_inicio: createDateISOString(newCiclo.fecha_inicio),
           fecha_fin: createDateISOString(newCiclo.fecha_fin),
-          es_anual: Number(newCiclo.es_anual),
-          valido: undefined,
+          es_anual: Number(newCiclo.es_anual)
         })
       })
 

@@ -3,7 +3,7 @@ import { z } from 'zod'
 export const EscuelaProcedenciaSchema = z.object({
   cct: z
     .string()
-    .min(1, 'El CCT es obligatorio')
+    .min(10, 'El CCT es obligatorio')
     .max(10, 'El CCT no puede tener más de 10 caracteres'),
   matricula: z
     .string()
