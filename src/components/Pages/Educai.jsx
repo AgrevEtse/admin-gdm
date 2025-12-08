@@ -70,6 +70,8 @@ const Educai = () => {
   }
 
   useEffect(() => {
+    document.title = `Educai - GDM Admin`
+
     setIsLoading(true)
     fetchCiclos()
     setIsLoading(false)
