@@ -24,6 +24,7 @@ import CiclosMortal from '@/components/Pages/CiclosMortal'
 import BajasList from '@/components/Pages/Bajas/BajasList'
 import BajasAlumnosList from '@/components/Pages/Bajas/BajasAlumnosList'
 import BajasForm from '@/components/Pages/Bajas/BajasForm'
+import Educai from '@/components/Pages/Educai'
 
 const AppRouter = () => {
   return (
@@ -132,6 +133,15 @@ const AppRouter = () => {
               element={
                 <RoleBasedView
                   adminComponent={<BajasForm />}
+                  mortalComponent={null}
+                />
+              }
+            />
+            <Route
+              path='educai'
+              element={
+                <RoleBasedView
+                  adminComponent={<Educai />}
                   mortalComponent={null}
                 />
               }
