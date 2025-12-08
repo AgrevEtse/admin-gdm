@@ -76,6 +76,17 @@ const NavBar = () => {
           }
           mortalComponent={null}
         />
+
+        <RoleBasedView
+          adminComponent={
+            <Link to='/dashboard/educai'>
+              <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
+                Educai
+              </button>
+            </Link>
+          }
+          mortalComponent={null}
+        />
       </div>
 
       {/* Hamburguer Menu */}
