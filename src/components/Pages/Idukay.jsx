@@ -51,7 +51,7 @@ const Idukay = () => {
       if (!res.ok) throw new Error('Error al descargar archivo')
 
       const blob = await res.blob()
-      descargarArchivo(blob, `Educai_${selectedCiclo}_${selectedHermanos}.xlsx`)
+      descargarArchivo(blob, `Idukay_${selectedCiclo}_${selectedHermanos}.xlsx`)
     } catch (e) {
       console.error('Error downloading excel:', e)
       toast.error('Error al descargar el excel.')
