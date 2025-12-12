@@ -24,7 +24,8 @@ import CiclosMortal from '@/components/Pages/CiclosMortal'
 import BajasList from '@/components/Pages/Bajas/BajasList'
 import BajasAlumnosList from '@/components/Pages/Bajas/BajasAlumnosList'
 import BajasForm from '@/components/Pages/Bajas/BajasForm'
-import Educai from '@/components/Pages/Educai'
+import Idukay from '@/components/Pages/Idukay'
+import NotFound404 from '@/components/Pages/NotFound404'
 
 const AppRouter = () => {
   return (
@@ -99,8 +100,8 @@ const AppRouter = () => {
                 path='pago'
                 element={<EditPago />}
               />
-            </Route>{' '}
-            {/* /inscripciones/:curp/:ciclo/edit */}
+              {/* /inscripciones/:curp/:ciclo/edit */}
+            </Route>
             <Route
               path='ciclos'
               element={
@@ -115,7 +116,7 @@ const AppRouter = () => {
               element={
                 <RoleBasedView
                   adminComponent={<BajasList />}
-                  mortalComponent={null}
+                  mortalComponent={<NotFound404 />}
                 />
               }
             />
@@ -124,7 +125,7 @@ const AppRouter = () => {
               element={
                 <RoleBasedView
                   adminComponent={<BajasAlumnosList />}
-                  mortalComponent={null}
+                  mortalComponent={<NotFound404 />}
                 />
               }
             />
@@ -133,23 +134,31 @@ const AppRouter = () => {
               element={
                 <RoleBasedView
                   adminComponent={<BajasForm />}
-                  mortalComponent={null}
+                  mortalComponent={<NotFound404 />}
                 />
               }
             />
             <Route
-              path='educai'
+              path='idukay'
               element={
                 <RoleBasedView
-                  adminComponent={<Educai />}
-                  mortalComponent={null}
+                  adminComponent={<Idukay />}
+                  mortalComponent={<NotFound404 />}
                 />
               }
             />
-          </Route>{' '}
-          {/* dashboard */}
-        </Route>{' '}
-        {/* <ProtectedRoute /> */}
+            <Route
+              path='*'
+              element={<NotFound404 />}
+            />
+            {/* dashboard */}
+          </Route>
+          <Route
+            path='*'
+            element={<NotFound404 />}
+          />
+          {/* <ProtectedRoute /> */}
+        </Route>
       </Routes>
     </BrowserRouter>
   )

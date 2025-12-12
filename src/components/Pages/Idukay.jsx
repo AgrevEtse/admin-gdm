@@ -3,7 +3,7 @@ import { toast } from 'react-hot-toast'
 
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 
-const Educai = () => {
+const Idukay = () => {
   const fetchWithAuth = useFetchWithAuth()
 
   const [ciclos, setCiclos] = useState([])
@@ -70,7 +70,7 @@ const Educai = () => {
   }
 
   useEffect(() => {
-    document.title = `Educai - GDM Admin`
+    document.title = `Idukay - GDM Admin`
 
     setIsLoading(true)
     fetchCiclos()
@@ -79,7 +79,7 @@ const Educai = () => {
 
   return (
     <div className='mt-10 flex flex-col items-center justify-center space-y-6'>
-      <h3 className='text-3xl font-bold'>Excel Educai</h3>
+      <h3 className='text-3xl font-bold'>Excel Idukay</h3>
 
       <div className='flex w-full max-w-2xl flex-col items-center space-y-4'>
         <select
@@ -136,4 +136,4 @@ const Educai = () => {
   )
 }
 
-export default Educai
+export default Idukay

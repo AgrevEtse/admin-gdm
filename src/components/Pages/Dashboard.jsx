@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   return (
     <div className='mt-10 flex h-full flex-col items-center justify-center space-y-6'>
-      <h2 className='text-3xl font-bold'>
+      <h2 className='text-center text-3xl font-bold'>
         Bienvenido al Dashboard, {auth.user.rol.toUpperCase()}
       </h2>
       <img
@@ -21,7 +21,7 @@ const Dashboard = () => {
         className='w-3/4'
         alt='Escudo de la escuela Gómez de Mendiola'
       />
-      <div className='mt-4 flex space-x-4'>
+      <div className='mt-4 flex flex-row flex-wrap justify-center gap-4'>
         <Link
           to='/dashboard/inscripciones'
           className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105'
@@ -62,10 +62,10 @@ const Dashboard = () => {
         <RoleBasedView
           adminComponent={
             <Link
-              to='/dashboard/educai'
+              to='/dashboard/idukay'
               className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105'
             >
-              Educai
+              Idukay
             </Link>
           }
           mortalComponent={null}

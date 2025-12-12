@@ -8,6 +8,7 @@ import RoleBasedView from '@/components/Layout/RoleBasedView'
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuRef = useRef(null)
+  const buttonRef = useRef(null)
 
   const auth = useAuth()
   const navigate = useNavigate()
@@ -15,7 +16,12 @@ const NavBar = () => {
   useEffect(() => {
     // cerrar menú si pierde el focus
     const handleClickOutside = (e) => {
-      if (menuRef.current && !menuRef.current.contains(e.target)) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(e.target) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(e.target)
+      ) {
         setIsMenuOpen(false)
       }
     }
@@ -33,6 +39,20 @@ const NavBar = () => {
         >
           <ArrowFatLeftIcon className='h-7 w-7' />
         </button>
+        <Link
+          to='/dashboard'
+          className='hidden md:inline'
+        >
+          <button
+            className='btn btn-ghost text-xl transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+            title='GDM Admin'
+          >
+            GDM Admin
+          </button>
+        </Link>
+      </div>
+
+      <div className='block flex-1 justify-evenly md:hidden'>
         <Link to='/dashboard'>
           <button
             className='btn btn-ghost text-xl transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
@@ -43,55 +63,10 @@ const NavBar = () => {
         </Link>
       </div>
 
-      <div className='hidden flex-1 justify-evenly lg:flex'>
-        <Link to='/dashboard/inscripciones'>
-          <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
-            Inscripciones
-          </button>
-        </Link>
-        <Link to='/dashboard/ciclos'>
-          <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
-            Ciclos
-          </button>
-        </Link>
-
-        <RoleBasedView
-          adminComponent={
-            <Link to='/dashboard/bajas'>
-              <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
-                Dar de Baja
-              </button>
-            </Link>
-          }
-          mortalComponent={null}
-        />
-
-        <RoleBasedView
-          adminComponent={
-            <Link to='/dashboard/bajas/alumnos'>
-              <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
-                Bajas Alumnos
-              </button>
-            </Link>
-          }
-          mortalComponent={null}
-        />
-
-        <RoleBasedView
-          adminComponent={
-            <Link to='/dashboard/educai'>
-              <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
-                Educai
-              </button>
-            </Link>
-          }
-          mortalComponent={null}
-        />
-      </div>
-
       {/* Hamburguer Menu */}
       <div className='relative flex flex-1 justify-end'>
         <button
+          ref={buttonRef}
           className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-110 active:scale-110'
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
@@ -104,7 +79,7 @@ const NavBar = () => {
           className='bg-base-200 rounded-box absolute top-full right-4 z-50 mx-auto mt-2 flex w-52 flex-col items-center justify-center p-4 text-center shadow-lg'
           ref={menuRef}
         >
-          <div className='my-4 flex flex-col items-center'>
+          <div className='flex flex-col items-center'>
             <UserIcon className='h-20 w-20 rounded-full bg-cyan-600' />
             {auth.user && (
               <p className='mt-2 text-lg font-semibold'>
@@ -112,10 +87,64 @@ const NavBar = () => {
               </p>
             )}
           </div>
+
           <ul className='menu menu-compact mx-auto items-center justify-center p-2 text-center'>
             <li>
+              <Link to='/dashboard/inscripciones'>
+                <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
+                  Inscripciones
+                </button>
+              </Link>
+            </li>
+            <li>
+              <Link to='/dashboard/ciclos'>
+                <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
+                  Ciclos
+                </button>
+              </Link>
+            </li>
+
+            <RoleBasedView
+              adminComponent={
+                <li>
+                  <Link to='/dashboard/bajas'>
+                    <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
+                      Dar de Baja
+                    </button>
+                  </Link>
+                </li>
+              }
+              mortalComponent={null}
+            />
+
+            <RoleBasedView
+              adminComponent={
+                <li>
+                  <Link to='/dashboard/bajas/alumnos'>
+                    <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
+                      Bajas Alumnos
+                    </button>
+                  </Link>
+                </li>
+              }
+              mortalComponent={null}
+            />
+
+            <RoleBasedView
+              adminComponent={
+                <li>
+                  <Link to='/dashboard/idukay'>
+                    <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
+                      Idukay
+                    </button>
+                  </Link>
+                </li>
+              }
+              mortalComponent={null}
+            />
+            <li>
               <button
-                className='btn btn-error w-full text-white transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                className='btn btn-error text-white transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                 onClick={auth.logout}
               >
                 <SignOutIcon className='h-6 w-6' />
