@@ -5,7 +5,7 @@ import { UserIcon, SignOutIcon, ListIcon, ArrowFatLeftIcon } from '@/assets/svg'
 import useAuth from '@/context/useAuth'
 import RoleBasedView from '@/components/Layout/RoleBasedView'
 
-const NavBar = () => {
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuRef = useRef(null)
   const buttonRef = useRef(null)
@@ -29,6 +29,10 @@ const NavBar = () => {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
+
+  const handleButtonHamburguer = () => {
+    setIsMenuOpen(false)
+  }
 
   return (
     <nav className='navbar bg-primary text-primary-content rounded-box fixed top-0 left-1/2 z-100 mx-auto h-10 w-[90vw] -translate-x-1/2 px-6 shadow-sm'>
@@ -91,14 +95,20 @@ const NavBar = () => {
           <ul className='menu menu-compact mx-auto items-center justify-center p-2 text-center'>
             <li>
               <Link to='/dashboard/inscripciones'>
-                <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
+                <button
+                  className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                  onClick={handleButtonHamburguer}
+                >
                   Inscripciones
                 </button>
               </Link>
             </li>
             <li>
               <Link to='/dashboard/ciclos'>
-                <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
+                <button
+                  className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                  onClick={handleButtonHamburguer}
+                >
                   Ciclos
                 </button>
               </Link>
@@ -108,7 +118,10 @@ const NavBar = () => {
               adminComponent={
                 <li>
                   <Link to='/dashboard/bajas'>
-                    <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
+                    <button
+                      className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                      onClick={handleButtonHamburguer}
+                    >
                       Dar de Baja
                     </button>
                   </Link>
@@ -121,7 +134,10 @@ const NavBar = () => {
               adminComponent={
                 <li>
                   <Link to='/dashboard/bajas/alumnos'>
-                    <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
+                    <button
+                      className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                      onClick={handleButtonHamburguer}
+                    >
                       Bajas Alumnos
                     </button>
                   </Link>
@@ -134,8 +150,26 @@ const NavBar = () => {
               adminComponent={
                 <li>
                   <Link to='/dashboard/idukay'>
-                    <button className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'>
+                    <button
+                      className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                      onClick={handleButtonHamburguer}
+                    >
                       Idukay
+                    </button>
+                  </Link>
+                </li>
+              }
+              mortalComponent={null}
+            />
+            <RoleBasedView
+              adminComponent={
+                <li>
+                  <Link to='/dashboard/precios'>
+                    <button
+                      className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                      onClick={handleButtonHamburguer}
+                    >
+                      Precios
                     </button>
                   </Link>
                 </li>
@@ -158,4 +192,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default Navbar

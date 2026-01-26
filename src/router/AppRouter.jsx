@@ -19,12 +19,13 @@ import {
   EditContactos,
   EditPago
 } from '@/components/Pages/Students/Edit'
-import CiclosAdmin from '@/components/Pages/CiclosAdmin'
-import CiclosMortal from '@/components/Pages/CiclosMortal'
+import CiclosAdmin from '@/components/Pages/Ciclos/CiclosAdmin'
+import CiclosMortal from '@/components/Pages/Ciclos/CiclosMortal'
 import BajasList from '@/components/Pages/Bajas/BajasList'
 import BajasAlumnosList from '@/components/Pages/Bajas/BajasAlumnosList'
 import BajasForm from '@/components/Pages/Bajas/BajasForm'
 import Idukay from '@/components/Pages/Idukay'
+import Precios from '@/components/Pages/Precios'
 import NotFound404 from '@/components/Pages/NotFound404'
 
 const AppRouter = () => {
@@ -143,6 +144,15 @@ const AppRouter = () => {
               element={
                 <RoleBasedView
                   adminComponent={<Idukay />}
+                  mortalComponent={<NotFound404 />}
+                />
+              }
+            />
+            <Route
+              path='precios'
+              element={
+                <RoleBasedView
+                  adminComponent={<Precios />}
                   mortalComponent={<NotFound404 />}
                 />
               }

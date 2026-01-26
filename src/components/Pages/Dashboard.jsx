@@ -70,6 +70,17 @@ const Dashboard = () => {
           }
           mortalComponent={null}
         />
+        <RoleBasedView
+          adminComponent={
+            <Link
+              to='/dashboard/precios'
+              className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105'
+            >
+              Precios
+            </Link>
+          }
+          mortalComponent={null}
+        />
       </div>
     </div>
   )

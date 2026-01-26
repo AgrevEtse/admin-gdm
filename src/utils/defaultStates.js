@@ -84,3 +84,15 @@ export const DEFAULT_PAGO = {
   factura: false,
   responsable: 0
 }
+
+export const DEFAULT_PRECIOS = {
+  id: 0,
+  costo_mensualidad: 0,
+  costo_inscripcion: 0,
+  costo_inicial: 0,
+  costo_descuento: 0,
+  numero_contacto: '1234567890',
+  email_contacto: 'contacto@contacto.com',
+  nombre_contacto: 'John Doe',
+  escolaridad: 'Prueba'
+}
