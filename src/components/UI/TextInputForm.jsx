@@ -5,6 +5,7 @@ const TextInputForm = ({
   placeholder = '',
   name = '',
   required = false,
+  disabled = false,
   onChange
 }) => {
   return (
@@ -20,6 +21,7 @@ const TextInputForm = ({
         placeholder={placeholder}
         name={name}
         onChange={onChange}
+        disabled={disabled}
       />
     </label>
   )

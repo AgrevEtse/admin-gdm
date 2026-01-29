@@ -107,93 +107,89 @@ const Precios = () => {
       <div className='card bg-base-100 mx-auto w-full border border-white px-0 shadow-sm lg:px-8'>
         <div className='card-body'>
           <h2 className='card-title mb-6 items-center justify-center text-3xl'>
-            {selectedPrecio.escolaridad.charAt(0).toUpperCase() +
-              selectedPrecio.escolaridad.slice(1)}
+            {selectedEscolaridad === 0
+              ? 'Selecciona la Escolaridad...'
+              : selectedPrecio.escolaridad.charAt(0).toUpperCase() +
+                selectedPrecio.escolaridad.slice(1)}
           </h2>
           <div className='grid grid-cols-1 gap-8 lg:grid-cols-2'>
             {!isLoading && (
               <>
                 <TextInputForm
-                  label='costo_mensualidad'
-                  placeholder='costo_mensualidad'
+                  label='Costo Mensualidad'
+                  placeholder='100000'
                   value={selectedPrecio.costo_mensualidad}
                   onChange={(e) => {
                     handleInputChange(e)
                   }}
                   name='costo_mensualidad'
                   required={true}
+                  disabled={selectedEscolaridad === 0}
                   type='number'
                 />
 
                 <TextInputForm
-                  label='costo_inscripcion'
-                  placeholder='costo_inscripcion'
-                  value={selectedPrecio.costo_inscripcion}
-                  onChange={(e) => {
-                    handleInputChange(e)
-                  }}
-                  name='costo_inscripcion'
-                  required={true}
-                  type='number'
-                />
-
-                <TextInputForm
-                  label='costo_inicial'
-                  placeholder='costo_inicial'
+                  label='Costo Inicial'
+                  placeholder='5000'
                   value={selectedPrecio.costo_inicial}
                   onChange={(e) => {
                     handleInputChange(e)
                   }}
                   name='costo_inicial'
                   required={true}
+                  disabled={selectedEscolaridad === 0}
                   type='number'
                 />
 
                 <TextInputForm
-                  label='costo_descuento'
-                  placeholder='costo_descuento'
+                  label='Costo Descuento'
+                  placeholder='500'
                   value={selectedPrecio.costo_descuento}
                   onChange={(e) => {
                     handleInputChange(e)
                   }}
                   name='costo_descuento'
                   required={true}
+                  disabled={selectedEscolaridad === 0}
                   type='number'
                 />
 
                 <TextInputForm
-                  label='numero_contacto'
-                  placeholder='numero_contacto'
+                  label='Numero de Contacto'
+                  placeholder='0123456789'
                   value={selectedPrecio.numero_contacto}
                   onChange={(e) => {
                     handleInputChange(e)
                   }}
                   name='numero_contacto'
                   required={true}
+                  disabled={selectedEscolaridad === 0}
                   type='tel'
                 />
 
                 <TextInputForm
-                  label='email_contacto'
-                  placeholder='email_contacto'
+                  label='Email de Contacto'
+                  placeholder='prueba@correo.com'
                   value={selectedPrecio.email_contacto}
                   onChange={(e) => {
                     handleInputChange(e)
                   }}
                   name='email_contacto'
                   required={true}
+                  disabled={selectedEscolaridad === 0}
                   type='email'
                 />
 
                 <TextInputForm
-                  label='nombre_contacto'
-                  placeholder='nombre_contacto'
+                  label='Nombre Encargado'
+                  placeholder='Fulanito'
                   value={selectedPrecio.nombre_contacto}
                   onChange={(e) => {
                     handleInputChange(e)
                   }}
                   name='nombre_contacto'
                   required={true}
+                  disabled={selectedEscolaridad === 0}
                 />
               </>
             )}

@@ -18,7 +18,7 @@ const Dashboard = () => {
       </h2>
       <img
         src='/EscudoGdM.png'
-        className='w-3/4'
+        className='w-2/5'
         alt='Escudo de la escuela Gómez de Mendiola'
       />
       <div className='mt-4 flex flex-row flex-wrap justify-center gap-4'>
