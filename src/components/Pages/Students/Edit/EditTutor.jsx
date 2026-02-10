@@ -9,6 +9,7 @@ import { formatDate, createDateISOString } from '@/utils/dateFormater'
 import { GRADO_MAX_ESTUDIOS_ARRAY } from '@/utils/gradoMaxEstudiosHelpers'
 import { TutorSchema } from '@/schemas/TutorSchema'
 import TextInputForm from '@/components/UI/TextInputForm'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const EditTutor = () => {
   const { curp, id } = useParams()
@@ -40,7 +41,7 @@ const EditTutor = () => {
   }, [curp, id, fetchWithAuth])
 
   useEffect(() => {
-    document.title = `Editar Tutor ${id} - ${curp} - GDM Admin`
+    cambiarTitulo(`Editar Tutor ${id} - ${curp}`)
 
     fetchTutor()
   }, [curp, id, fetchTutor])

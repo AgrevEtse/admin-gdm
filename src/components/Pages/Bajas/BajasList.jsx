@@ -6,6 +6,7 @@ import { textNormalize } from '@/utils/textNormalize'
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import BajasItem from '@/components/UI/BajasItem'
 import BajasItemSkeleton from '@/components/UI/BajasItemSkeleton'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const BajasList = () => {
   const fetchWithAuth = useFetchWithAuth()
@@ -30,7 +31,7 @@ const BajasList = () => {
   }, [fetchWithAuth])
 
   useEffect(() => {
-    document.title = 'Dar de Baja - GDM Admin'
+    cambiarTitulo('Dar de Baja')
 
     fetchStudents()
   }, [fetchStudents])

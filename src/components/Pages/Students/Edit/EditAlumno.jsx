@@ -9,6 +9,7 @@ import { formatDate, createDateISOString } from '@/utils/dateFormater'
 import { PAISES_ARRAY } from '@/utils/paisesHelpers'
 import { AlumnoSchema } from '@/schemas/AlumnoSchema'
 import TextInputForm from '@/components/UI/TextInputForm'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const EditAlumno = () => {
   const { curp } = useParams()
@@ -39,7 +40,7 @@ const EditAlumno = () => {
   }, [curp, fetchWithAuth])
 
   useEffect(() => {
-    document.title = `Editar Alumno - ${curp} - GDM Admin`
+    cambiarTitulo(`Editar Alumno - ${curp}`)
 
     fetchAlumno()
   }, [curp, fetchAlumno])

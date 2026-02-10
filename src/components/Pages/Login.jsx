@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast'
 import useAuth from '@/context/useAuth'
 import TextInput from '@/components/UI/TextInput'
 import PasswordInput from '@/components/UI/PasswordInput'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -16,7 +17,7 @@ function Login() {
   const [password, setPassword] = useState('')
 
   useEffect(() => {
-    document.title = 'Iniciar Sesión - GDM Admin'
+    cambiarTitulo('Iniciar Sesión')
 
     if (auth.isAuthenticated()) {
       navigate('/dashboard')

@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom'
 
 import useAuth from '@/context/useAuth'
 import RoleBasedView from '@/components/Layout/RoleBasedView'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const Dashboard = () => {
   const auth = useAuth()
 
   useEffect(() => {
-    document.title = 'Dashboard - GDM Admin'
+    cambiarTitulo('Dashboard')
   }, [])
 
   return (

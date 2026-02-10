@@ -8,6 +8,7 @@ import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import { PARENTESCO_ARRAY_PAGO } from '@/utils/parentescoHelpers'
 import { PagoSchema } from '@/schemas/PagoSchema'
 import TextInputForm from '@/components/UI/TextInputForm'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const EditPago = () => {
   const { curp } = useParams()
@@ -38,7 +39,7 @@ const EditPago = () => {
   }, [curp, fetchWithAuth])
 
   useEffect(() => {
-    document.title = `Editar Persona de Pagos - ${curp} - GDM Admin`
+    cambiarTitulo(`Editar Persona de Pagos - ${curp}`)
 
     fetchPersonaPagos()
   }, [curp, fetchPersonaPagos])

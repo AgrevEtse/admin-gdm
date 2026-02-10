@@ -9,6 +9,7 @@ import { textNormalize } from '@/utils/textNormalize'
 
 import StudentCard from '@/components/UI/StudentCard'
 import StudentCardSkeleton from '@/components/UI/StudentCardSkeleton'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const ListStudentsAdmin = () => {
   const auth = useAuth()
@@ -82,7 +83,7 @@ const ListStudentsAdmin = () => {
   }, [fetchWithAuth, auth.user.rol])
 
   useEffect(() => {
-    document.title = 'Inscripciones - GDM Admin'
+    cambiarTitulo('Inscripciones')
 
     fetchCiclos()
     fetchActualCiclo()

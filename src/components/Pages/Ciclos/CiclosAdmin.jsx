@@ -7,6 +7,7 @@ import { CicloSchema } from '@/schemas/CicloSchema'
 import { createDateISOString } from '@/utils/dateFormater'
 import CiclosSectionSkeleton from '@/components/UI/CiclosSectionSkeleton'
 import TextInputForm from '@/components/UI/TextInputForm'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const CiclosAdmin = () => {
   const fetchWithAuth = useFetchWithAuth()
@@ -45,7 +46,7 @@ const CiclosAdmin = () => {
   }, [fetchWithAuth])
 
   useEffect(() => {
-    document.title = 'Ciclos - GDM Admin'
+    cambiarTitulo('Ciclos')
 
     fetchCiclos()
   }, [fetchCiclos])

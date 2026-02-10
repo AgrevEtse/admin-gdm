@@ -11,6 +11,7 @@ import {
 import { getEscolaridadById, getGradoById } from '@/utils/escolaridadIdHelpers'
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import { InscripcionSchema } from '@/schemas/InscripcionSchema'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const EditInscripcion = () => {
   const { curp, ciclo } = useParams()
@@ -70,7 +71,7 @@ const EditInscripcion = () => {
   }, [curp, ciclo, fetchWithAuth])
 
   useEffect(() => {
-    document.title = `Editar Inscripción - ${curp} - GDM Admin`
+    cambiarTitulo(`Editar Inscripción - ${curp}`)
 
     fetchActualCiclos()
     fetchInscripcion()

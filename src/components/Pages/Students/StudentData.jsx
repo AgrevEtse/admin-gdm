@@ -18,6 +18,7 @@ import { formatDate } from '@/utils/dateFormater'
 import { getParentescoById } from '@/utils/parentescoHelpers'
 import { getEscolaridadById, getGradoById } from '@/utils/escolaridadIdHelpers'
 import StudentDataSkeleton from '@/components/UI/StudentDataSkeleton'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const StudentData = () => {
   const { curp, ciclo } = useParams()
@@ -90,7 +91,7 @@ const StudentData = () => {
   }, [curp, fetchWithAuth, ciclo])
 
   useEffect(() => {
-    document.title = `${curp} - Inscripciones - GDM Admin`
+    cambiarTitulo(`${curp} - Inscripciones`)
 
     fecthStudentData()
   }, [curp, fecthStudentData, ciclo])

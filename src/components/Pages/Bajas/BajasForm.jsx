@@ -6,6 +6,7 @@ import { toast } from 'react-hot-toast'
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import { formatDate } from '@/utils/dateFormater'
 import { DEFAULT_ALUMNO } from '@/utils/defaultStates'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const BajasForm = () => {
   const { curp } = useParams()
@@ -79,7 +80,7 @@ const BajasForm = () => {
   }
 
   useEffect(() => {
-    document.title = `${curp} - Dar de Baja - GDM Admin`
+    cambiarTitulo(`${curp} - Dar de Baja`)
 
     fetchStudent()
     fetchMotivos()

@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast'
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import { DEFAULT_PRECIOS } from '@/utils/defaultStates'
 import TextInputForm from '@/components/UI/TextInputForm'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const Precios = () => {
   const fetchWithAuth = useFetchWithAuth()
@@ -28,7 +29,7 @@ const Precios = () => {
   }, [fetchWithAuth])
 
   useEffect(() => {
-    document.title = `Precios - GDM Admin`
+    cambiarTitulo('Precios')
 
     fetchPrecios()
   }, [fetchPrecios])

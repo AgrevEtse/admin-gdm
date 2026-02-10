@@ -8,6 +8,7 @@ import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 
 import StudentCard from '@/components/UI/StudentCard'
 import StudentCardSkeleton from '@/components/UI/StudentCardSkeleton'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const ListStudentsAdmin = () => {
   const fetchWithAuth = useFetchWithAuth()
@@ -91,7 +92,7 @@ const ListStudentsAdmin = () => {
   }
 
   useEffect(() => {
-    document.title = 'Inscripciones - GDM Admin'
+    cambiarTitulo('Inscripciones')
 
     fetchActualCiclos()
     fetchCiclos()

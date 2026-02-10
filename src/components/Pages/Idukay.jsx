@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { toast } from 'react-hot-toast'
 
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const Idukay = () => {
   const fetchWithAuth = useFetchWithAuth()
@@ -70,7 +71,7 @@ const Idukay = () => {
   }
 
   useEffect(() => {
-    document.title = `Idukay - GDM Admin`
+    cambiarTitulo('Idukay')
 
     setIsLoading(true)
     fetchCiclos()

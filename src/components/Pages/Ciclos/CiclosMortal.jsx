@@ -3,6 +3,7 @@ import { toast } from 'react-hot-toast'
 
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import CiclosSectionSkeleton from '@/components/UI/CiclosSectionSkeleton'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const CiclosMortal = () => {
   const fetchWithAuth = useFetchWithAuth()
@@ -30,7 +31,7 @@ const CiclosMortal = () => {
   }, [fetchWithAuth])
 
   useEffect(() => {
-    document.title = 'Ciclos - GDM Admin'
+    cambiarTitulo('Ciclos')
 
     fetchCiclos()
   }, [fetchCiclos])

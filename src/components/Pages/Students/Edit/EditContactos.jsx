@@ -10,6 +10,7 @@ import {
 } from '@/utils/parentescoHelpers'
 import { ContactoSchema } from '@/schemas/ContactoSchema'
 import TextInputForm from '@/components/UI/TextInputForm'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const EditContactos = () => {
   const { curp } = useParams()
@@ -42,7 +43,7 @@ const EditContactos = () => {
   }, [curp, fetchWithAuth])
 
   useEffect(() => {
-    document.title = `Editar Contactos - ${curp} - GDM Admin`
+    cambiarTitulo(`Editar Contactos - ${curp}`)
 
     fetchContactos()
   }, [curp, fetchContactos])

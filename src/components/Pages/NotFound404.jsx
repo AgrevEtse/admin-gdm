@@ -1,9 +1,10 @@
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const NotFound404 = () => {
   useEffect(() => {
-    document.title = '404 - GDM Admin'
+    cambiarTitulo('404')
   }, [])
 
   return (

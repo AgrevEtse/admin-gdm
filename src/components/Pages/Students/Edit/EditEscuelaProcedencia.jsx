@@ -7,6 +7,7 @@ import { createReducer } from '@/utils/reducer'
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import { EscuelaProcedenciaSchema } from '@/schemas/EscuelaProcedenciaSchema'
 import TextInputForm from '@/components/UI/TextInputForm'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const EditEscuelaProcedencia = () => {
   const { curp } = useParams()
@@ -40,7 +41,7 @@ const EditEscuelaProcedencia = () => {
   }, [curp, fetchWithAuth])
 
   useEffect(() => {
-    document.title = `Editar Escuela Procedencia - ${curp} - GDM Admin`
+    cambiarTitulo(`Editar Escuela Procedencia - ${curp}`)
 
     fetchEscuelaProcedencia()
   }, [curp, fetchEscuelaProcedencia])

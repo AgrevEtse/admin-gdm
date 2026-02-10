@@ -9,6 +9,7 @@ import { ESTADOS_ARRAY } from '@/utils/estadosHelpers'
 import { getMunicipiosByEstado } from '@/utils/municipiosHelpers'
 import { DomicilioSchema } from '@/schemas/DomicilioSchema'
 import TextInputForm from '@/components/UI/TextInputForm'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const EditDomicilio = () => {
   const { curp } = useParams()
@@ -39,7 +40,7 @@ const EditDomicilio = () => {
   }, [curp, fetchWithAuth])
 
   useEffect(() => {
-    document.title = `Editar Domicilio - ${curp} - GDM Admin`
+    cambiarTitulo(`Editar Domicilio - ${curp}`)
 
     fetchDomicilio()
   }, [curp, fetchDomicilio])

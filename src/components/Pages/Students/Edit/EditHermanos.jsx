@@ -6,6 +6,7 @@ import { createReducer } from '@/utils/reducer'
 import { useFetchWithAuth } from '@/hooks/useFetchWithAuth'
 import { HermanoSchema } from '@/schemas/HermanoSchema'
 import TextInputForm from '@/components/UI/TextInputForm'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const EditHermanos = () => {
   const { curp, ciclo } = useParams()
@@ -36,7 +37,7 @@ const EditHermanos = () => {
   }, [curp, fetchWithAuth, ciclo])
 
   useEffect(() => {
-    document.title = `Editar Hermanos - ${curp} - GDM Admin`
+    cambiarTitulo(`Editar Hermanos - ${curp}`)
 
     fetchHermanos()
   }, [curp, fetchHermanos])
