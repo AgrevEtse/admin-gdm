@@ -92,7 +92,7 @@ const EditPago = () => {
   }
 
   return (
-    <div className='card bg-base-100 mx-auto w-full border border-white px-0 shadow-sm lg:px-8'>
+    <div className='card bg-base-300 border-base-content mx-auto w-full border px-0 shadow-sm lg:px-8'>
       <div className='card-body'>
         <h2 className='card-title mb-6 items-center justify-center text-3xl'>
           Datos de la Persona de Pagos
@@ -101,13 +101,13 @@ const EditPago = () => {
           {isLoading &&
             Array.from({ length: 5 }).map((_, index) => (
               <label
-                className='input skeleton mx-auto max-w-sm border-white lg:min-w-sm'
+                className='input skeleton border-base-content mx-auto max-w-sm lg:min-w-sm'
                 key={index}
               >
                 <span className='label skeleton'>
                   {'                              '}
                 </span>
-                <input className='skeleton border-white' />
+                <input className='skeleton border-base-content' />
               </label>
             ))}
           {!isLoading && (
@@ -121,7 +121,7 @@ const EditPago = () => {
                 required={true}
               />
 
-              <label className='select select-md m-auto mx-auto max-w-sm border-white lg:min-w-sm'>
+              <label className='select select-md border-base-content m-auto mx-auto max-w-sm lg:min-w-sm'>
                 <span className='label'>
                   Parentesco <span className='text-rose-600'>*</span>
                 </span>
@@ -165,7 +165,7 @@ const EditPago = () => {
                 required={true}
               />
 
-              <label className='select select-md m-auto mx-auto max-w-sm border-white lg:min-w-sm'>
+              <label className='select select-md border-base-content m-auto mx-auto max-w-sm lg:min-w-sm'>
                 <span className='label'>
                   ¿Requiere Factura? <span className='text-rose-600'>*</span>
                 </span>

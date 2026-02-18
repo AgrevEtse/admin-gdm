@@ -47,7 +47,7 @@ const BajasList = () => {
     <div className='mx-auto h-full w-full py-[5vh]'>
       <h2 className='text-center text-5xl font-bold'>Dar de Baja</h2>
       <div className='my-8 flex flex-col items-center space-y-4 lg:items-end'>
-        <label className='input input-md'>
+        <label className='input input-md border-base-content'>
           <span className='label'>
             <MagnifyingGlassIcon className='h-5 w-5' />
           </span>

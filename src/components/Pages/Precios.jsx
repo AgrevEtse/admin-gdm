@@ -88,7 +88,7 @@ const Precios = () => {
       <select
         value={selectedEscolaridad}
         disabled={isLoading}
-        className='select w-full max-w-xs'
+        className='select border-base-content w-full max-w-xs'
         onChange={(e) => {
           setSelectedEscolaridad(Number(e.target.value))
         }}
@@ -105,7 +105,7 @@ const Precios = () => {
         <option value='4'>Bachillerato</option>
       </select>
 
-      <div className='card bg-base-100 mx-auto w-full border border-white px-0 shadow-sm lg:px-8'>
+      <div className='card bg-base-300 border-base-content mx-auto w-full border px-0 shadow-sm lg:px-8'>
         <div className='card-body'>
           <h2 className='card-title mb-6 items-center justify-center text-3xl'>
             {selectedEscolaridad === 0
@@ -194,19 +194,19 @@ const Precios = () => {
                 />
               </>
             )}
-            <div className='card-actions mt-4 justify-end'>
-              <button
-                className='btn btn-primary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
-                onClick={handleUpdate}
-                disabled={isLoading || selectedEscolaridad === 0}
-              >
-                {isLoading ? (
-                  <span className='loading loading-spinner loading-sm'></span>
-                ) : (
-                  'Actualizar'
-                )}
-              </button>
-            </div>
+          </div>
+          <div className='card-actions mt-4 justify-end'>
+            <button
+              className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+              onClick={handleUpdate}
+              disabled={isLoading || selectedEscolaridad === 0}
+            >
+              {isLoading ? (
+                <span className='loading loading-spinner loading-sm'></span>
+              ) : (
+                'Actualizar'
+              )}
+            </button>
           </div>
         </div>
       </div>

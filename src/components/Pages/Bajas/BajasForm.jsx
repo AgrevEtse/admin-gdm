@@ -94,7 +94,7 @@ const BajasForm = () => {
       </p>
       <div className='flex flex-col items-center justify-center space-y-8'>
         {!isLoading && (
-          <div className='card w-96 border bg-zinc-400 text-zinc-950 shadow-sm shadow-zinc-400 transition-shadow duration-200 ease-in-out hover:shadow-lg'>
+          <div className='card bg-neutral-content text-neutral shadow-neutral-content w-96 border shadow-sm transition-shadow duration-200 ease-in-out hover:shadow-lg'>
             <div className='card-body text-sm'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Alumno</h2>
@@ -147,7 +147,7 @@ const BajasForm = () => {
           </div>
         )}
         <div className='flex flex-col items-center justify-center space-y-4'>
-          <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
+          <label className='select select-md border-base-content mx-auto max-w-sm lg:min-w-sm'>
             <span className='label'>
               Motivo <span className='text-rose-600'>*</span>
             </span>
@@ -177,14 +177,14 @@ const BajasForm = () => {
             <input
               type='text'
               placeholder='Especifica el motivo...'
-              className='input input-md mx-auto max-w-sm border-white lg:min-w-sm'
+              className='input input-md border-base-content mx-auto max-w-sm lg:min-w-sm'
               value={bajaEspecifica}
               onChange={(e) => setBajaEspecifica(e.target.value)}
             />
           )}
           <div className='flex w-full max-w-sm flex-row justify-end lg:min-w-sm'></div>
           <button
-            className='btn btn-primary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+            className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
             disabled={
               isLoading ||
               baja === 0 ||

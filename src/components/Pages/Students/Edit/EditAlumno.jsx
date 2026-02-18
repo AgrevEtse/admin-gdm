@@ -86,7 +86,7 @@ const EditAlumno = () => {
   }
 
   return (
-    <div className='card bg-base-100 mx-auto w-full border border-white px-0 shadow-sm lg:px-8'>
+    <div className='card bg-base-300 border-base-content mx-auto w-full border px-0 shadow-sm lg:px-8'>
       <div className='card-body'>
         <h2 className='card-title mb-6 items-center justify-center text-3xl'>
           Datos del Alumno
@@ -95,13 +95,13 @@ const EditAlumno = () => {
           {isLoading &&
             Array.from({ length: 12 }).map((_, index) => (
               <label
-                className='input skeleton mx-auto max-w-sm border-white lg:min-w-sm'
+                className='input skeleton border-base-content mx-auto max-w-sm lg:min-w-sm'
                 key={index}
               >
                 <span className='label skeleton'>
                   {'                              '}
                 </span>
-                <input className='skeleton border-white' />
+                <input className='skeleton border-base-content' />
               </label>
             ))}
           {!isLoading && (
@@ -133,7 +133,7 @@ const EditAlumno = () => {
                 required={true}
               />
 
-              <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
+              <label className='select select-md border-base-content mx-auto max-w-sm lg:min-w-sm'>
                 <span className='label'>
                   Género <span className='text-rose-600'>*</span>
                 </span>
@@ -154,7 +154,7 @@ const EditAlumno = () => {
                 </select>
               </label>
 
-              <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
+              <label className='select select-md border-base-content mx-auto max-w-sm lg:min-w-sm'>
                 <span className='label'>
                   Tipo Sanguíneo <span className='text-rose-600'>*</span>
                 </span>
@@ -181,7 +181,7 @@ const EditAlumno = () => {
                 </select>
               </label>
 
-              <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
+              <label className='select select-md border-base-content mx-auto max-w-sm lg:min-w-sm'>
                 <span className='label'>
                   Lateralidad <span className='text-rose-600'>*</span>
                 </span>
@@ -202,7 +202,7 @@ const EditAlumno = () => {
                 </select>
               </label>
 
-              <label className='input input-md mx-auto max-w-sm border-white lg:min-w-sm'>
+              <label className='input input-md border-base-content mx-auto max-w-sm lg:min-w-sm'>
                 <span className='label'>
                   Fecha Nacimiento <span className='text-rose-600'>*</span>
                 </span>
@@ -215,7 +215,7 @@ const EditAlumno = () => {
                 />
               </label>
 
-              <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
+              <label className='select select-md border-base-content mx-auto max-w-sm lg:min-w-sm'>
                 <span className='label'>
                   Nacionalidad <span className='text-rose-600'>*</span>
                 </span>
@@ -268,7 +268,7 @@ const EditAlumno = () => {
                   minLength={0}
                   maxLength={200}
                   name='nota_enfermedad'
-                  className='textarea h-24 w-full border-white'
+                  className='textarea border-base-content h-24 w-full'
                   placeholder='Indique si el alumno padece de alguna discapacidad, enfermedad crónica, alergias o algún tipo de tratamiento médico.'
                 ></textarea>
               </fieldset>
@@ -281,7 +281,7 @@ const EditAlumno = () => {
                   minLength={0}
                   maxLength={200}
                   name='nota_terapia'
-                  className='textarea h-24 w-full border-white'
+                  className='textarea border-base-content h-24 w-full'
                   placeholder='Indique si el alumno asiste a terapia, explique de que tipo: físico, psicológica u otra y por qué'
                 ></textarea>
               </fieldset>

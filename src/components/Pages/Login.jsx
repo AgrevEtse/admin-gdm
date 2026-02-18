@@ -61,7 +61,7 @@ function Login() {
         className='w-42'
         alt=''
       />
-      <fieldset className='fieldset bg-primary border-primary-content rounded-box w-11/12 border p-4 lg:w-1/3'>
+      <fieldset className='fieldset bg-base-300 border-base-content rounded-box text-base-content w-11/12 border p-4 lg:w-1/3'>
         <legend className='fieldset-legend text-3xl'>Log In</legend>
         <p className='text-lg'>Inicia sesión para acceder a tu cuenta.</p>
         <form
@@ -90,7 +90,7 @@ function Login() {
           />
           <button
             type='submit'
-            className='btn btn-secondary w-1/2'
+            className='btn btn-primary w-1/2'
           >
             Iniciar sesión
           </button>

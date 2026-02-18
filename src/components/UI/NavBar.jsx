@@ -35,11 +35,11 @@ const Navbar = () => {
   }
 
   return (
-    <nav className='navbar bg-primary text-primary-content rounded-box fixed top-0 left-1/2 z-100 mx-auto h-10 w-[90vw] -translate-x-1/2 px-6 shadow-sm'>
+    <nav className='navbar bg-base-200 text-base-content rounded-box fixed top-0 left-1/2 z-100 mx-auto h-10 w-[90vw] -translate-x-1/2 px-6 shadow-sm'>
       <div className='flex-1 space-x-4'>
         <button
           onClick={() => navigate(-1)}
-          className='btn btn-warning text-xl transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+          className='btn btn-info text-xl transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
         >
           <ArrowFatLeftIcon className='h-7 w-7' />
         </button>
@@ -71,7 +71,7 @@ const Navbar = () => {
       <div className='relative flex flex-1 justify-end'>
         <button
           ref={buttonRef}
-          className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-110 active:scale-110'
+          className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-110 active:scale-110'
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <ListIcon className='h-9 w-9' />
@@ -84,7 +84,7 @@ const Navbar = () => {
           ref={menuRef}
         >
           <div className='flex flex-col items-center'>
-            <UserIcon className='h-20 w-20 rounded-full bg-cyan-600' />
+            <UserIcon className='bg-info h-20 w-20 rounded-full' />
             {auth.user && (
               <p className='mt-2 text-lg font-semibold'>
                 {auth.user.rol.toUpperCase()}
@@ -96,7 +96,7 @@ const Navbar = () => {
             <li>
               <Link to='/dashboard/inscripciones'>
                 <button
-                  className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                  className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                   onClick={handleButtonHamburguer}
                 >
                   Inscripciones
@@ -106,7 +106,7 @@ const Navbar = () => {
             <li>
               <Link to='/dashboard/ciclos'>
                 <button
-                  className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                  className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                   onClick={handleButtonHamburguer}
                 >
                   Ciclos
@@ -119,7 +119,7 @@ const Navbar = () => {
                 <li>
                   <Link to='/dashboard/bajas'>
                     <button
-                      className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                      className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                       onClick={handleButtonHamburguer}
                     >
                       Dar de Baja
@@ -135,7 +135,7 @@ const Navbar = () => {
                 <li>
                   <Link to='/dashboard/bajas/alumnos'>
                     <button
-                      className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                      className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                       onClick={handleButtonHamburguer}
                     >
                       Bajas Alumnos
@@ -151,7 +151,7 @@ const Navbar = () => {
                 <li>
                   <Link to='/dashboard/idukay'>
                     <button
-                      className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                      className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                       onClick={handleButtonHamburguer}
                     >
                       Idukay
@@ -166,7 +166,7 @@ const Navbar = () => {
                 <li>
                   <Link to='/dashboard/precios'>
                     <button
-                      className='btn btn-accent transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                      className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                       onClick={handleButtonHamburguer}
                     >
                       Precios
@@ -178,7 +178,7 @@ const Navbar = () => {
             />
             <li>
               <button
-                className='btn btn-error text-white transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                className='btn btn-error transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                 onClick={auth.logout}
               >
                 <SignOutIcon className='h-6 w-6' />

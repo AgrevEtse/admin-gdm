@@ -50,7 +50,7 @@ const CiclosMortal = () => {
           </>
         ) : (
           <>
-            <div className='card w-xs border bg-emerald-600'>
+            <div className='card w-xs border bg-emerald-300 text-emerald-950'>
               <div className='card-body'>
                 <h2 className='card-title justify-center'>Ciclo Anual</h2>
                 <p className='text-center'>
@@ -58,7 +58,7 @@ const CiclosMortal = () => {
                 </p>
               </div>
             </div>
-            <div className='card w-xs border bg-red-500'>
+            <div className='card w-xs border bg-red-300 text-red-950'>
               <div className='card-body'>
                 <h2 className='card-title justify-center'>Ciclo Semestral</h2>
                 <p className='text-center'>

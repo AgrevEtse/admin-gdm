@@ -9,12 +9,12 @@ const TextInputForm = ({
   onChange
 }) => {
   return (
-    <label className='input mx-auto max-w-sm border-white lg:min-w-sm'>
+    <label className='input border-base-content mx-auto max-w-sm lg:min-w-sm'>
       <span className='label'>
         {label} {required && <span className='text-rose-600'>*</span>}
       </span>
       <input
-        className='border-white'
+        className='border-base-content'
         type={type}
         required={required}
         value={value}

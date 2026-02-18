@@ -110,7 +110,7 @@ const EditInscripcion = () => {
   }
 
   return (
-    <div className='card bg-base-100 mx-auto w-full border border-white px-0 shadow-sm lg:px-8'>
+    <div className='card bg-base-300 border-base-content mx-auto w-full border px-0 shadow-sm lg:px-8'>
       <div className='card-body'>
         <h2 className='card-title mb-6 items-center justify-center text-3xl'>
           Datos de la Inscripción
@@ -119,18 +119,18 @@ const EditInscripcion = () => {
           {isLoading &&
             Array.from({ length: 2 }).map((_, index) => (
               <label
-                className='input skeleton mx-auto max-w-sm border-white lg:min-w-sm'
+                className='input skeleton border-base-content mx-auto max-w-sm lg:min-w-sm'
                 key={index}
               >
                 <span className='label skeleton'>
                   {'                              '}
                 </span>
-                <input className='skeleton border-white' />
+                <input className='skeleton border-base-content' />
               </label>
             ))}
           {!isLoading && (
             <>
-              <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
+              <label className='select select-md border-base-content mx-auto max-w-sm lg:min-w-sm'>
                 <span className='label'>
                   Escolaridad <span className='text-rose-600'>*</span>
                 </span>
@@ -170,7 +170,7 @@ const EditInscripcion = () => {
                 </select>
               </label>
 
-              <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
+              <label className='select select-md border-base-content mx-auto max-w-sm lg:min-w-sm'>
                 <span className='label'>
                   Grado <span className='text-rose-600'>*</span>
                 </span>
@@ -215,7 +215,7 @@ const EditInscripcion = () => {
                 </select>
               </label>
 
-              <label className='select select-md mx-auto max-w-sm border-white lg:min-w-sm'>
+              <label className='select select-md border-base-content mx-auto max-w-sm lg:min-w-sm'>
                 <span className='label'>
                   Grupo <span className='text-rose-600'>*</span>
                 </span>

@@ -191,7 +191,7 @@ const StudentData = () => {
       {inscripcion.id_escolaridad && (
         <h3
           className={
-            (isActive === true ? 'text-green-500' : 'text-red-500') +
+            (isActive === true ? 'text-emerald-600' : 'text-red-500') +
             ' text-center text-2xl font-bold'
           }
         >
@@ -216,7 +216,7 @@ const StudentData = () => {
           Activar Inscripción
         </button>
         <button
-          className='btn btn-info'
+          className='btn btn-primary'
           onClick={handleDescargarDocx}
           disabled={isLoading}
           title='Descargar archivo DOCX'
@@ -231,7 +231,7 @@ const StudentData = () => {
           ))}
         {/* Alumno */}
         {!isLoading && alumno.curp && (
-          <div className='card w-96 border bg-zinc-400 text-zinc-950 shadow-sm shadow-zinc-400 transition-shadow duration-200 ease-in-out hover:shadow-lg'>
+          <div className='card bg-neutral-content text-neutral shadow-neutral w-96 border shadow-sm transition-shadow duration-200 ease-in-out hover:shadow-lg'>
             <div className='card-body text-sm'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Alumno</h2>
@@ -285,7 +285,7 @@ const StudentData = () => {
               )}
               <div className='card-actions mt-4 justify-end'>
                 <button
-                  className='btn btn-success transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                  className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                   onClick={() => {
                     navigate(
                       `/dashboard/inscripciones/${curp}/${ciclo}/edit/alumno`
@@ -302,7 +302,7 @@ const StudentData = () => {
 
         {/* Domicilio */}
         {!isLoading && domicilio.domicilio && (
-          <div className='card w-96 border bg-zinc-400 text-sm text-zinc-950 shadow-sm shadow-zinc-400 transition-shadow duration-200 ease-in-out hover:shadow-lg'>
+          <div className='card bg-neutral-content text-neutral shadow-neutral w-96 border text-sm shadow-sm transition-shadow duration-200 ease-in-out hover:shadow-lg'>
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Domicilio</h2>
@@ -331,7 +331,7 @@ const StudentData = () => {
               </p>
               <div className='card-actions mt-4 justify-end'>
                 <button
-                  className='btn btn-success transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                  className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                   onClick={() => {
                     navigate(
                       `/dashboard/inscripciones/${curp}/${ciclo}/edit/domicilio`
@@ -348,7 +348,7 @@ const StudentData = () => {
 
         {/* Escuela de Procedencia */}
         {!isLoading && escuelaProcedencia.cct && (
-          <div className='card w-96 border bg-zinc-400 text-sm text-zinc-950 shadow-sm shadow-zinc-400 transition-shadow duration-200 ease-in-out hover:shadow-lg'>
+          <div className='card bg-neutral-content text-neutral shadow-neutral w-96 border text-sm shadow-sm transition-shadow duration-200 ease-in-out hover:shadow-lg'>
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Esc. Procedencia</h2>
@@ -367,7 +367,7 @@ const StudentData = () => {
               </p>
               <div className='card-actions mt-4 justify-end'>
                 <button
-                  className='btn btn-success transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                  className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                   onClick={() => {
                     navigate(
                       `/dashboard/inscripciones/${curp}/${ciclo}/edit/esc-procedencia`
@@ -384,7 +384,7 @@ const StudentData = () => {
 
         {/* Inscripción */}
         {!isLoading && inscripcion.id_escolaridad && (
-          <div className='card w-96 border bg-zinc-400 text-sm text-zinc-950 shadow-sm shadow-zinc-400 transition-shadow duration-200 ease-in-out hover:shadow-lg'>
+          <div className='card bg-neutral-content text-neutral shadow-neutral w-96 border text-sm shadow-sm transition-shadow duration-200 ease-in-out hover:shadow-lg'>
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Inscripción</h2>
@@ -411,7 +411,7 @@ const StudentData = () => {
               </p>
               <div className='card-actions mt-4 justify-end'>
                 <button
-                  className='btn btn-success transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                  className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                   onClick={() => {
                     navigate(
                       `/dashboard/inscripciones/${curp}/${ciclo}/edit/inscripcion`
@@ -428,7 +428,7 @@ const StudentData = () => {
 
         {/* Tutor 1 */}
         {!isLoading && tutor1.nombre && (
-          <div className='card w-96 border bg-zinc-400 text-sm text-zinc-950 shadow-sm shadow-zinc-400 transition-shadow duration-200 ease-in-out hover:shadow-lg'>
+          <div className='card bg-neutral-content text-neutral shadow-neutral w-96 border text-sm shadow-sm transition-shadow duration-200 ease-in-out hover:shadow-lg'>
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Papá / Tutor 1</h2>
@@ -458,7 +458,7 @@ const StudentData = () => {
               </p>
               <div className='card-actions mt-4 justify-end'>
                 <button
-                  className='btn btn-success transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                  className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                   onClick={() => {
                     navigate(
                       `/dashboard/inscripciones/${curp}/${ciclo}/edit/tutor/1`
@@ -475,7 +475,7 @@ const StudentData = () => {
 
         {/* Tutor 2 */}
         {!isLoading && tutor2.length > 0 && (
-          <div className='card w-96 border bg-zinc-400 text-sm text-zinc-950 shadow-sm shadow-zinc-400 transition-shadow duration-200 ease-in-out hover:shadow-lg'>
+          <div className='card bg-neutral-content text-neutral shadow-neutral w-96 border text-sm shadow-sm transition-shadow duration-200 ease-in-out hover:shadow-lg'>
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Mamá / Tutor 2</h2>
@@ -505,7 +505,7 @@ const StudentData = () => {
               </p>
               <div className='card-actions mt-4 justify-end'>
                 <button
-                  className='btn btn-success transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                  className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                   onClick={() => {
                     navigate(
                       `/dashboard/inscripciones/${curp}/${ciclo}/edit/tutor/2`
@@ -522,7 +522,7 @@ const StudentData = () => {
 
         {/* Hermanos */}
         {!isLoading && hermanos.length > 0 && (
-          <div className='card w-96 border bg-zinc-400 text-sm text-zinc-950 shadow-sm shadow-zinc-400 transition-shadow duration-200 ease-in-out hover:shadow-lg'>
+          <div className='card bg-neutral-content text-neutral shadow-neutral w-96 border text-sm shadow-sm transition-shadow duration-200 ease-in-out hover:shadow-lg'>
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Hermanos</h2>
@@ -545,7 +545,7 @@ const StudentData = () => {
               ))}
               <div className='card-actions mt-4 justify-end'>
                 <button
-                  className='btn btn-success transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                  className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                   onClick={() => {
                     navigate(
                       `/dashboard/inscripciones/${curp}/${ciclo}/edit/hermanos`
@@ -562,7 +562,7 @@ const StudentData = () => {
 
         {/* Contacto de Emergencia */}
         {!isLoading && contacto.length > 0 && (
-          <div className='card w-96 border bg-zinc-400 text-sm text-zinc-950 shadow-sm shadow-zinc-400 transition-shadow duration-200 ease-in-out hover:shadow-lg'>
+          <div className='card bg-neutral-content text-neutral shadow-neutral w-96 border text-sm shadow-sm transition-shadow duration-200 ease-in-out hover:shadow-lg'>
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Contactos</h2>
@@ -589,7 +589,7 @@ const StudentData = () => {
               ))}
               <div className='card-actions mt-4 justify-end'>
                 <button
-                  className='btn btn-success transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                  className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                   onClick={() => {
                     navigate(
                       `/dashboard/inscripciones/${curp}/${ciclo}/edit/contactos`
@@ -606,7 +606,7 @@ const StudentData = () => {
 
         {/* Pago */}
         {!isLoading && pago.nombre && (
-          <div className='card w-96 border bg-zinc-400 text-sm text-zinc-950 shadow-sm shadow-zinc-400 transition-shadow duration-200 ease-in-out hover:shadow-lg'>
+          <div className='card bg-neutral-content text-neutral shadow-neutral w-96 border text-sm shadow-sm transition-shadow duration-200 ease-in-out hover:shadow-lg'>
             <div className='card-body'>
               <div className='mb-4 flex items-center justify-between'>
                 <h2 className='card-title text-3xl'>Pago</h2>
@@ -632,7 +632,7 @@ const StudentData = () => {
               </p>
               <div className='card-actions mt-4 justify-end'>
                 <button
-                  className='btn btn-success transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
+                  className='btn btn-secondary transition-transform duration-200 ease-in-out hover:scale-105 active:scale-105'
                   onClick={() => {
                     navigate(
                       `/dashboard/inscripciones/${curp}/${ciclo}/edit/pago`

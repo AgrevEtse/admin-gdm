@@ -86,7 +86,7 @@ const Idukay = () => {
         <select
           value={selectedCiclo}
           disabled={isLoading}
-          className='select w-full max-w-xs'
+          className='select border-base-content w-full max-w-xs'
           onChange={(e) => {
             setSelectedCiclo(e.target.value)
           }}
@@ -110,7 +110,7 @@ const Idukay = () => {
         <select
           value={selectedHermanos}
           disabled={isLoading}
-          className='select w-full max-w-xs'
+          className='select border-base-content w-full max-w-xs'
           onChange={(e) => {
             setSelectedHermanos(e.target.value)
           }}
