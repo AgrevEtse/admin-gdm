@@ -35,7 +35,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className='navbar bg-base-300 text-base-content rounded-box fixed top-0 left-1/2 z-100 mx-auto h-10 w-[90vw] -translate-x-1/2 px-6 shadow-sm'>
+    <nav className='navbar bg-base-300 text-base-content rounded-box fixed top-0 left-1/2 z-50 mx-auto h-10 w-[90vw] -translate-x-1/2 px-6 shadow-sm'>
       <div className='flex-1 space-x-4'>
         <button
           onClick={() => navigate(-1)}
